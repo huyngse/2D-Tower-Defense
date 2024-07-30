@@ -25,29 +25,7 @@ public class LevelManager : MonoBehaviour
 
     private void CreateLevel()
     {
-        string[] mapData = new string[]
-        {
-            "00000000000000000000000000000000",
-            "11111111111111111111111111111110",
-            "22222222222222222222222222222210",
-            "33333333333333333333333333333210",
-            "44444444444444444444444444443210",
-            "55555555555555555555555555543210",
-            "00000000000000000000000000543210",
-            "00000000000000000000000000543210",
-            "00000000000000000000000000543210",
-            "00000000000000000000000000543210",
-            "00000000000000000000000000543210",
-            "00000000000000000000000000543210",
-            "00000000000000000000000000543210",
-            "00000000000000000000000000543210",
-            "00000000000000000000000000543210",
-            "00000000000000000000000000543210",
-            "00000000000000000000000000543210",
-            "00000000000000000000000000543210",
-            "00000000000000000000000000543210",
-            "00000000000000000000000000543210",
-        };
+        string[] mapData = GetLevelFromFile();
         for (int y = 0; y < mapData.Length; y++)
         {
             char[] rows = mapData[y].ToCharArray();
@@ -66,5 +44,13 @@ public class LevelManager : MonoBehaviour
             new Vector3(worldStartPosition.x + x * TileSize, worldStartPosition.y - y * TileSize),
             Quaternion.identity
         );
+    }
+
+    private string[] GetLevelFromFile()
+    {
+        // "Resources" is name of the Folder
+        TextAsset bindData = Resources.Load("Level") as TextAsset;
+        string data = bindData.text.Replace(Environment.NewLine, string.Empty);
+        return data.Split("-");
     }
 }
