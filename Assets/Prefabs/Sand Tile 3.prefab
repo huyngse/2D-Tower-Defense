@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1376860262584209661}
   - component: {fileID: 5985242302650498153}
+  - component: {fileID: 5234501905990783479}
   m_Layer: 0
   m_Name: Sand Tile 3
   m_TagString: Untagged
@@ -84,3 +85,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5234501905990783479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5545890010906595166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c4c39845e2f724aa5daf80460e266e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

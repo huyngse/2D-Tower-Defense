@@ -44,14 +44,15 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void PlaceTile(string tileType, float x, float y)
+    private void PlaceTile(string tileType, int x, int y)
     {
         int tileIndex = int.Parse(tileType);
-        Instantiate(
+        GameObject newTile = Instantiate(
             tilePrefabs[tileIndex],
             new Vector3(worldStartPosition.x + x * TileSize, worldStartPosition.y - y * TileSize),
             Quaternion.identity
         );
+        newTile.GetComponent<Tilescript>().Setup(new Point(x, y));
     }
 
     private string[] GetLevelFromFile()
