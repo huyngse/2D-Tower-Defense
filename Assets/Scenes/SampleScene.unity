@@ -243,7 +243,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3391c3b648f134084abab97d1f4172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 557193032654701289, guid: 5b1d6b20a9d25f64d8a426263482fa88, type: 3}
+  tilePrefabs:
+  - {fileID: 557193032654701289, guid: 5b1d6b20a9d25f64d8a426263482fa88, type: 3}
+  - {fileID: 6001577482271275221, guid: c4a16256b56397446975151afac2ee1c, type: 3}
+  - {fileID: 8660073776127270131, guid: b57c2909a3c8a4b4d89e7a16c4e5a87b, type: 3}
+  - {fileID: 7533322479363314394, guid: 0f6b16f8c165ffd4fad0712ee409d1f3, type: 3}
+  - {fileID: 6505433806833917601, guid: e39c4ad3a19b4844f8655585d52bdc41, type: 3}
+  - {fileID: 5545890010906595166, guid: 4e57c31233e22ac4d806e018ceb7abaf, type: 3}
 --- !u!4 &1885343238
 Transform:
   m_ObjectHideFlags: 0
