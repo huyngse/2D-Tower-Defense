@@ -11,12 +11,18 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     private CameraMovement cameraMovement;
+    public Dictionary<Point, Tilescript> Tiles { get; set; }
 
     public float TileSize
     {
         get { return tilePrefabs[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x; }
     }
     private Vector3 worldStartPosition;
+
+    void Awake()
+    {
+        Tiles = new Dictionary<Point, Tilescript>();
+    }
 
     void Start()
     {
@@ -29,19 +35,20 @@ public class LevelManager : MonoBehaviour
     private void CreateLevel()
     {
         string[] mapData = GetLevelFromFile();
-        Vector3 bottomLeftTile = new Vector3(
-            worldStartPosition.x + mapData[0].Length * TileSize,
-            worldStartPosition.y - mapData.Length * TileSize
-        );
-        cameraMovement.SetLimits(bottomLeftTile);
-        for (int y = 0; y < mapData.Length; y++)
+        int mapWidth = mapData[0].Length;
+        int mapHeight = mapData.Length;
+
+        for (int y = 0; y < mapHeight; y++)
         {
             char[] rows = mapData[y].ToCharArray();
-            for (int x = 0; x < mapData[0].Length; x++)
+            for (int x = 0; x < mapWidth; x++)
             {
                 PlaceTile(rows[x].ToString(), x, y);
             }
         }
+
+        Vector3 bottomLeftTile = new Vector3(worldStartPosition.x + mapWidth * TileSize, worldStartPosition.y - mapHeight * TileSize);
+        cameraMovement.SetLimits(bottomLeftTile);
     }
 
     private void PlaceTile(string tileType, int x, int y)
@@ -52,7 +59,9 @@ public class LevelManager : MonoBehaviour
             new Vector3(worldStartPosition.x + x * TileSize, worldStartPosition.y - y * TileSize),
             Quaternion.identity
         );
-        newTile.GetComponent<Tilescript>().Setup(new Point(x, y));
+        Tilescript tile = newTile.GetComponent<Tilescript>();
+        tile.Setup(new Point(x, y));
+        Tiles.Add(tile.GridPosition, tile);
     }
 
     private string[] GetLevelFromFile()
