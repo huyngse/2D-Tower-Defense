@@ -9,6 +9,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private GameObject[] tilePrefabs;
 
+    [SerializeField]
+    private CameraMovement cameraMovement;
+
     public float TileSize
     {
         get { return tilePrefabs[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x; }
@@ -26,6 +29,11 @@ public class LevelManager : MonoBehaviour
     private void CreateLevel()
     {
         string[] mapData = GetLevelFromFile();
+        Vector3 bottomLeftTile = new Vector3(
+            worldStartPosition.x + mapData[0].Length * TileSize,
+            worldStartPosition.y - mapData.Length * TileSize
+        );
+        cameraMovement.SetLimits(bottomLeftTile);
         for (int y = 0; y < mapData.Length; y++)
         {
             char[] rows = mapData[y].ToCharArray();
