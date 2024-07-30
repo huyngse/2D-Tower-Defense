@@ -8,8 +8,15 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private GameObject tile;
 
+    public float TileSize
+    {
+        get { return tile.GetComponent<SpriteRenderer>().sprite.bounds.size.x; }
+    }
+    private Vector3 worldStartPosition;
+
     void Start()
     {
+        worldStartPosition = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height));
         CreateLevel();
     }
 
@@ -17,13 +24,21 @@ public class LevelManager : MonoBehaviour
 
     private void CreateLevel()
     {
-        float tileSize = tile.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
-        for (int y = 0; y < 5; y++)
+        for (int y = 0; y < 20; y++)
         {
-            for (int x = 0; x < 5; x++)
+            for (int x = 0; x < 32; x++)
             {
-                Instantiate(tile, new Vector3(x * tileSize, y * tileSize, 0), Quaternion.identity);
+                PlaceTile(x, y);
             }
         }
+    }
+
+    private void PlaceTile(float x, float y)
+    {
+        Instantiate(
+            tile,
+            new Vector3(worldStartPosition.x + x * TileSize, worldStartPosition.y - y * TileSize),
+            Quaternion.identity
+        );
     }
 }
