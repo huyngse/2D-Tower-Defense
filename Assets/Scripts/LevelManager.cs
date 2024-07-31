@@ -17,6 +17,9 @@ public class LevelManager : Singleton<LevelManager>
 
     [SerializeField]
     private GameObject purplePortalPrefab;
+
+    [SerializeField]
+    private Transform map;
     public Dictionary<Point, Tilescript> Tiles { get; set; }
     private Point greenPortal;
     private Point purplePortal;
@@ -72,6 +75,7 @@ public class LevelManager : Singleton<LevelManager>
             Quaternion.identity
         );
         Tilescript tile = newTile.GetComponent<Tilescript>();
+        newTile.transform.SetParent(map);
         tile.Setup(new Point(x, y));
     }
 
