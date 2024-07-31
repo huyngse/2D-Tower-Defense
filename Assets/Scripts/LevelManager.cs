@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {
     [Header("References")]
     [SerializeField]
@@ -73,7 +73,6 @@ public class LevelManager : MonoBehaviour
         );
         Tilescript tile = newTile.GetComponent<Tilescript>();
         tile.Setup(new Point(x, y));
-        Tiles.Add(tile.GridPosition, tile);
     }
 
     private string[] GetLevelFromFile()
@@ -97,7 +96,7 @@ public class LevelManager : MonoBehaviour
         Vector3 purplePortalPosition = Tiles[purplePortal].transform.position;
         Instantiate(
             purplePortalPrefab,
-            new Vector3(purplePortalPosition.x, purplePortalPosition.y +  0.5f),
+            new Vector3(purplePortalPosition.x, purplePortalPosition.y + 0.5f),
             Quaternion.identity
         );
     }

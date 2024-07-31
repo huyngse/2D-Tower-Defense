@@ -23,5 +23,6 @@ public class Tilescript : MonoBehaviour
     public void Setup(Point gridPosition)
     {
         GridPosition = gridPosition;
+        LevelManager.Instance.Tiles.Add(gridPosition, this);
     }
 }
