@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [Header("References")]
-    [SerializeField]
-    private GameObject towerPrefab;
+    public TowerButton ClickedButton { get; private set; }
 
-    public GameObject TowerPrefab
-    {
-        get => towerPrefab;
+    public void PickTower(TowerButton towerButton) { 
+        ClickedButton = towerButton;
+    }
+    public void BuyTower() {
+        ClickedButton = null;
     }
 }

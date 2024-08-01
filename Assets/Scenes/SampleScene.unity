@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 86687747}
   - component: {fileID: 86687746}
   - component: {fileID: 86687745}
+  - component: {fileID: 86687748}
   m_Layer: 5
   m_Name: IceTowerButton
   m_TagString: Untagged
@@ -243,6 +244,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86687743}
   m_CullTransparentMesh: 1
+--- !u!114 &86687748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86687743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8cb0686706b9847987fdd261059ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 2605517663074103664, guid: 8bef10a0645018443b8d421a561b2276, type: 3}
 --- !u!1 &118077591
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +344,7 @@ GameObject:
   - component: {fileID: 457557211}
   - component: {fileID: 457557210}
   - component: {fileID: 457557209}
+  - component: {fileID: 457557212}
   m_Layer: 5
   m_Name: StormTowerButton
   m_TagString: Untagged
@@ -439,6 +454,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457557207}
   m_CullTransparentMesh: 1
+--- !u!114 &457557212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457557207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8cb0686706b9847987fdd261059ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 5310424221148644096, guid: a97e8a92679485e48ad09e323d7e52e7, type: 3}
 --- !u!1 &470610054
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +981,7 @@ GameObject:
   - component: {fileID: 861549557}
   - component: {fileID: 861549556}
   - component: {fileID: 861549555}
+  - component: {fileID: 861549558}
   m_Layer: 5
   m_Name: FireTowerButton
   m_TagString: Untagged
@@ -1062,6 +1091,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861549553}
   m_CullTransparentMesh: 1
+--- !u!114 &861549558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861549553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8cb0686706b9847987fdd261059ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 1477611943943305176, guid: b0f7713acea929144aee166282c41c87, type: 3}
 --- !u!1 &1139714307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,6 +1264,7 @@ GameObject:
   - component: {fileID: 1495911058}
   - component: {fileID: 1495911057}
   - component: {fileID: 1495911056}
+  - component: {fileID: 1495911059}
   m_Layer: 5
   m_Name: AcidTowerButton
   m_TagString: Untagged
@@ -1331,6 +1374,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495911054}
   m_CullTransparentMesh: 1
+--- !u!114 &1495911059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495911054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8cb0686706b9847987fdd261059ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 4833858732105156750, guid: fa9b976256b694f48a6a70d3c20ea273, type: 3}
 --- !u!1 &1885343236
 GameObject:
   m_ObjectHideFlags: 0
