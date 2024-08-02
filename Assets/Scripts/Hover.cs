@@ -13,7 +13,10 @@ public class Hover : Singleton<Hover>
 
     void Update()
     {
-        FollowMouse();
+        if (spriteRenderer.enabled)
+        {
+            FollowMouse();
+        }
     }
 
     private void FollowMouse()
@@ -27,7 +30,9 @@ public class Hover : Singleton<Hover>
         spriteRenderer.enabled = true;
         spriteRenderer.sprite = sprite;
     }
-    public void Deativate() {
+
+    public void Deativate()
+    {
         spriteRenderer.enabled = false;
     }
 }
