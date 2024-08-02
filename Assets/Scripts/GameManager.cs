@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
 
     public void PickTower(TowerButton towerButton) { 
         ClickedButton = towerButton;
+        Hover.Instance.Activate(ClickedButton.Sprite);
     }
     public void BuyTower() {
         ClickedButton = null;
