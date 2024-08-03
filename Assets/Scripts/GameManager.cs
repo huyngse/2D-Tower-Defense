@@ -9,6 +9,11 @@ public class GameManager : Singleton<GameManager>
     [Header("References")]
     [SerializeField]
     private TMP_Text currencyText;
+
+    [Header("Attribute")]
+    [SerializeField]
+    private int currency = 100;
+
     public TowerButton ClickedButton { get; private set; }
     public int Currency
     {
@@ -20,11 +25,9 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    private int currency;
-
     void Start()
     {
-        Currency = 10000;
+        Currency = currency;
     }
 
     void Update()
@@ -34,12 +37,16 @@ public class GameManager : Singleton<GameManager>
 
     public void PickTower(TowerButton towerButton)
     {
-        ClickedButton = towerButton;
-        Hover.Instance.Activate(ClickedButton.Sprite);
+        if (Currency >= towerButton.Price)
+        {
+            ClickedButton = towerButton;
+            Hover.Instance.Activate(ClickedButton.Sprite);
+        }
     }
 
     public void BuyTower()
     {
+        Currency -= ClickedButton.Price;
         ClickedButton = null;
         Hover.Instance.Deativate();
     }
