@@ -38,8 +38,11 @@ public static class AStar
                 Node neighbor = nodes[neighborPos];
                 if (!neighbor.TileRef.IsWalkable)
                     continue;
-                neighbor.TileRef.SpriteRenderer.color = Color.black;
-                neighbor.TileRef.IsDebugging = true;
+                // neighbor.TileRef.SpriteRenderer.color = Color.black;
+                // neighbor.TileRef.IsDebugging = true;
+                if (!openList.Contains(neighbor)) {
+                    openList.Add(neighbor);
+                }
             }
         }
 

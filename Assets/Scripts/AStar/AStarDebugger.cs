@@ -38,14 +38,14 @@ public class AStarDebugger : MonoBehaviour
                     {
                         start = tmp;
                         start.IsDebugging = true;
-                        start.SpriteRenderer.color = new Color32(245, 188, 66, 255);
+                        start.ColorTile(new Color32(245, 188, 66, 255));
                         start.SpriteRenderer.sprite = whiteSprite;
                     }
                     else if (goal == null)
                     {
                         goal = tmp;
                         goal.IsDebugging = true;
-                        goal.SpriteRenderer.color = new Color32(245, 66, 66, 255);
+                        goal.ColorTile(new Color32(245, 66, 66, 255));
                         goal.SpriteRenderer.sprite = whiteSprite;
                     }
                 }
@@ -57,9 +57,12 @@ public class AStarDebugger : MonoBehaviour
     {
         foreach (Node node in openList)
         {
-            node.TileRef.IsDebugging = true;
-            node.TileRef.ColorTile(new Color32(66, 114, 245, 255));
-            node.TileRef.SpriteRenderer.sprite = whiteSprite;
+            if (node.GridPosition != start.GridPosition)
+            {
+                node.TileRef.IsDebugging = true;
+                node.TileRef.ColorTile(new Color32(66, 114, 245, 255));
+                node.TileRef.SpriteRenderer.sprite = whiteSprite;
+            }
         }
     }
 }
