@@ -29,7 +29,6 @@ public class Tilescript : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         tileSize = spriteRenderer.sprite.bounds.size.x;
     }
-
     void Update() { }
 
     public void Setup(Point gridPosition)
