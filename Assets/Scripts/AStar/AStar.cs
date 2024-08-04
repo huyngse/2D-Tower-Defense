@@ -43,6 +43,7 @@ public static class AStar
                 if (!openList.Contains(neighbor)) {
                     openList.Add(neighbor);
                 }
+                neighbor.CalculateValues(currentNode);
             }
         }
 
