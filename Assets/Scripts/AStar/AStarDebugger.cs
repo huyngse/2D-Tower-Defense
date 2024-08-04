@@ -13,6 +13,12 @@ public class AStarDebugger : MonoBehaviour
     void Update()
     {
         ClickTile();
+        if (start == null || goal == null)
+            return;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            AStar.GetPath(start.GridPosition);
+        }
     }
 
     private void ClickTile()
@@ -44,6 +50,16 @@ public class AStarDebugger : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void DebugPath(HashSet<Node> openList)
+    {
+        foreach (Node node in openList)
+        {
+            node.TileRef.IsDebugging = true;
+            node.TileRef.ColorTile(new Color32(66, 114, 245, 255));
+            node.TileRef.SpriteRenderer.sprite = whiteSprite;
         }
     }
 }
