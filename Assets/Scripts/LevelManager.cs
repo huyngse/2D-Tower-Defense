@@ -20,7 +20,7 @@ public class LevelManager : Singleton<LevelManager>
 
     [SerializeField]
     private Transform map;
-    public Dictionary<Point, Tilescript> Tiles { get; set; }
+    public Dictionary<Point, TileScript> Tiles { get; set; }
     private Point greenPortal;
     private Point purplePortal;
 
@@ -32,7 +32,7 @@ public class LevelManager : Singleton<LevelManager>
 
     void Awake()
     {
-        Tiles = new Dictionary<Point, Tilescript>();
+        Tiles = new Dictionary<Point, TileScript>();
     }
 
     void Start()
@@ -74,7 +74,7 @@ public class LevelManager : Singleton<LevelManager>
             new Vector3(worldStartPosition.x + x * TileSize, worldStartPosition.y - y * TileSize),
             Quaternion.identity
         );
-        Tilescript tile = newTile.GetComponent<Tilescript>();
+        TileScript tile = newTile.GetComponent<TileScript>();
         newTile.transform.SetParent(map);
         tile.Setup(new Point(x, y));
     }

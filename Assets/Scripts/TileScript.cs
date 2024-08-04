@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Tilescript : MonoBehaviour
+public class TileScript : MonoBehaviour
 {
     public Point GridPosition { get; private set; }
     private float tileSize;
