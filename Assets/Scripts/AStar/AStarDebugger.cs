@@ -38,14 +38,14 @@ public class AStarDebugger : MonoBehaviour
                     {
                         start = tmp;
                         start.IsDebugging = true;
-                        start.ColorTile(new Color32(245, 188, 66, 255));
+                        start.SpriteRenderer.color = new Color32(245, 188, 66, 255);
                         start.SpriteRenderer.sprite = whiteSprite;
                     }
                     else if (goal == null)
                     {
                         goal = tmp;
                         goal.IsDebugging = true;
-                        goal.ColorTile(new Color32(245, 66, 66, 255));
+                        goal.SpriteRenderer.color = new Color32(245, 66, 66, 255);
                         goal.SpriteRenderer.sprite = whiteSprite;
                     }
                 }

@@ -8,6 +8,7 @@ public class TileScript : MonoBehaviour
     public Point GridPosition { get; private set; }
     private float tileSize;
     public bool IsEmpty { get; set; }
+    public bool IsWalkable { get; set; }
     private Color32 unavailableColor = new(255, 118, 118, 255);
     private Color32 availableColor = new(96, 255, 90, 255);
     public bool IsDebugging { get; set; }
@@ -26,6 +27,7 @@ public class TileScript : MonoBehaviour
 
     void Awake()
     {
+        IsWalkable = true;
         IsDebugging = false;
         IsEmpty = true;
     }
@@ -48,7 +50,6 @@ public class TileScript : MonoBehaviour
     {
         if (IsDebugging || EventSystem.current.IsPointerOverGameObject())
             return;
-        // Debug.Log($"Hover over tiles: {GridPosition.X}, {GridPosition.Y} ");
         if (GameManager.Instance.ClickedButton == null)
         {
             ColorTile(Color.white);
@@ -78,7 +79,6 @@ public class TileScript : MonoBehaviour
 
     private void PlaceTower()
     {
-        // Debug.Log($"Built a tower at : {GridPosition.X}, {GridPosition.Y} ");
         GameObject tower = Instantiate(
             GameManager.Instance.ClickedButton.TowerPrefab,
             WorldPosition,
@@ -88,9 +88,10 @@ public class TileScript : MonoBehaviour
         tower.transform.SetParent(transform);
         GameManager.Instance.BuyTower();
         IsEmpty = false;
+        IsWalkable = false;
     }
 
-    public void ColorTile(Color newColor)
+    public void ColorTile(Color32 newColor)
     {
         SpriteRenderer.color = newColor;
     }

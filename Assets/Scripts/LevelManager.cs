@@ -23,6 +23,7 @@ public class LevelManager : Singleton<LevelManager>
     public Dictionary<Point, TileScript> Tiles { get; set; }
     private Point greenPortal;
     private Point purplePortal;
+    private Point mapSize;
 
     public float TileSize
     {
@@ -47,21 +48,20 @@ public class LevelManager : Singleton<LevelManager>
     private void CreateLevel()
     {
         string[] mapData = GetLevelFromFile();
-        int mapWidth = mapData[0].Length;
-        int mapHeight = mapData.Length;
+        mapSize = new(mapData[0].Length, mapData.Length);
 
-        for (int y = 0; y < mapHeight; y++)
+        for (int y = 0; y < mapSize.Y; y++)
         {
             char[] rows = mapData[y].ToCharArray();
-            for (int x = 0; x < mapWidth; x++)
+            for (int x = 0; x < mapSize.X; x++)
             {
                 PlaceTile(rows[x].ToString(), x, y);
             }
         }
 
         Vector3 bottomLeftTile = new Vector3(
-            worldStartPosition.x + mapWidth * TileSize,
-            worldStartPosition.y - mapHeight * TileSize
+            worldStartPosition.x + mapSize.X * TileSize,
+            worldStartPosition.y - mapSize.Y * TileSize
         );
         cameraMovement.SetLimits(bottomLeftTile);
     }
@@ -103,5 +103,10 @@ public class LevelManager : Singleton<LevelManager>
             new Vector3(purplePortalPosition.x, purplePortalPosition.y + 0.5f),
             Quaternion.identity
         );
+    }
+
+    public bool InBounds(Point point)
+    {
+        return point.X >= 0 && point.Y >= 0 && point.X < mapSize.X && point.Y < mapSize.Y;
     }
 }

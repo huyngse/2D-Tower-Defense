@@ -12,4 +12,28 @@ public struct Point
         X = x;
         Y = y;
     }
+
+    public override readonly string ToString()
+    {
+        return $"({X}, {Y})";
+    }
+
+    public static bool operator ==(Point a, Point b)
+    {
+        return a.Equals(b);
+    }
+
+    public static bool operator !=(Point a, Point b)
+    {
+        return !(a == b);
+    }
+
+    public override readonly int GetHashCode() => (X, Y).GetHashCode();
+
+#nullable enable
+    public override readonly bool Equals(object? obj) => obj is Point other && Equals(other);
+
+#nullable disable
+
+    public readonly bool Equals(Point p) => X == p.X && Y == p.Y;
 }
