@@ -10,8 +10,9 @@ public class TileScript : MonoBehaviour
     public bool IsEmpty { get; set; }
     private Color32 unavailableColor = new(255, 118, 118, 255);
     private Color32 availableColor = new(96, 255, 90, 255);
-    private SpriteRenderer spriteRenderer;
+    public bool IsDebugging { get; set; }
 
+    public SpriteRenderer SpriteRenderer { get; private set; }
     public Vector2 WorldPosition
     {
         get
@@ -23,12 +24,18 @@ public class TileScript : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        IsDebugging = false;
+        IsEmpty = true;
+    }
+
     void Start()
     {
-        IsEmpty = true;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        tileSize = spriteRenderer.sprite.bounds.size.x;
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+        tileSize = SpriteRenderer.sprite.bounds.size.x;
     }
+
     void Update() { }
 
     public void Setup(Point gridPosition)
@@ -39,7 +46,7 @@ public class TileScript : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
+        if (IsDebugging || EventSystem.current.IsPointerOverGameObject())
             return;
         // Debug.Log($"Hover over tiles: {GridPosition.X}, {GridPosition.Y} ");
         if (GameManager.Instance.ClickedButton == null)
@@ -47,6 +54,7 @@ public class TileScript : MonoBehaviour
             ColorTile(Color.white);
             return;
         }
+
         if (IsEmpty)
         {
             ColorTile(availableColor);
@@ -63,6 +71,8 @@ public class TileScript : MonoBehaviour
 
     private void OnMouseExit()
     {
+        if (IsDebugging)
+            return;
         ColorTile(Color.white);
     }
 
@@ -80,8 +90,8 @@ public class TileScript : MonoBehaviour
         IsEmpty = false;
     }
 
-    private void ColorTile(Color newColor)
+    public void ColorTile(Color newColor)
     {
-        spriteRenderer.color = newColor;
+        SpriteRenderer.color = newColor;
     }
 }
