@@ -40,7 +40,7 @@ public class AStarDebugger : MonoBehaviour
                     {
                         start = tmp;
                         CreateDebugTile(start.WorldPosition, new Color32(245, 188, 66, 255));
-                        }
+                    }
                     else if (goal == null)
                     {
                         goal = tmp;
@@ -51,14 +51,21 @@ public class AStarDebugger : MonoBehaviour
         }
     }
 
-    public void DebugPath(HashSet<Node> openList)
+    public void DebugPath(HashSet<Node> openList, HashSet<Node> closedList)
     {
         foreach (Node node in openList)
         {
-            if (node.GridPosition != start.GridPosition)
+            if (node.TileRef != start && node.TileRef != goal)
             {
                 CreateDebugTile(node.TileRef.WorldPosition, new Color32(66, 114, 245, 255));
                 PointToParent(node);
+            }
+        }
+        foreach (Node node in closedList)
+        {
+            if (node.TileRef != start && node.TileRef != goal)
+            {
+                CreateDebugTile(node.TileRef.WorldPosition, new Color32(122, 52, 235, 255));
             }
         }
     }

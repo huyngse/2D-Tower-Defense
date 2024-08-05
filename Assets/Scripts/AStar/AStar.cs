@@ -21,6 +21,7 @@ public static class AStar
             CreateNodes();
         }
         HashSet<Node> openList = new();
+        HashSet<Node> closedList = new();
         Node currentNode = nodes[start];
         openList.Add(currentNode);
 
@@ -38,16 +39,16 @@ public static class AStar
                 Node neighbor = nodes[neighborPos];
                 if (!neighbor.TileRef.IsWalkable)
                     continue;
-                // neighbor.TileRef.SpriteRenderer.color = Color.black;
-                // neighbor.TileRef.IsDebugging = true;
                 if (!openList.Contains(neighbor)) {
                     openList.Add(neighbor);
                 }
                 neighbor.CalculateValues(currentNode);
             }
         }
+        openList.Remove(currentNode);
+        closedList.Add(currentNode);
 
         AStarDebugger debugger = GameObject.Find("AStarDebugger").GetComponent<AStarDebugger>();
-        debugger.DebugPath(openList);
+        debugger.DebugPath(openList, closedList);
     }
 }
