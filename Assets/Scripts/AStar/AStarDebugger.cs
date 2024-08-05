@@ -51,7 +51,7 @@ public class AStarDebugger : MonoBehaviour
         }
     }
 
-    public void DebugPath(HashSet<Node> openList, HashSet<Node> closedList)
+    public void DebugPath(HashSet<Node> openList, HashSet<Node> closedList, Stack<Node> path)
     {
         foreach (Node node in openList)
         {
@@ -63,9 +63,18 @@ public class AStarDebugger : MonoBehaviour
         }
         foreach (Node node in closedList)
         {
-            if (node.TileRef != start && node.TileRef != goal)
+            if (node.TileRef != start && node.TileRef != goal && !path.Contains(node))
             {
                 CreateDebugTile(node.TileRef.WorldPosition, new Color32(122, 52, 235, 255), node);
+            }
+        }
+        while (path.Count > 0)
+        {
+            Node node = path.Pop();
+            if (node.TileRef != start && node.TileRef != goal)
+            {
+                CreateDebugTile(node.TileRef.WorldPosition, new Color32(48, 252, 3, 255), node);
+                PointToParent(node);
             }
         }
     }

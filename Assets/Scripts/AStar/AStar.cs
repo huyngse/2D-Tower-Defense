@@ -50,6 +50,8 @@ public static class AStar
                     }
                     else
                     {
+                        if (!ConnectedDiagonally(currentNode, neighbor))
+                            continue;
                         gScore = 14;
                     }
                     if (!openList.Contains(neighbor))
@@ -79,6 +81,18 @@ public static class AStar
             }
         }
         AStarDebugger debugger = GameObject.Find("AStarDebugger").GetComponent<AStarDebugger>();
-        debugger.DebugPath(openList, closedList);
+        debugger.DebugPath(openList, closedList, path);
+    }
+
+    private static bool ConnectedDiagonally(Node currentNode, Node neighborNode)
+    {
+        Point direction = neighborNode.GridPosition - currentNode.GridPosition;
+        Point first = new(currentNode.GridPosition.X + direction.X, currentNode.GridPosition.Y);
+        Point second = new(currentNode.GridPosition.X, currentNode.GridPosition.Y + direction.Y);
+        if (nodes[first].TileRef.IsWalkable && nodes[second].TileRef.IsWalkable)
+        {
+            return true;
+        }
+        return false;
     }
 }

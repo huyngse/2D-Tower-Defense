@@ -1057,7 +1057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyText: {fileID: 1407450166}
-  currency: 100
+  currency: 1000
 --- !u!4 &470610056
 Transform:
   m_ObjectHideFlags: 0
