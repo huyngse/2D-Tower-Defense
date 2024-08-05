@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,10 +40,20 @@ public static class AStar
                 Node neighbor = nodes[neighborPos];
                 if (!neighbor.TileRef.IsWalkable)
                     continue;
-                if (!openList.Contains(neighbor)) {
+                int gScore;
+                if (Math.Abs(x - y) == 1)
+                {
+                    gScore = 10;
+                }
+                else
+                {
+                    gScore = 14;
+                }
+                if (!openList.Contains(neighbor))
+                {
                     openList.Add(neighbor);
                 }
-                neighbor.CalculateValues(currentNode);
+                neighbor.CalculateValues(currentNode, gScore);
             }
         }
         openList.Remove(currentNode);

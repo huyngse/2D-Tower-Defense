@@ -57,7 +57,7 @@ public class AStarDebugger : MonoBehaviour
         {
             if (node.TileRef != start && node.TileRef != goal)
             {
-                CreateDebugTile(node.TileRef.WorldPosition, new Color32(66, 114, 245, 255));
+                CreateDebugTile(node.TileRef.WorldPosition, new Color32(66, 114, 245, 255), node);
                 PointToParent(node);
             }
         }
@@ -65,7 +65,7 @@ public class AStarDebugger : MonoBehaviour
         {
             if (node.TileRef != start && node.TileRef != goal)
             {
-                CreateDebugTile(node.TileRef.WorldPosition, new Color32(122, 52, 235, 255));
+                CreateDebugTile(node.TileRef.WorldPosition, new Color32(122, 52, 235, 255), node);
             }
         }
     }
@@ -83,9 +83,15 @@ public class AStarDebugger : MonoBehaviour
         arrow.transform.SetParent(child.TileRef.transform);
     }
 
-    private void CreateDebugTile(Vector2 position, Color32 color)
+    private void CreateDebugTile(Vector2 position, Color32 color, Node node = null)
     {
         GameObject newTile = Instantiate(debugTilePrefab, position, Quaternion.identity);
         newTile.GetComponent<SpriteRenderer>().color = color;
+        if (node != null)
+        {
+            DebugTile debugTile = newTile.GetComponent<DebugTile>();
+            debugTile.GText.gameObject.SetActive(true);
+            debugTile.GText.text = "G:" + node.GScore;
+        }
     }
 }
