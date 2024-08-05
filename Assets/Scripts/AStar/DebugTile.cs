@@ -17,21 +17,29 @@ public class DebugTile : MonoBehaviour
 
     public TMP_Text FText
     {
-        get => fText;
+        get
+        {
+            fText.gameObject.SetActive(true);
+            return fText;
+        }
         set => fText = value;
     }
     public TMP_Text GText
     {
-        get => gText;
+        get
+        {
+            gText.gameObject.SetActive(true);
+            return gText;
+        }
         set => gText = value;
     }
     public TMP_Text HText
     {
-        get => hText;
+        get
+        {
+            hText.gameObject.SetActive(true);
+            return hText;
+        }
         set => hText = value;
     }
-
-    void Start() { }
-
-    void Update() { }
 }

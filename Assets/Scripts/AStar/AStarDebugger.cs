@@ -20,7 +20,7 @@ public class AStarDebugger : MonoBehaviour
             return;
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            AStar.GetPath(start.GridPosition);
+            AStar.GetPath(start.GridPosition, goal.GridPosition);
         }
     }
 
@@ -90,8 +90,9 @@ public class AStarDebugger : MonoBehaviour
         if (node != null)
         {
             DebugTile debugTile = newTile.GetComponent<DebugTile>();
-            debugTile.GText.gameObject.SetActive(true);
             debugTile.GText.text = "G:" + node.GScore;
+            debugTile.HText.text = "H:" + node.HScore;
+            debugTile.FText.text = "F:" + node.FScore;
         }
     }
 }
