@@ -647,7 +647,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f82fe9c20f84a4d98bc236aed7d696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whiteSprite: {fileID: 21300000, guid: c2e963e68786df54995126cce4b3776f, type: 3}
   arrowPrefab: {fileID: 3987049188172724831, guid: 7d5e2253cd821c24eacb57f8fd304b0e, type: 3}
   debugTilePrefab: {fileID: 4151903687227617188, guid: a76c8069ace833e469ff76388b345c00, type: 3}
 --- !u!4 &362098144

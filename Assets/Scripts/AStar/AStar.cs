@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class AStar
@@ -23,42 +24,60 @@ public static class AStar
         }
         HashSet<Node> openList = new();
         HashSet<Node> closedList = new();
+        Stack<Node> path = new();
         Node currentNode = nodes[start];
         openList.Add(currentNode);
-
-        for (int x = -1; x <= 1; x++)
+        while (currentNode.GridPosition != goal && openList.Count > 0)
         {
-            for (int y = -1; y <= 1; y++)
+            for (int x = -1; x <= 1; x++)
             {
-                Point neighborPos =
-                    new(currentNode.GridPosition.X + x, currentNode.GridPosition.Y + y);
-                if (
-                    !LevelManager.Instance.InBounds(neighborPos)
-                    || neighborPos == currentNode.GridPosition
-                )
-                    continue;
-                Node neighbor = nodes[neighborPos];
-                if (!neighbor.TileRef.IsWalkable)
-                    continue;
-                int gScore;
-                if (Math.Abs(x - y) == 1)
+                for (int y = -1; y <= 1; y++)
                 {
-                    gScore = 10;
+                    Point neighborPos =
+                        new(currentNode.GridPosition.X + x, currentNode.GridPosition.Y + y);
+                    if (
+                        !LevelManager.Instance.InBounds(neighborPos)
+                        || neighborPos == currentNode.GridPosition
+                    )
+                        continue;
+                    Node neighbor = nodes[neighborPos];
+                    if (!neighbor.TileRef.IsWalkable || closedList.Contains(neighbor))
+                        continue;
+                    int gScore;
+                    if (Math.Abs(x - y) == 1)
+                    {
+                        gScore = 10;
+                    }
+                    else
+                    {
+                        gScore = 14;
+                    }
+                    if (!openList.Contains(neighbor))
+                    {
+                        openList.Add(neighbor);
+                        neighbor.CalculateValues(currentNode, nodes[goal], gScore);
+                    }
+                    else if (currentNode.GScore + gScore < neighbor.GScore)
+                    {
+                        neighbor.CalculateValues(currentNode, nodes[goal], gScore);
+                    }
                 }
-                else
-                {
-                    gScore = 14;
-                }
-                if (!openList.Contains(neighbor))
-                {
-                    openList.Add(neighbor);
-                }
-                neighbor.CalculateValues(currentNode, nodes[goal], gScore);
+            }
+            openList.Remove(currentNode);
+            closedList.Add(currentNode);
+            if (openList.Count > 0)
+            {
+                currentNode = openList.OrderBy(n => n.FScore).First();
             }
         }
-        openList.Remove(currentNode);
-        closedList.Add(currentNode);
-
+        if (currentNode.GridPosition == goal)
+        {
+            while (currentNode.Parent != null)
+            {
+                path.Push(currentNode);
+                currentNode = currentNode.Parent;
+            }
+        }
         AStarDebugger debugger = GameObject.Find("AStarDebugger").GetComponent<AStarDebugger>();
         debugger.DebugPath(openList, closedList);
     }
