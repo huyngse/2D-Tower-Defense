@@ -7,6 +7,9 @@ public class AStarDebugger : MonoBehaviour
     [Header("References")]
     [SerializeField]
     private Sprite whiteSprite;
+
+    [SerializeField]
+    private GameObject arrowPrefab;
     private TileScript start;
     private TileScript goal;
 
@@ -31,8 +34,7 @@ public class AStarDebugger : MonoBehaviour
             );
             if (hit.collider != null)
             {
-                TileScript tmp = hit.collider.GetComponent<TileScript>();
-                if (tmp != null)
+                if (hit.collider.TryGetComponent<TileScript>(out var tmp))
                 {
                     if (start == null)
                     {
@@ -62,7 +64,21 @@ public class AStarDebugger : MonoBehaviour
                 node.TileRef.IsDebugging = true;
                 node.TileRef.ColorTile(new Color32(66, 114, 245, 255));
                 node.TileRef.SpriteRenderer.sprite = whiteSprite;
+                PointToParent(node);
             }
         }
+    }
+
+    private void PointToParent(Node child)
+    {
+        Node parent = child.Parent;
+        float angle =
+            Mathf.Atan2(
+                child.TileRef.WorldPosition.y - parent.TileRef.WorldPosition.y,
+                child.TileRef.WorldPosition.x - parent.TileRef.WorldPosition.x
+            ) * Mathf.Rad2Deg;
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        GameObject arrow = Instantiate(arrowPrefab, child.TileRef.WorldPosition, targetRotation);
+        arrow.transform.SetParent(child.TileRef.transform);
     }
 }

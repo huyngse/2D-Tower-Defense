@@ -648,6 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whiteSprite: {fileID: 21300000, guid: c2e963e68786df54995126cce4b3776f, type: 3}
+  arrowPrefab: {fileID: 3987049188172724831, guid: 7d5e2253cd821c24eacb57f8fd304b0e, type: 3}
 --- !u!4 &362098144
 Transform:
   m_ObjectHideFlags: 0
