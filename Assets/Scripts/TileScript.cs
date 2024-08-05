@@ -11,9 +11,7 @@ public class TileScript : MonoBehaviour
     public bool IsWalkable { get; set; }
     private Color32 unavailableColor = new(255, 118, 118, 255);
     private Color32 availableColor = new(96, 255, 90, 255);
-    public bool IsDebugging { get; set; }
-
-    public SpriteRenderer SpriteRenderer { get; private set; }
+    private SpriteRenderer spriteRenderer;
     public Vector2 WorldPosition
     {
         get
@@ -28,14 +26,13 @@ public class TileScript : MonoBehaviour
     void Awake()
     {
         IsWalkable = true;
-        IsDebugging = false;
         IsEmpty = true;
     }
 
     void Start()
     {
-        SpriteRenderer = GetComponent<SpriteRenderer>();
-        tileSize = SpriteRenderer.sprite.bounds.size.x;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        tileSize = spriteRenderer.sprite.bounds.size.x;
     }
 
     void Update() { }
@@ -48,7 +45,7 @@ public class TileScript : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (IsDebugging || EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject())
             return;
         if (GameManager.Instance.ClickedButton == null)
         {
@@ -72,8 +69,6 @@ public class TileScript : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (IsDebugging)
-            return;
         ColorTile(Color.white);
     }
 
@@ -91,8 +86,8 @@ public class TileScript : MonoBehaviour
         IsWalkable = false;
     }
 
-    public void ColorTile(Color32 newColor)
+    private void ColorTile(Color32 newColor)
     {
-        SpriteRenderer.color = newColor;
+        spriteRenderer.color = newColor;
     }
 }

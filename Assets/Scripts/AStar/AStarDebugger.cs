@@ -6,10 +6,10 @@ public class AStarDebugger : MonoBehaviour
 {
     [Header("References")]
     [SerializeField]
-    private Sprite whiteSprite;
+    private GameObject arrowPrefab;
 
     [SerializeField]
-    private GameObject arrowPrefab;
+    private GameObject debugTilePrefab;
     private TileScript start;
     private TileScript goal;
 
@@ -39,16 +39,12 @@ public class AStarDebugger : MonoBehaviour
                     if (start == null)
                     {
                         start = tmp;
-                        start.IsDebugging = true;
-                        start.ColorTile(new Color32(245, 188, 66, 255));
-                        start.SpriteRenderer.sprite = whiteSprite;
-                    }
+                        CreateDebugTile(start.WorldPosition, new Color32(245, 188, 66, 255));
+                        }
                     else if (goal == null)
                     {
                         goal = tmp;
-                        goal.IsDebugging = true;
-                        goal.ColorTile(new Color32(245, 66, 66, 255));
-                        goal.SpriteRenderer.sprite = whiteSprite;
+                        CreateDebugTile(goal.WorldPosition, new Color32(245, 66, 66, 255));
                     }
                 }
             }
@@ -61,9 +57,7 @@ public class AStarDebugger : MonoBehaviour
         {
             if (node.GridPosition != start.GridPosition)
             {
-                node.TileRef.IsDebugging = true;
-                node.TileRef.ColorTile(new Color32(66, 114, 245, 255));
-                node.TileRef.SpriteRenderer.sprite = whiteSprite;
+                CreateDebugTile(node.TileRef.WorldPosition, new Color32(66, 114, 245, 255));
                 PointToParent(node);
             }
         }
@@ -80,5 +74,11 @@ public class AStarDebugger : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         GameObject arrow = Instantiate(arrowPrefab, child.TileRef.WorldPosition, targetRotation);
         arrow.transform.SetParent(child.TileRef.transform);
+    }
+
+    private void CreateDebugTile(Vector2 position, Color32 color)
+    {
+        GameObject newTile = Instantiate(debugTilePrefab, position, Quaternion.identity);
+        newTile.GetComponent<SpriteRenderer>().color = color;
     }
 }
