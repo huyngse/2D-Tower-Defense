@@ -99,7 +99,8 @@ public class GameManager : Singleton<GameManager>
                 break;
             }
         }
-        Pool.GetObject(type);
+        Monster monster  = Pool.GetObject(type).GetComponent<Monster>();
+        monster.Spawn();
         yield return new WaitForSeconds(2.5f);
     }
 }
