@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
@@ -15,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     private int currency = 100;
 
     public TowerButton ClickedButton { get; private set; }
+    public ObjectPool Pool { get; private set; }
     public int Currency
     {
         get => currency;
@@ -23,6 +25,11 @@ public class GameManager : Singleton<GameManager>
             currency = value;
             currencyText.text = value.ToString() + "<color=green>$</color>";
         }
+    }
+
+    void Awake()
+    {
+        Pool = GetComponent<ObjectPool>();
     }
 
     void Start()
@@ -58,5 +65,41 @@ public class GameManager : Singleton<GameManager>
             ClickedButton = null;
             Hover.Instance.Deativate();
         }
+    }
+
+    public void StartWave()
+    {
+        StartCoroutine(SpawnWave());
+    }
+
+    private IEnumerator SpawnWave()
+    {
+        int monsterIndex = Random.Range(0, 4);
+        string type = string.Empty;
+        switch (monsterIndex)
+        {
+            case 0:
+            {
+                type = "Pig";
+                break;
+            }
+            case 1:
+            {
+                type = "Rock";
+                break;
+            }
+            case 2:
+            {
+                type = "Slime";
+                break;
+            }
+            case 3:
+            {
+                type = "Trunk";
+                break;
+            }
+        }
+        Pool.GetObject(type);
+        yield return new WaitForSeconds(2.5f);
     }
 }
