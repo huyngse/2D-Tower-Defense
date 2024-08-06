@@ -24,11 +24,24 @@ public class LevelManager : Singleton<LevelManager>
     private Point greenPortalPosition;
     private Point purplePortalPosition;
     private Point mapSize;
+    private Stack<Node> path;
+    public Stack<Node> Path
+    {
+        get
+        {
+            if (path == null)
+            {
+                GeneratePath();
+            }
+            return new Stack<Node>(new Stack<Node>(path));
+        }
+    }
     public Portal GreenPortal { get; private set; }
     public float TileSize
     {
         get { return tilePrefabs[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x; }
     }
+
     private Vector3 worldStartPosition;
 
     void Awake()
@@ -111,5 +124,10 @@ public class LevelManager : Singleton<LevelManager>
     public bool InBounds(Point point)
     {
         return point.X >= 0 && point.Y >= 0 && point.X < mapSize.X && point.Y < mapSize.Y;
+    }
+
+    public void GeneratePath()
+    {
+        path = AStar.GetPath(greenPortalPosition, purplePortalPosition);
     }
 }
