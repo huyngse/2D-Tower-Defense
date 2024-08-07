@@ -9,10 +9,17 @@ public class Monster : MonoBehaviour
     private float speed = 1;
     private Stack<Node> path;
     private Vector3 destination;
+    private Animator animator;
     public Point GridPosition { get; private set; }
     public bool IsActive { get; private set; }
-    void Awake() {
+
+    void Awake()
+    {
         IsActive = false;
+        animator = GetComponent<Animator>();
+    }
+    void Start() {
+        destination = transform.position;
     }
 
     void Update()
@@ -33,10 +40,16 @@ public class Monster : MonoBehaviour
         );
         if (transform.position == destination)
         {
-            if (path.Count > 0)
+            if (path.Count > 1)
             {
                 GridPosition = path.Pop().GridPosition;
                 destination = path.Peek().WorldPosition;
+                animator.SetBool("isMoving", true);
+                Animate();
+            }
+            else
+            {
+                animator.SetBool("isMoving", false);
             }
         }
     }
@@ -60,6 +73,7 @@ public class Monster : MonoBehaviour
         }
         transform.localScale = to;
         IsActive = true;
+        animator.SetBool("isMoving", true);
     }
 
     private void SetPath(Stack<Node> newPath)
@@ -67,8 +81,31 @@ public class Monster : MonoBehaviour
         if (newPath != null)
         {
             path = newPath;
-            GridPosition = path.Pop().GridPosition;
+            if (path.Count == 0)
+                return;
+            GridPosition = path.Peek().GridPosition;
             destination = path.Peek().WorldPosition;
+            Animate();
+        }
+    }
+
+    private void Animate()
+    {
+        if (destination.x > transform.position.x)
+        {
+            transform.localScale = new Vector3(-1, 1);
+        }
+        else if (destination.x < transform.position.x)
+        {
+            transform.localScale = new Vector3(1, 1);
+        }
+        else if (destination.y > transform.position.y)
+        {
+            transform.localScale = new Vector3(-1, 1);
+        }
+        else if (destination.y < transform.position.y)
+        {
+            transform.localScale = new Vector3(1, 1);
         }
     }
 }

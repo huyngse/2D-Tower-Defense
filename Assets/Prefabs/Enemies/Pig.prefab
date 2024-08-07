@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 748129442239945373}
   - component: {fileID: 378159194318568865}
   - component: {fileID: 8696333373841891690}
+  - component: {fileID: 794607681330084403}
   m_Layer: 0
   m_Name: Pig
   m_TagString: Untagged
@@ -97,3 +98,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f6d9356c5267e47916bd79f4fcde32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+--- !u!95 &794607681330084403
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2393334337337860254}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fecc4fe7ea9ba534dbdbd41e2a2e8a89, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

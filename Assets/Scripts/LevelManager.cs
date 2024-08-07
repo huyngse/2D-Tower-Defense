@@ -47,6 +47,8 @@ public class LevelManager : Singleton<LevelManager>
     void Awake()
     {
         Tiles = new Dictionary<Point, TileScript>();
+        greenPortalPosition = new Point(1, 2);
+        purplePortalPosition = new Point(40, 16);
     }
 
     void Start()
@@ -102,23 +104,21 @@ public class LevelManager : Singleton<LevelManager>
 
     private void SpawnPortals()
     {
-        greenPortalPosition = new Point(1, 2);
         GameObject greenPortal = Instantiate(
             greenPortalPrefab,
             Tiles[greenPortalPosition].transform.position,
             Quaternion.identity
         );
-        greenPortal.transform.Translate(Vector3.up * 0.5f);
+        greenPortal.transform.Translate((Vector3.up + Vector3.right) * 0.5f);
         GreenPortal = greenPortal.GetComponent<Portal>();
         GreenPortal.name = "GreenPortal";
 
-        purplePortalPosition = new Point(40, 16);
         GameObject purplePortal = Instantiate(
             purplePortalPrefab,
             Tiles[purplePortalPosition].transform.position,
             Quaternion.identity
         );
-        purplePortal.transform.Translate(Vector3.up * 0.5f);
+        purplePortal.transform.Translate((Vector3.up + Vector3.right) * 0.5f);
     }
 
     public bool InBounds(Point point)
