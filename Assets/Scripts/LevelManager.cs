@@ -21,19 +21,35 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField]
     private Transform map;
     public Dictionary<Point, TileScript> Tiles { get; set; }
-    private Point greenPortal;
-    private Point purplePortal;
+    private Point greenPortalPosition;
+    private Point purplePortalPosition;
     private Point mapSize;
-
+    private Stack<Node> path;
+    public Stack<Node> Path
+    {
+        get
+        {
+            if (path == null)
+            {
+                GeneratePath();
+            }
+            return new Stack<Node>(new Stack<Node>(path));
+        }
+    }
+    public Portal GreenPortal { get; private set; }
     public float TileSize
     {
         get { return tilePrefabs[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x; }
     }
+
     private Vector3 worldStartPosition;
 
     void Awake()
     {
         Tiles = new Dictionary<Point, TileScript>();
+        greenPortalPosition = new Point(1, 2);
+        purplePortalPosition = new Point(7, 2);
+        // purplePortalPosition = new Point(40, 16);
     }
 
     void Start()
@@ -89,24 +105,30 @@ public class LevelManager : Singleton<LevelManager>
 
     private void SpawnPortals()
     {
-        greenPortal = new Point(1, 2);
-        Vector3 greenPortalPosition = Tiles[greenPortal].transform.position;
-        Instantiate(
+        GameObject greenPortal = Instantiate(
             greenPortalPrefab,
-            new Vector3(greenPortalPosition.x, greenPortalPosition.y + 0.5f),
+            Tiles[greenPortalPosition].transform.position,
             Quaternion.identity
         );
-        purplePortal = new Point(40, 16);
-        Vector3 purplePortalPosition = Tiles[purplePortal].transform.position;
-        Instantiate(
+        greenPortal.transform.Translate((Vector3.up + Vector3.right) * 0.5f);
+        GreenPortal = greenPortal.GetComponent<Portal>();
+        GreenPortal.name = "GreenPortal";
+
+        GameObject purplePortal = Instantiate(
             purplePortalPrefab,
-            new Vector3(purplePortalPosition.x, purplePortalPosition.y + 0.5f),
+            Tiles[purplePortalPosition].transform.position,
             Quaternion.identity
         );
+        purplePortal.transform.Translate((Vector3.up + Vector3.right) * 0.5f);
     }
 
     public bool InBounds(Point point)
     {
         return point.X >= 0 && point.Y >= 0 && point.X < mapSize.X && point.Y < mapSize.Y;
+    }
+
+    public void GeneratePath()
+    {
+        path = AStar.GetPath(greenPortalPosition, purplePortalPosition);
     }
 }

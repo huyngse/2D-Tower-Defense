@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8820885981263354501}
   - component: {fileID: 299667028389832153}
   - component: {fileID: 3529398372567465334}
+  - component: {fileID: -3262979078717340859}
   m_Layer: 0
   m_Name: Green Portal Idle
   m_TagString: Untagged
@@ -106,3 +107,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-3262979078717340859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032345705382369519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3750bec2fe4cd489e088f4ad2d7d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

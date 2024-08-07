@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4f31a96937e25d44aa4f34bdd9d7bcc0
+guid: 02c52b7c3a5072148925768d378854df
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Green Portal Sprite Sheet_0
+      name: Idle (64x32)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05681f8a16a2f3c45bfd774c150f3cf1
-      internalID: 1703350969
+      spriteID: b691b1f4dffadbb478bb7a5f9eb941c4
+      internalID: -226705440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Portal Sprite Sheet_1
+      name: Idle (64x32)_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 128
+        y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff48558f27fcda34b83475606f70bf48
-      internalID: -2059479880
+      spriteID: ebe1d20a488fb4f47a6c85d52a4e8ff4
+      internalID: 1225471579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Portal Sprite Sheet_2
+      name: Idle (64x32)_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 128
+        y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2160230c300b3d3449ce81949f2af3a8
-      internalID: -1052317772
+      spriteID: d8ebc3d0e16623545b13dae41d606193
+      internalID: -943563337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Portal Sprite Sheet_3
+      name: Idle (64x32)_3
       rect:
         serializedVersion: 2
         x: 192
-        y: 128
+        y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56040831bd55f174787933ada9e71e3f
-      internalID: -1718909141
+      spriteID: ac8a6f95cb995324cb98135e34fe34e3
+      internalID: 582720721
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Portal Sprite Sheet_4
+      name: Idle (64x32)_4
       rect:
         serializedVersion: 2
         x: 256
-        y: 128
+        y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1809360f42b3a2e40ae5f81052c8cc8d
-      internalID: -455883244
+      spriteID: 0cff6481fe5192246b9aab281bbc3374
+      internalID: -1383117728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Portal Sprite Sheet_5
+      name: Idle (64x32)_5
       rect:
         serializedVersion: 2
         x: 320
-        y: 128
+        y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 531f5b9b1c7087f4abeffcf2e066db0e
-      internalID: 723908108
+      spriteID: e23df8dcb2cc85f4589013ddae13e6ee
+      internalID: -2011276986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Portal Sprite Sheet_6
+      name: Idle (64x32)_6
       rect:
         serializedVersion: 2
         x: 384
-        y: 128
+        y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,209 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2ab79a57b4d7d8479ff5024719bdb22
-      internalID: 1935357477
+      spriteID: a1cff766f16ac6545a5c46d843a1f6c4
+      internalID: 1743735400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Portal Sprite Sheet_7
+      name: Idle (64x32)_7
       rect:
         serializedVersion: 2
         x: 448
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cc2488a8b8c4fa34887ee3033ae8ca16
-      internalID: 2087401124
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green Portal Sprite Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55b2aaa94a3b503469b29b20c0a2cd2a
-      internalID: -1130655433
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green Portal Sprite Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d9a9cf0e48be5fb43bd9e8cb7b19b2e3
-      internalID: -1200439211
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green Portal Sprite Sheet_10
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29e4d9e152d19d54c9ebc48a3453fc58
-      internalID: -1008204720
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green Portal Sprite Sheet_11
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 207b6aea4d8f58749985d1e50055e65a
-      internalID: 182716067
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green Portal Sprite Sheet_12
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1dee8e65f5d8a1409a31d6d46d755fb
-      internalID: 2129440767
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green Portal Sprite Sheet_13
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6cde932cfd12269448b4da75fbfa2f26
-      internalID: -2137340678
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green Portal Sprite Sheet_14
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9454f5567fa74d04e80d88a155bb970c
-      internalID: 282938641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green Portal Sprite Sheet_15
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8aa7f9de68e524c4190620fd27139b2e
-      internalID: -351673335
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Green Portal Sprite Sheet_16
-      rect:
-        serializedVersion: 2
-        x: 0
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -447,20 +258,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7334496fbcc0a945b06dce5be57a99f
-      internalID: 676033947
+      spriteID: 015356e212a5fff478a955e70ebba491
+      internalID: 1561390098
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Portal Sprite Sheet_17
+      name: Idle (64x32)_8
       rect:
         serializedVersion: 2
-        x: 64
+        x: 512
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -468,20 +279,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bee69a5be0b5fb14c9c0afce103a85a3
-      internalID: 1664418748
+      spriteID: d5fcb3543e1524042a94614e13fba61d
+      internalID: 42536641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Portal Sprite Sheet_18
+      name: Idle (64x32)_9
       rect:
         serializedVersion: 2
-        x: 128
+        x: 576
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -489,20 +300,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fd587da874bc184e840ba662a18a97c
-      internalID: 2060068194
+      spriteID: 044e9e45365401143889afd13931b29e
+      internalID: -96258969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Portal Sprite Sheet_19
+      name: Idle (64x32)_10
       rect:
         serializedVersion: 2
-        x: 192
+        x: 640
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -510,20 +321,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6fb1d26d9511cb428dc427e396509f0
-      internalID: -1690393891
+      spriteID: c562822e3edab4e41ae93f0fbe8ab5f9
+      internalID: -851803823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Portal Sprite Sheet_20
+      name: Idle (64x32)_11
       rect:
         serializedVersion: 2
-        x: 256
+        x: 704
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -531,20 +342,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 500cee7a69dbe87448dd1d900948ce0c
-      internalID: -1176450637
+      spriteID: 781fd1d030ee2804fbe080d9d136bff7
+      internalID: -1891237498
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green Portal Sprite Sheet_21
+      name: Idle (64x32)_12
       rect:
         serializedVersion: 2
-        x: 320
+        x: 768
         y: 0
         width: 64
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -552,8 +363,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce4eb49fbe6ea484db6f7c1c6f0b8feb
-      internalID: -2054087960
+      spriteID: 7e481881d9b00304c814886d3257eac6
+      internalID: 1508181081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle (64x32)_13
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b542ee55d167fe240ba1d99f065f1123
+      internalID: 1251008194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle (64x32)_14
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ddf8467c47f4274da21e0e6f673550e
+      internalID: -60215887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle (64x32)_15
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40de836794e586847a245e71eb6ff2e1
+      internalID: -689743400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle (64x32)_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 765e4f446c7da2b4b8b1fb8e25972671
+      internalID: -591301768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Idle (64x32)_17
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 0
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8fc7968afbfe7a4cb13047759d48e17
+      internalID: 957942593
       vertices: []
       indices: 
       edges: []
@@ -569,28 +485,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Green Portal Sprite Sheet_0: 1703350969
-      Green Portal Sprite Sheet_1: -2059479880
-      Green Portal Sprite Sheet_10: -1008204720
-      Green Portal Sprite Sheet_11: 182716067
-      Green Portal Sprite Sheet_12: 2129440767
-      Green Portal Sprite Sheet_13: -2137340678
-      Green Portal Sprite Sheet_14: 282938641
-      Green Portal Sprite Sheet_15: -351673335
-      Green Portal Sprite Sheet_16: 676033947
-      Green Portal Sprite Sheet_17: 1664418748
-      Green Portal Sprite Sheet_18: 2060068194
-      Green Portal Sprite Sheet_19: -1690393891
-      Green Portal Sprite Sheet_2: -1052317772
-      Green Portal Sprite Sheet_20: -1176450637
-      Green Portal Sprite Sheet_21: -2054087960
-      Green Portal Sprite Sheet_3: -1718909141
-      Green Portal Sprite Sheet_4: -455883244
-      Green Portal Sprite Sheet_5: 723908108
-      Green Portal Sprite Sheet_6: 1935357477
-      Green Portal Sprite Sheet_7: 2087401124
-      Green Portal Sprite Sheet_8: -1130655433
-      Green Portal Sprite Sheet_9: -1200439211
+      Idle (64x32)_0: -226705440
+      Idle (64x32)_1: 1225471579
+      Idle (64x32)_10: -851803823
+      Idle (64x32)_11: -1891237498
+      Idle (64x32)_12: 1508181081
+      Idle (64x32)_13: 1251008194
+      Idle (64x32)_14: -60215887
+      Idle (64x32)_15: -689743400
+      Idle (64x32)_16: -591301768
+      Idle (64x32)_17: 957942593
+      Idle (64x32)_2: -943563337
+      Idle (64x32)_3: 582720721
+      Idle (64x32)_4: -1383117728
+      Idle (64x32)_5: -2011276986
+      Idle (64x32)_6: 1743735400
+      Idle (64x32)_7: 1561390098
+      Idle (64x32)_8: 42536641
+      Idle (64x32)_9: -96258969
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
