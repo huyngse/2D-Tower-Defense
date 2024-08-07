@@ -77,8 +77,9 @@ public class Monster : MonoBehaviour
         }
         transform.localScale = to;
         IsActive = true;
-        if (isReachedPortal) {
-            Destroy(gameObject);
+        if (isReachedPortal)
+        {
+            Release();
         }
     }
 
@@ -122,5 +123,12 @@ public class Monster : MonoBehaviour
             isReachedPortal = true;
             StartCoroutine(Scale(new Vector3(1f, 1f), new Vector3(-0.1f, 0.1f)));
         }
+    }
+
+    private void Release()
+    {
+        isReachedPortal = false;
+        IsActive = false;
+        GameManager.Instance.Pool.ReleaseObject(gameObject);
     }
 }
