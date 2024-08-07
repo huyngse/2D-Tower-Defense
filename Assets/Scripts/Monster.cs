@@ -130,5 +130,6 @@ public class Monster : MonoBehaviour
         isReachedPortal = false;
         IsActive = false;
         GameManager.Instance.Pool.ReleaseObject(gameObject);
+        GameManager.Instance.RemoveMonster(this);
     }
 }
