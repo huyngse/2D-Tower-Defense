@@ -12,13 +12,16 @@ public class Monster : MonoBehaviour
     private Animator animator;
     public Point GridPosition { get; private set; }
     public bool IsActive { get; private set; }
+    private bool isReachedPortal = false;
 
     void Awake()
     {
         IsActive = false;
         animator = GetComponent<Animator>();
     }
-    void Start() {
+
+    void Start()
+    {
         destination = transform.position;
     }
 
@@ -33,6 +36,7 @@ public class Monster : MonoBehaviour
         {
             return;
         }
+        animator.SetBool("isMoving", true);
         transform.position = Vector2.MoveTowards(
             transform.position,
             destination,
@@ -73,7 +77,9 @@ public class Monster : MonoBehaviour
         }
         transform.localScale = to;
         IsActive = true;
-        animator.SetBool("isMoving", true);
+        if (isReachedPortal) {
+            Destroy(gameObject);
+        }
     }
 
     private void SetPath(Stack<Node> newPath)
@@ -106,6 +112,15 @@ public class Monster : MonoBehaviour
         else if (destination.y < transform.position.y)
         {
             transform.localScale = new Vector3(1, 1);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!isReachedPortal && other.CompareTag("PurplePortal"))
+        {
+            isReachedPortal = true;
+            StartCoroutine(Scale(new Vector3(1f, 1f), new Vector3(-0.1f, 0.1f)));
         }
     }
 }

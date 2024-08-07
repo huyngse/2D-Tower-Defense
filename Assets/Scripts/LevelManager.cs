@@ -48,7 +48,8 @@ public class LevelManager : Singleton<LevelManager>
     {
         Tiles = new Dictionary<Point, TileScript>();
         greenPortalPosition = new Point(1, 2);
-        purplePortalPosition = new Point(40, 16);
+        purplePortalPosition = new Point(7, 2);
+        // purplePortalPosition = new Point(40, 16);
     }
 
     void Start()
