@@ -25,13 +25,13 @@ public class TileScript : MonoBehaviour
 
     void Awake()
     {
-        IsWalkable = true;
-        IsEmpty = true;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        IsWalkable = true;
+        IsEmpty = true;
         tileSize = spriteRenderer.sprite.bounds.size.x;
     }
 

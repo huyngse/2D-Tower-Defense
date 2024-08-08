@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    void Start()
+    private Animator animator;
+    void Awake()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         
+    }
+    public void OpenPortal() {
+        animator.SetBool("open", true);
+    }
+    public void ClosePortal() {
+        animator.SetBool("open", false);
     }
 }
