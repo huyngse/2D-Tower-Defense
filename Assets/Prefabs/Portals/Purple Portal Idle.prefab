@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5157959710496153726}
   - component: {fileID: 6851346686147003538}
   - component: {fileID: 637408527174740666}
+  - component: {fileID: 2732842728637201913}
   m_Layer: 0
   m_Name: Purple Portal Idle
   m_TagString: PurplePortal
@@ -152,3 +153,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.10865386, y: 0.6575007}
   m_EdgeRadius: 0
+--- !u!114 &2732842728637201913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132165752897849810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3750bec2fe4cd489e088f4ad2d7d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

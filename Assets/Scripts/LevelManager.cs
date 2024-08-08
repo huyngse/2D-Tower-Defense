@@ -37,6 +37,7 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
     public Portal GreenPortal { get; private set; }
+    public Portal PurplePortal { get; private set; }
     public float TileSize
     {
         get { return tilePrefabs[0].GetComponent<SpriteRenderer>().sprite.bounds.size.x; }
@@ -120,6 +121,8 @@ public class LevelManager : Singleton<LevelManager>
             Quaternion.identity
         );
         purplePortal.transform.Translate((Vector3.up + Vector3.right) * 0.5f);
+        PurplePortal = purplePortal.GetComponent<Portal>();
+        PurplePortal.name = "PurplePortal";
     }
 
     public bool InBounds(Point point)

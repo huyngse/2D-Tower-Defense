@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
@@ -15,7 +16,13 @@ public class GameManager : Singleton<GameManager>
     private TMP_Text waveText;
 
     [SerializeField]
+    private TMP_Text lifeText;
+
+    [SerializeField]
     private Button nextWaveButton;
+
+    [SerializeField]
+    private GameObject gameOverMenu;
 
     [Header("Attributes")]
     [SerializeField]
@@ -23,7 +30,11 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField]
     private float enemiesPerSecond = 1;
+
+    [SerializeField]
+    private int lifes = 5;
     private int wave = 0;
+    private bool isGameOver = false;
     private List<Monster> activeMonsters = new();
     public bool IsWaveActive
     {
@@ -41,6 +52,21 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public int Lifes
+    {
+        get => lifes;
+        set
+        {
+            lifes = value;
+            if (lifes <= 0)
+            {
+                lifes = 0;
+                GameOver();
+            }
+            lifeText.text = $"{lifes}";
+        }
+    }
+
     void Awake()
     {
         Pool = GetComponent<ObjectPool>();
@@ -48,6 +74,7 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
+        Lifes += 0;
         Currency = currency;
     }
 
@@ -131,9 +158,33 @@ public class GameManager : Singleton<GameManager>
     public void RemoveMonster(Monster monster)
     {
         activeMonsters.Remove(monster);
-        if (!IsWaveActive)
+        if (isGameOver && activeMonsters.Count == 0)
+        {
+            LevelManager.Instance.GreenPortal.ClosePortal();
+            LevelManager.Instance.PurplePortal.ClosePortal();
+        }
+        if (!IsWaveActive && !isGameOver)
         {
             nextWaveButton.gameObject.SetActive(true);
         }
+    }
+
+    public void GameOver()
+    {
+        if (!isGameOver)
+        {
+            isGameOver = true;
+            gameOverMenu.SetActive(true);
+        }
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Quit() {
+        Application.Quit();
     }
 }

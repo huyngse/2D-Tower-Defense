@@ -122,6 +122,7 @@ public class Monster : MonoBehaviour
         {
             isReachedPortal = true;
             StartCoroutine(Scale(new Vector3(1f, 1f), new Vector3(-0.1f, 0.1f)));
+            GameManager.Instance.Lifes--;
         }
     }
 
