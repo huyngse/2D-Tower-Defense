@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Hover : Singleton<Hover>
 {
+    [Header("References")]
+    [SerializeField]
+    private GameObject rangeRenderer;
     private SpriteRenderer spriteRenderer;
 
     void Start()
@@ -29,10 +32,12 @@ public class Hover : Singleton<Hover>
     {
         spriteRenderer.enabled = true;
         spriteRenderer.sprite = sprite;
+        rangeRenderer.SetActive(true);
     }
 
     public void Deativate()
     {
         spriteRenderer.enabled = false;
+        rangeRenderer.SetActive(false);
     }
 }

@@ -728,6 +728,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224187901}
   m_CullTransparentMesh: 1
+--- !u!1001 &260478147
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2139476321}
+    m_Modifications:
+    - target: {fileID: 789346440617794176, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+      propertyPath: m_Name
+      value: Range
+      objectReference: {fileID: 0}
+    - target: {fileID: 789346440617794176, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011669298383154221, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011669298383154221, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011669298383154221, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011669298383154221, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011669298383154221, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011669298383154221, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011669298383154221, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011669298383154221, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011669298383154221, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011669298383154221, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8231933447040287947, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
 --- !u!1 &327872144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2882,6 +2944,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139714307}
   m_CullTransparentMesh: 1
+--- !u!1 &1191357532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 789346440617794176, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+  m_PrefabInstance: {fileID: 260478147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1191357533 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9011669298383154221, guid: e035e11548ab7e74d9195eecff0b958d, type: 3}
+  m_PrefabInstance: {fileID: 260478147}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1222403620
 GameObject:
   m_ObjectHideFlags: 0
@@ -3883,6 +3955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9ecff35e3a86043952fbda304bfebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rangeRenderer: {fileID: 1191357532}
 --- !u!212 &2139476320
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3947,7 +4020,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1191357533}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807

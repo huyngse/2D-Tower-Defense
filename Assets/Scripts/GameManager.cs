@@ -36,6 +36,7 @@ public class GameManager : Singleton<GameManager>
     private int wave = 0;
     private bool isGameOver = false;
     private List<Monster> activeMonsters = new();
+    private Tower selectedTower;
     public bool IsWaveActive
     {
         get { return activeMonsters.Count > 0; }
@@ -99,6 +100,21 @@ public class GameManager : Singleton<GameManager>
         Currency -= ClickedButton.Price;
         ClickedButton = null;
         Hover.Instance.Deativate();
+    }
+
+    public void SelectTower(Tower tower)
+    {
+        selectedTower = tower;
+        selectedTower.Select();
+    }
+
+    public void DeselectTower()
+    {
+        if (selectedTower != null)
+        {
+            selectedTower.Select();
+            selectedTower = null;
+        }
     }
 
     private void HandleCancel()
@@ -184,7 +200,8 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void Quit() {
+    public void Quit()
+    {
         Application.Quit();
     }
 }
