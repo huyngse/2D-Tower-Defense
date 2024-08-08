@@ -8,12 +8,15 @@ public class Tower : MonoBehaviour
     [Header("References")]
     [SerializeField]
     private TowerRange towerRange;
+
+    [SerializeField]
+    private string bulletType;
     private Monster target;
     private readonly List<Monster> monsters = new();
 
     void Update()
     {
-        if (target != null)
+        if (target != null && target.IsActive)
         {
             Attack();
         }
@@ -42,7 +45,8 @@ public class Tower : MonoBehaviour
         target = null;
     }
 
-    private void Attack() {
-            
+    private void Attack()
+    {
+        Bullet bullet = GameManager.Instance.Pool.GetObject(bulletType).GetComponent<Bullet>();
     }
 }

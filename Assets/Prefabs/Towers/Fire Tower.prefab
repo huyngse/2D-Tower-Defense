@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerRange: {fileID: 5999281477298694799}
+  bulletType: Fire Bullet
 --- !u!1001 &8987406789398328307
 PrefabInstance:
   m_ObjectHideFlags: 0
