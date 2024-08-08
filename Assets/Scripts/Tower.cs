@@ -1,17 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
     [Header("References")]
     [SerializeField]
-    private GameObject rangeRenderer;
+    private TowerRange towerRange;
+    private Monster target;
+    private readonly List<Monster> monsters = new();
 
-    void Start() { }
+    void Update()
+    {
+        if (target != null)
+        {
+            Attack();
+        }
+        else
+        {
+            if (monsters.Count > 0)
+            {
+                target = monsters.First();
+            }
+        }
+    }
 
-    void Update() { }
-    public void Select() {
-        rangeRenderer.SetActive(!rangeRenderer.activeInHierarchy);
+    public void Select()
+    {
+        towerRange.ToggleVisible();
+    }
+
+    public void EnemyEnter(Monster monster)
+    {
+        monsters.Add(monster);
+    }
+
+    public void EnemyExit(Monster monster)
+    {
+        monsters.Remove(monster);
+        target = null;
+    }
+
+    private void Attack() {
+            
     }
 }
