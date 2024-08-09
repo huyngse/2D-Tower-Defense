@@ -23,7 +23,9 @@ public class Tower : MonoBehaviour
     private float attackTimer = 0;
     private readonly List<Monster> monsters = new();
     private Animator animator;
-    void Awake() {
+
+    void Awake()
+    {
         animator = GetComponent<Animator>();
     }
 
@@ -69,6 +71,14 @@ public class Tower : MonoBehaviour
                 attackTimer = 0;
             }
             return;
+        }
+        if (transform.position.x < target.transform.position.x)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
         }
         canAttack = false;
         animator.SetTrigger("Attack");
