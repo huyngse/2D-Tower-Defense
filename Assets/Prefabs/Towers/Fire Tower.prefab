@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4806203527224705613}
   - component: {fileID: 6822332111800714578}
   - component: {fileID: -1501306199180153872}
+  - component: {fileID: 4589202995980634188}
   m_Layer: 0
   m_Name: Fire Tower
   m_TagString: Untagged
@@ -102,6 +103,27 @@ MonoBehaviour:
   bulletType: Fire Bullet
   attackCD: 1
   bulletSpeed: 3
+--- !u!95 &4589202995980634188
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477611943943305176}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dde668c2f8adb274fb33c982e18654ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8987406789398328307
 PrefabInstance:
   m_ObjectHideFlags: 0

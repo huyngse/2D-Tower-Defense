@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2865338872731010086}
   - component: {fileID: 7443835370775113596}
   - component: {fileID: -7551915256178064207}
+  - component: {fileID: 8559985273313687523}
   m_Layer: 0
   m_Name: Ice Tower
   m_TagString: Untagged
@@ -102,6 +103,27 @@ MonoBehaviour:
   bulletType: Ice Bullet
   attackCD: 1
   bulletSpeed: 3
+--- !u!95 &8559985273313687523
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605517663074103664}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dde668c2f8adb274fb33c982e18654ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &5712994537146875861
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -22,6 +22,10 @@ public class Tower : MonoBehaviour
     private bool canAttack = true;
     private float attackTimer = 0;
     private readonly List<Monster> monsters = new();
+    private Animator animator;
+    void Awake() {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -67,6 +71,7 @@ public class Tower : MonoBehaviour
             return;
         }
         canAttack = false;
+        animator.SetTrigger("Attack");
         Bullet bullet = GameManager.Instance.Pool.GetObject(bulletType).GetComponent<Bullet>();
         bullet.transform.position = transform.position;
         bullet.SetSpeed(bulletSpeed);
