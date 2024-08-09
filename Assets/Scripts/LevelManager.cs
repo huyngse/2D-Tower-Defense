@@ -48,8 +48,8 @@ public class LevelManager : Singleton<LevelManager>
     void Awake()
     {
         Tiles = new Dictionary<Point, TileScript>();
-        greenPortalPosition = new Point(1, 2);
-        purplePortalPosition = new Point(7, 2);
+        greenPortalPosition = new Point(1, 4);
+        purplePortalPosition = new Point(14, 4);
         // purplePortalPosition = new Point(40, 16);
     }
 
@@ -99,7 +99,7 @@ public class LevelManager : Singleton<LevelManager>
     private string[] GetLevelFromFile()
     {
         // "Resources" is name of the Folder
-        TextAsset bindData = Resources.Load("Level") as TextAsset;
+        TextAsset bindData = Resources.Load("Level_1") as TextAsset;
         string data = bindData.text.Replace(Environment.NewLine, string.Empty);
         return data.Split("-");
     }

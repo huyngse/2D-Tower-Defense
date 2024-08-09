@@ -29,13 +29,14 @@ public class GameManager : Singleton<GameManager>
     private int currency = 100;
 
     [SerializeField]
-    private float enemiesPerSecond = 1;
+    private float spawnCD = 1;
 
     [SerializeField]
     private int lifes = 5;
     private int wave = 0;
     private bool isGameOver = false;
     private List<Monster> activeMonsters = new();
+    private Tower selectedTower;
     public bool IsWaveActive
     {
         get { return activeMonsters.Count > 0; }
@@ -101,6 +102,21 @@ public class GameManager : Singleton<GameManager>
         Hover.Instance.Deativate();
     }
 
+    public void SelectTower(Tower tower)
+    {
+        selectedTower = tower;
+        selectedTower.Select();
+    }
+
+    public void DeselectTower()
+    {
+        if (selectedTower != null)
+        {
+            selectedTower.Select();
+            selectedTower = null;
+        }
+    }
+
     private void HandleCancel()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -151,7 +167,7 @@ public class GameManager : Singleton<GameManager>
             Monster monster = Pool.GetObject(type).GetComponent<Monster>();
             monster.Spawn();
             activeMonsters.Add(monster);
-            yield return new WaitForSeconds(1f / enemiesPerSecond);
+            yield return new WaitForSeconds(spawnCD);
         }
     }
 
@@ -184,7 +200,8 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void Quit() {
+    public void Quit()
+    {
         Application.Quit();
     }
 }
