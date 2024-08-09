@@ -29,7 +29,7 @@ public class GameManager : Singleton<GameManager>
     private int currency = 100;
 
     [SerializeField]
-    private float enemiesPerSecond = 1;
+    private float spawnCD = 1;
 
     [SerializeField]
     private int lifes = 5;
@@ -167,7 +167,7 @@ public class GameManager : Singleton<GameManager>
             Monster monster = Pool.GetObject(type).GetComponent<Monster>();
             monster.Spawn();
             activeMonsters.Add(monster);
-            yield return new WaitForSeconds(1f / enemiesPerSecond);
+            yield return new WaitForSeconds(spawnCD);
         }
     }
 
