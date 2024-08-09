@@ -7,9 +7,14 @@ public class Monster : MonoBehaviour
     [Header("Attributes")]
     [SerializeField]
     private float speed = 1;
+
+    [SerializeField]
+    private Stat health;
     private Stack<Node> path;
     private Vector3 destination;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
+
     public Point GridPosition { get; private set; }
     public bool IsActive { get; private set; }
     private bool isReachedPortal = false;
@@ -18,6 +23,8 @@ public class Monster : MonoBehaviour
     {
         IsActive = false;
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        health.Initialize();
     }
 
     void Start()
@@ -58,11 +65,13 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public void Spawn()
+    public void Spawn(int health)
     {
+        this.health.MaxValue = health;
+        this.health.CurrentValue = health;
         transform.position = LevelManager.Instance.GreenPortal.transform.position;
         transform.Translate(Vector3.down * 0.9f);
-        StartCoroutine(Scale(new Vector3(-0.1f, 0.1f), new Vector3(-1, 1)));
+        StartCoroutine(Scale(new Vector3(0.1f, 0.1f), new Vector3(1, 1)));
         SetPath(LevelManager.Instance.Path);
     }
 
@@ -100,19 +109,19 @@ public class Monster : MonoBehaviour
     {
         if (destination.x > transform.position.x)
         {
-            transform.localScale = new Vector3(-1, 1);
+            spriteRenderer.flipX = true;
         }
         else if (destination.x < transform.position.x)
         {
-            transform.localScale = new Vector3(1, 1);
+            spriteRenderer.flipX = false;
         }
         else if (destination.y > transform.position.y)
         {
-            transform.localScale = new Vector3(-1, 1);
+            spriteRenderer.flipX = true;
         }
         else if (destination.y < transform.position.y)
         {
-            transform.localScale = new Vector3(1, 1);
+            spriteRenderer.flipX = false;
         }
     }
 
@@ -121,7 +130,7 @@ public class Monster : MonoBehaviour
         if (!isReachedPortal && other.CompareTag("PurplePortal"))
         {
             isReachedPortal = true;
-            StartCoroutine(Scale(new Vector3(1f, 1f), new Vector3(-0.1f, 0.1f)));
+            StartCoroutine(Scale(new Vector3(1f, 1f), new Vector3(0.1f, 0.1f)));
             GameManager.Instance.Lifes--;
         }
     }
@@ -132,5 +141,11 @@ public class Monster : MonoBehaviour
         IsActive = false;
         GameManager.Instance.Pool.ReleaseObject(gameObject);
         GameManager.Instance.RemoveMonster(this);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health.CurrentValue -= damage;
+        animator.SetTrigger("Hit");
     }
 }

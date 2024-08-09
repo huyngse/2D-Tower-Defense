@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     private float speed = 1;
     private float lifespan = 5;
     private float timer = 0;
+    private int damage = 1;
 
     void Update()
     {
@@ -47,6 +48,11 @@ public class Bullet : MonoBehaviour
         this.target = target;
     }
 
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
+    }
+
     private void Release()
     {
         timer = 0;
@@ -67,5 +73,17 @@ public class Bullet : MonoBehaviour
         // Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         // transform.rotation = targetRotation;
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 3);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            if (target.gameObject == other.gameObject)
+            {
+                target.TakeDamage(damage);
+                Release();
+            }
+        }
     }
 }

@@ -6,14 +6,10 @@ using UnityEngine;
 [Serializable]
 public class Stat
 {
-    [Header("Attributes")]
+    [Header("References")]
     [SerializeField]
-    private readonly BarScript bar;
-
-    [SerializeField]
+    private BarScript bar;
     private float maxValue;
-
-    [SerializeField]
     private float currentValue;
 
     public float CurrentValue
