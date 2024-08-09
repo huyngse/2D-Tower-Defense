@@ -30,7 +30,9 @@ public class Bullet : MonoBehaviour
                 speed * Time.deltaTime
             );
             RotateTowardTarget();
-        } else {
+        }
+        else
+        {
             Release();
         }
     }
@@ -54,14 +56,16 @@ public class Bullet : MonoBehaviour
 
     private void RotateTowardTarget()
     {
-        if (transform.position == target.transform.position) return;
+        if (transform.position == target.transform.position)
+            return;
         float angle =
             Mathf.Atan2(
                 transform.position.y - target.transform.position.y,
                 transform.position.x - target.transform.position.x
             ) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-        transform.rotation = targetRotation;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        // transform.rotation = targetRotation;
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 3);
     }
 }
