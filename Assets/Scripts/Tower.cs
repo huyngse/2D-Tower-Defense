@@ -11,9 +11,13 @@ public class Tower : MonoBehaviour
 
     [SerializeField]
     private string bulletType;
+
     [Header("Attributes")]
     [SerializeField]
     private float attackCD = 1;
+
+    [SerializeField]
+    private float bulletSpeed = 3;
     private Monster target;
     private bool canAttack = true;
     private float attackTimer = 0;
@@ -52,9 +56,11 @@ public class Tower : MonoBehaviour
 
     private void Attack()
     {
-        if (!canAttack) {
+        if (!canAttack)
+        {
             attackTimer += Time.deltaTime;
-            if (attackTimer > attackCD) {
+            if (attackTimer > attackCD)
+            {
                 canAttack = true;
                 attackTimer = 0;
             }
@@ -63,5 +69,7 @@ public class Tower : MonoBehaviour
         canAttack = false;
         Bullet bullet = GameManager.Instance.Pool.GetObject(bulletType).GetComponent<Bullet>();
         bullet.transform.position = transform.position;
+        bullet.SetSpeed(bulletSpeed);
+        bullet.SetTarget(target);
     }
 }

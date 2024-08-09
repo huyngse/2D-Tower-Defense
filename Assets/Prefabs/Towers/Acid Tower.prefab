@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerRange: {fileID: 222286412767456884}
   bulletType: Poison Bullet
+  attackCD: 1
+  bulletSpeed: 3
 --- !u!1001 &3237433084347102984
 PrefabInstance:
   m_ObjectHideFlags: 0
