@@ -197,6 +197,7 @@ public class GameManager : Singleton<GameManager>
     public void Restart()
     {
         Time.timeScale = 1;
+        AStar.ClearNode();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
