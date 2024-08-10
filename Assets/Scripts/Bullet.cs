@@ -9,6 +9,13 @@ public class Bullet : MonoBehaviour
     private float speed = 1;
     private float lifespan = 5;
     private float timer = 0;
+    private int damage = 1;
+    private Animator animator;
+
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -47,11 +54,17 @@ public class Bullet : MonoBehaviour
         this.target = target;
     }
 
-    private void Release()
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
+    }
+
+    public void Release()
     {
         timer = 0;
         target = null;
         GameManager.Instance.Pool.ReleaseObject(gameObject);
+        transform.localScale = Vector3.one;
     }
 
     private void RotateTowardTarget()
@@ -67,5 +80,19 @@ public class Bullet : MonoBehaviour
         // Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         // transform.rotation = targetRotation;
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 3);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            if (target != null && target.gameObject == other.gameObject)
+            {
+                target.TakeDamage(damage);
+            }
+            transform.localScale = Vector3.one * 2;
+            animator.SetTrigger("Hit");
+            // Release();
+        }
     }
 }

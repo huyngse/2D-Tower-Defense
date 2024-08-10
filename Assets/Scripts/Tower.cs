@@ -17,6 +17,9 @@ public class Tower : MonoBehaviour
     private float attackCD = 1;
 
     [SerializeField]
+    private int damage = 5;
+
+    [SerializeField]
     private float bulletSpeed = 3;
     private Monster target;
     private bool canAttack = true;
@@ -31,8 +34,12 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        if (target != null && target.IsActive)
+        if (target != null)
         {
+            if (!target.IsActive || !target.IsAlive) {
+                monsters.Remove(target);
+                return;
+            }
             Attack();
         }
         else
@@ -86,5 +93,6 @@ public class Tower : MonoBehaviour
         bullet.transform.position = transform.position;
         bullet.SetSpeed(bulletSpeed);
         bullet.SetTarget(target);
+        bullet.SetDamage(damage);
     }
 }

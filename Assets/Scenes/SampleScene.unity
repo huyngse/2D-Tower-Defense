@@ -1394,9 +1394,9 @@ MonoBehaviour:
   lifeText: {fileID: 52188171}
   nextWaveButton: {fileID: 327872146}
   gameOverMenu: {fileID: 135996583}
-  currency: 1000
+  currency: 5
   spawnCD: 2
-  lifes: 5
+  lifes: 3
 --- !u!4 &470610056
 Transform:
   m_ObjectHideFlags: 0
@@ -1433,6 +1433,7 @@ MonoBehaviour:
   - {fileID: 4231293151692713603, guid: 6863296aeebeee649a111a68c463026c, type: 3}
   - {fileID: 8039211705688185427, guid: c5a440e7920085544bb9abdf92d6fd62, type: 3}
   - {fileID: 2040325184495427855, guid: f9230d6fc7c75f64e82253f3ee2dae93, type: 3}
+  - {fileID: 473465928385029319, guid: 3d3dccceebc0a6540bc134c5f2e44ba4, type: 3}
 --- !u!1 &502581561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,7 +1682,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -19.71997, y: -16.399994}
+  m_AnchoredPosition: {x: -19.71997, y: -16.400024}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &533451714

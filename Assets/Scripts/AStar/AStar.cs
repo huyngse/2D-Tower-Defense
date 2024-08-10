@@ -16,6 +16,11 @@ public static class AStar
         }
     }
 
+    public static void ClearNode()
+    {
+        nodes = null;
+    }
+
     public static Stack<Node> GetPath(Point start, Point goal)
     {
         if (nodes == null)
@@ -79,6 +84,7 @@ public static class AStar
                 path.Push(currentNode);
                 currentNode = currentNode.Parent;
             }
+            path.Push(currentNode);
         }
         // AStarDebugger debugger = GameObject.Find("AStarDebugger").GetComponent<AStarDebugger>();
         // debugger.DebugPath(openList, closedList, path);

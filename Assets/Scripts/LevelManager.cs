@@ -48,8 +48,8 @@ public class LevelManager : Singleton<LevelManager>
     void Awake()
     {
         Tiles = new Dictionary<Point, TileScript>();
-        greenPortalPosition = new Point(1, 4);
-        purplePortalPosition = new Point(14, 4);
+        greenPortalPosition = new Point(1, 3);
+        purplePortalPosition = new Point(14, 6);
         // purplePortalPosition = new Point(40, 16);
     }
 
@@ -111,7 +111,8 @@ public class LevelManager : Singleton<LevelManager>
             Tiles[greenPortalPosition].transform.position,
             Quaternion.identity
         );
-        greenPortal.transform.Translate((Vector3.up + Vector3.right) * 0.5f);
+        greenPortal.transform.Translate(Vector3.right * 0.5f);
+        greenPortal.GetComponent<SpriteRenderer>().sortingOrder = greenPortalPosition.Y;
         GreenPortal = greenPortal.GetComponent<Portal>();
         GreenPortal.name = "GreenPortal";
 
@@ -120,7 +121,8 @@ public class LevelManager : Singleton<LevelManager>
             Tiles[purplePortalPosition].transform.position,
             Quaternion.identity
         );
-        purplePortal.transform.Translate((Vector3.up + Vector3.right) * 0.5f);
+        purplePortal.transform.Translate(Vector3.right * 0.5f);
+        purplePortal.GetComponent<SpriteRenderer>().sortingOrder = purplePortalPosition.Y;
         PurplePortal = purplePortal.GetComponent<Portal>();
         PurplePortal.name = "PurplePortal";
     }
