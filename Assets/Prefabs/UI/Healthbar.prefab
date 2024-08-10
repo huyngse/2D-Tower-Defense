@@ -257,6 +257,6 @@ MonoBehaviour:
   content: {fileID: 3867653373283184259}
   fillAmount: 1
   lerpSpeed: 2
-  fullColor: {r: 1, g: 0, b: 0.015202522, a: 1}
+  fullColor: {r: 0.023159027, g: 1, b: 0, a: 1}
   lowColor: {r: 1, g: 0, b: 0, a: 1}
-  lerpColor: 0
+  lerpColor: 1

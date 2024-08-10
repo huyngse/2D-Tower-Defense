@@ -5,10 +5,17 @@ using UnityEngine.EventSystems;
 
 public class TileScript : MonoBehaviour
 {
+    [Header("Attributes")]
+    [SerializeField]
+    private bool isWalkable = true;
     public Point GridPosition { get; private set; }
     private float tileSize;
+    public bool IsWalkable
+    {
+        get => isWalkable;
+        set => isWalkable = value;
+    }
     public bool IsEmpty { get; set; }
-    public bool IsWalkable { get; set; }
     private Color32 unavailableColor = new(255, 118, 118, 255);
     private Color32 availableColor = new(96, 255, 90, 255);
     private SpriteRenderer spriteRenderer;
@@ -31,7 +38,6 @@ public class TileScript : MonoBehaviour
 
     void Start()
     {
-        IsWalkable = true;
         IsEmpty = true;
         tileSize = spriteRenderer.sprite.bounds.size.x;
     }

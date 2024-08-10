@@ -169,7 +169,7 @@ public class GameManager : Singleton<GameManager>
                 }
             }
             Monster monster = Pool.GetObject(type).GetComponent<Monster>();
-            monster.Spawn(12);
+            monster.Spawn(enemyHealth);
             activeMonsters.Add(monster);
             yield return new WaitForSeconds(spawnCD);
         }

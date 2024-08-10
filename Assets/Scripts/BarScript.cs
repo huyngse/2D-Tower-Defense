@@ -14,7 +14,7 @@ public class BarScript : MonoBehaviour
     private float fillAmount = 1;
 
     [SerializeField]
-    private float lerpSpeed = 2;
+    private float lerpSpeed = 4;
 
     [SerializeField]
     private Color fullColor = Color.red;
