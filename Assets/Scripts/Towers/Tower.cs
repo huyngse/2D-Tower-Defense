@@ -72,6 +72,19 @@ public abstract class Tower : MonoBehaviour
         }
     }
 
+    public float BulletSpeed
+    {
+        get => bulletSpeed;
+    }
+    public int Damage
+    {
+        get => damage;
+    }
+    public Monster Target
+    {
+        get => target;
+    }
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -137,9 +150,8 @@ public abstract class Tower : MonoBehaviour
         animator.SetTrigger("Attack");
         Bullet bullet = GameManager.Instance.Pool.GetObject(BulletType).GetComponent<Bullet>();
         bullet.transform.position = transform.position;
-        bullet.SetSpeed(bulletSpeed);
-        bullet.SetTarget(target);
-        bullet.SetDamage(damage);
-        bullet.SetElement(ElementType);
+        bullet.SetTower(this);
     }
+
+    public abstract Debuff GetDebuff(Monster target);
 }

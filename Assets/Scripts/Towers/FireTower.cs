@@ -8,4 +8,9 @@ public class FireTower : Tower
     {
         ElementType = Element.FIRE;
     }
+
+    public override Debuff GetDebuff(Monster target)
+    {
+        return new FireDebuff(target);
+    }
 }

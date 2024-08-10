@@ -121,9 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerRange: {fileID: 222286412767456884}
-  bulletType: Poison
-  attackCD: 1.5
-  damage: 5
+  attackCD: 1
+  damage: 2
   bulletSpeed: 3
   price: 5
 --- !u!1001 &3237433084347102984

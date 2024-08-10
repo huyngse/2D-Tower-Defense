@@ -8,4 +8,9 @@ public class StormTower : Tower
     {
         ElementType = Element.STORM;
     }
+
+    public override Debuff GetDebuff(Monster target)
+    {
+        return new StormDebuff(target);
+    }
 }

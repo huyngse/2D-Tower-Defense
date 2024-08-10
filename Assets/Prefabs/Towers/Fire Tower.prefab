@@ -121,9 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerRange: {fileID: 5999281477298694799}
-  bulletType: Fire Bullet
   attackCD: 2
-  damage: 10
+  damage: 5
   bulletSpeed: 3
   price: 10
 --- !u!1001 &8987406789398328307

@@ -121,8 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerRange: {fileID: 6967268936951768745}
-  bulletType: Ice Bullet
-  attackCD: 1
+  attackCD: 1.5
   damage: 2
   bulletSpeed: 3
   price: 5

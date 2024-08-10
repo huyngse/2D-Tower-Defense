@@ -8,4 +8,9 @@ public class IceTower : Tower
     {
         ElementType = Element.ICE;
     }
+
+    public override Debuff GetDebuff(Monster target)
+    {
+        return new IceDebuff(target);
+    }
 }

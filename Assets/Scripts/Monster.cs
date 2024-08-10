@@ -13,9 +13,11 @@ public class Monster : MonoBehaviour
 
     [SerializeField]
     private Element elementType;
+
     [SerializeField]
     private int invulnerability = 2;
     private Stack<Node> path;
+    private List<Debuff> debuffs = new();
     private Vector3 destination;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -43,6 +45,7 @@ public class Monster : MonoBehaviour
 
     void Update()
     {
+        HandleDebuffs();
         Move();
     }
 
@@ -156,6 +159,7 @@ public class Monster : MonoBehaviour
         isReachedPortal = false;
         IsActive = false;
         destination = transform.position;
+        debuffs.Clear();
         GameManager.Instance.Pool.ReleaseObject(gameObject);
         GameManager.Instance.RemoveMonster(this);
     }
@@ -183,6 +187,26 @@ public class Monster : MonoBehaviour
         GameObject particle = GameManager.Instance.Pool.GetObject("Death Particle");
         particle.transform.position = transform.position;
         Release();
+    }
+
+    public void AddDebuff(Debuff debuff)
+    {
+        for (int i = 0; i < debuffs.Count; i++)
+        {
+            Debuff temp = debuffs[0];
+            if (temp.GetType() == debuff.GetType())
+            {
+                debuffs.Remove(temp);
+                break;
+            }
+        }
+        debuffs.Add(debuff);
+    }
+
+    private void HandleDebuffs() {
+        foreach (Debuff debuff in debuffs) {
+            debuff.Update();
+        }
     }
 
     private void Complain()
