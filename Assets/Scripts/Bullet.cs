@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     private float timer = 0;
     private int damage = 1;
     private Animator animator;
+    private Element elementType = Element.NONE;
 
     void Awake()
     {
@@ -59,6 +60,11 @@ public class Bullet : MonoBehaviour
         this.damage = damage;
     }
 
+    public void SetElement(Element elementType)
+    {
+        this.elementType = elementType;
+    }
+
     public void Release()
     {
         timer = 0;
@@ -88,7 +94,7 @@ public class Bullet : MonoBehaviour
         {
             if (target != null && target.gameObject == other.gameObject)
             {
-                target.TakeDamage(damage);
+                target.TakeDamage(damage, elementType);
             }
             transform.localScale = Vector3.one * 2;
             animator.SetTrigger("Hit");

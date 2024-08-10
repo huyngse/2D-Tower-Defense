@@ -10,6 +10,11 @@ public class Monster : MonoBehaviour
 
     [SerializeField]
     private Stat health;
+
+    [SerializeField]
+    private Element elementType;
+    [SerializeField]
+    private int invulnerability = 2;
     private Stack<Node> path;
     private Vector3 destination;
     private Animator animator;
@@ -155,10 +160,15 @@ public class Monster : MonoBehaviour
         GameManager.Instance.RemoveMonster(this);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Element damageSource)
     {
         if (!IsActive)
             return;
+        if (damageSource == elementType)
+        {
+            damage = (int)Mathf.Floor(damage / invulnerability);
+            invulnerability++;
+        }
         health.CurrentValue -= damage;
         animator.SetTrigger("Hit");
         if (health.CurrentValue == 0)
