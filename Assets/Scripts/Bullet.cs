@@ -10,6 +10,12 @@ public class Bullet : MonoBehaviour
     private float lifespan = 5;
     private float timer = 0;
     private int damage = 1;
+    private Animator animator;
+
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -53,11 +59,12 @@ public class Bullet : MonoBehaviour
         this.damage = damage;
     }
 
-    private void Release()
+    public void Release()
     {
         timer = 0;
         target = null;
         GameManager.Instance.Pool.ReleaseObject(gameObject);
+        transform.localScale = Vector3.one;
     }
 
     private void RotateTowardTarget()
@@ -79,11 +86,13 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            if (target.gameObject == other.gameObject)
+            if (target != null && target.gameObject == other.gameObject)
             {
                 target.TakeDamage(damage);
-                Release();
             }
+            transform.localScale = Vector3.one * 2;
+            animator.SetTrigger("Hit");
+            // Release();
         }
     }
 }

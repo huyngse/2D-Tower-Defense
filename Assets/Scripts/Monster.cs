@@ -145,6 +145,7 @@ public class Monster : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (!IsActive) return;
         health.CurrentValue -= damage;
         animator.SetTrigger("Hit");
     }
