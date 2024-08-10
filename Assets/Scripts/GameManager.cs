@@ -24,6 +24,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject gameOverMenu;
 
+    [SerializeField]
+    private GameObject upgradePannel;
+
     [Header("Attributes")]
     [SerializeField]
     private int currency = 100;
@@ -107,6 +110,7 @@ public class GameManager : Singleton<GameManager>
     {
         selectedTower = tower;
         selectedTower.Select();
+        upgradePannel.SetActive(true);
     }
 
     public void DeselectTower()
@@ -115,6 +119,7 @@ public class GameManager : Singleton<GameManager>
         {
             selectedTower.Select();
             selectedTower = null;
+            upgradePannel.SetActive(false);
         }
     }
 
@@ -137,7 +142,8 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator SpawnWave()
     {
-        if (wave % 3 == 0) {
+        if (wave % 3 == 0)
+        {
             enemyHealth += 5;
         }
         LevelManager.Instance.GeneratePath();

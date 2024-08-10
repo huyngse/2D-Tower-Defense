@@ -31,6 +31,6 @@ public class TowerButton : MonoBehaviour
 
     void Start()
     {
-        priceText.text = price.ToString();
+        priceText.text = price + "$";
     }
 }
