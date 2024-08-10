@@ -1394,7 +1394,7 @@ MonoBehaviour:
   lifeText: {fileID: 52188171}
   nextWaveButton: {fileID: 327872146}
   gameOverMenu: {fileID: 135996583}
-  currency: 1000
+  currency: 5
   spawnCD: 2
   lifes: 3
 --- !u!4 &470610056
@@ -1682,7 +1682,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -19.71997, y: -16.399994}
+  m_AnchoredPosition: {x: -19.71997, y: -16.400024}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &533451714

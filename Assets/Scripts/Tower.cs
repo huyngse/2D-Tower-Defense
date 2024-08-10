@@ -34,8 +34,12 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        if (target != null && target.IsActive)
+        if (target != null)
         {
+            if (!target.IsActive || !target.IsAlive) {
+                monsters.Remove(target);
+                return;
+            }
             Attack();
         }
         else

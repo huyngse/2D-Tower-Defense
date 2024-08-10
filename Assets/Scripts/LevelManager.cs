@@ -111,7 +111,8 @@ public class LevelManager : Singleton<LevelManager>
             Tiles[greenPortalPosition].transform.position,
             Quaternion.identity
         );
-        greenPortal.transform.Translate((Vector3.up + Vector3.right) * 0.5f);
+        greenPortal.transform.Translate(Vector3.right * 0.5f);
+        greenPortal.GetComponent<SpriteRenderer>().sortingOrder = greenPortalPosition.Y;
         GreenPortal = greenPortal.GetComponent<Portal>();
         GreenPortal.name = "GreenPortal";
 
@@ -120,7 +121,8 @@ public class LevelManager : Singleton<LevelManager>
             Tiles[purplePortalPosition].transform.position,
             Quaternion.identity
         );
-        purplePortal.transform.Translate((Vector3.up + Vector3.right) * 0.5f);
+        purplePortal.transform.Translate(Vector3.right * 0.5f);
+        purplePortal.GetComponent<SpriteRenderer>().sortingOrder = purplePortalPosition.Y;
         PurplePortal = purplePortal.GetComponent<Portal>();
         PurplePortal.name = "PurplePortal";
     }

@@ -17,6 +17,10 @@ public class Monster : MonoBehaviour
 
     public Point GridPosition { get; private set; }
     public bool IsActive { get; private set; }
+    public bool IsAlive
+    {
+        get { return health.CurrentValue > 0; }
+    }
     private bool isReachedPortal = false;
 
     void Awake()
@@ -56,6 +60,7 @@ public class Monster : MonoBehaviour
                 GridPosition = path.Pop().GridPosition;
                 destination = path.Peek().WorldPosition;
                 animator.SetBool("isMoving", true);
+                spriteRenderer.sortingOrder = GridPosition.Y;
                 Animate();
             }
             else
@@ -70,7 +75,7 @@ public class Monster : MonoBehaviour
         this.health.MaxValue = health;
         this.health.CurrentValue = health;
         transform.position = LevelManager.Instance.GreenPortal.transform.position;
-        transform.Translate(Vector3.down * 0.9f);
+        // transform.Translate(Vector3.down * 0.9f);
         StartCoroutine(Scale(new Vector3(0.1f, 0.1f), new Vector3(1, 1)));
         SetPath(LevelManager.Instance.Path);
     }
@@ -99,11 +104,13 @@ public class Monster : MonoBehaviour
             path = newPath;
             if (path.Count == 0)
             {
+                path = null;
                 Complain();
                 return;
             }
             GridPosition = path.Peek().GridPosition;
             destination = path.Peek().WorldPosition;
+            spriteRenderer.sortingOrder = GridPosition.Y;
             Animate();
         }
     }
@@ -140,8 +147,10 @@ public class Monster : MonoBehaviour
 
     private void Release()
     {
+        path = null;
         isReachedPortal = false;
         IsActive = false;
+        destination = transform.position;
         GameManager.Instance.Pool.ReleaseObject(gameObject);
         GameManager.Instance.RemoveMonster(this);
     }
@@ -154,13 +163,13 @@ public class Monster : MonoBehaviour
         animator.SetTrigger("Hit");
         if (health.CurrentValue == 0)
         {
-            IsActive = false;
             animator.SetTrigger("Death");
         }
     }
 
     public void Death()
     {
+        GameManager.Instance.Currency += 2;
         GameObject particle = GameManager.Instance.Pool.GetObject("Death Particle");
         particle.transform.position = transform.position;
         Release();
