@@ -102,7 +102,9 @@ MonoBehaviour:
   towerRange: {fileID: 6369315659139934243}
   bulletType: Storm Bullet
   attackCD: 1
+  damage: 5
   bulletSpeed: 3
+  price: 7
 --- !u!95 &5917882843306287526
 Animator:
   serializedVersion: 5

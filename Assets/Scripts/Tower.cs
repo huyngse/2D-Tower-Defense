@@ -21,11 +21,23 @@ public class Tower : MonoBehaviour
 
     [SerializeField]
     private float bulletSpeed = 3;
+
+    [SerializeField]
+    private int price = 5;
     private Monster target;
     private bool canAttack = true;
     private float attackTimer = 0;
     private readonly List<Monster> monsters = new();
     private Animator animator;
+    public int Price
+    {
+        get => price;
+        set => price = value;
+    }
+    public int SellPrice
+    {
+        get => (int)Mathf.Floor(price / 2f);
+    }
 
     void Awake()
     {
@@ -36,7 +48,8 @@ public class Tower : MonoBehaviour
     {
         if (target != null)
         {
-            if (!target.IsActive || !target.IsAlive) {
+            if (!target.IsActive || !target.IsAlive)
+            {
                 monsters.Remove(target);
                 return;
             }

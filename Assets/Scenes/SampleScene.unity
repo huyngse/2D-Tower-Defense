@@ -407,7 +407,6 @@ MonoBehaviour:
   towerPrefab: {fileID: 2605517663074103664, guid: 8bef10a0645018443b8d421a561b2276, type: 3}
   sprite: {fileID: -1924629505, guid: f1777dbb61560754196d6d8fec275a90, type: 3}
   priceText: {fileID: 180645462}
-  price: 5
 --- !u!114 &86687749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1856,7 +1855,6 @@ MonoBehaviour:
   towerPrefab: {fileID: 5310424221148644096, guid: a97e8a92679485e48ad09e323d7e52e7, type: 3}
   sprite: {fileID: -364413942, guid: f1777dbb61560754196d6d8fec275a90, type: 3}
   priceText: {fileID: 416941917}
-  price: 5
 --- !u!114 &457557213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1908,6 +1906,7 @@ MonoBehaviour:
   nextWaveButton: {fileID: 327872146}
   gameOverMenu: {fileID: 135996583}
   upgradePannel: {fileID: 1287925544}
+  sellText: {fileID: 257980502}
   currency: 50
   spawnCD: 2
   lifes: 10
@@ -2529,7 +2528,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 564328060}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 470610055}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SellTower
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &564328060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3388,7 +3399,6 @@ MonoBehaviour:
   towerPrefab: {fileID: 1477611943943305176, guid: b0f7713acea929144aee166282c41c87, type: 3}
   sprite: {fileID: -538305147, guid: f1777dbb61560754196d6d8fec275a90, type: 3}
   priceText: {fileID: 587330521}
-  price: 5
 --- !u!114 &861549559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4073,7 +4083,6 @@ MonoBehaviour:
   towerPrefab: {fileID: 4833858732105156750, guid: fa9b976256b694f48a6a70d3c20ea273, type: 3}
   sprite: {fileID: -1082618527, guid: f1777dbb61560754196d6d8fec275a90, type: 3}
   priceText: {fileID: 336703294}
-  price: 5
 --- !u!114 &1495911060
 MonoBehaviour:
   m_ObjectHideFlags: 0

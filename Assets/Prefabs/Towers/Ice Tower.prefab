@@ -102,7 +102,9 @@ MonoBehaviour:
   towerRange: {fileID: 6967268936951768745}
   bulletType: Ice Bullet
   attackCD: 1
+  damage: 5
   bulletSpeed: 3
+  price: 7
 --- !u!95 &8559985273313687523
 Animator:
   serializedVersion: 5

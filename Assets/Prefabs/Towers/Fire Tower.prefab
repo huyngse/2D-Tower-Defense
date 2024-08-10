@@ -102,7 +102,9 @@ MonoBehaviour:
   towerRange: {fileID: 5999281477298694799}
   bulletType: Fire Bullet
   attackCD: 1
+  damage: 5
   bulletSpeed: 3
+  price: 10
 --- !u!95 &4589202995980634188
 Animator:
   serializedVersion: 5
