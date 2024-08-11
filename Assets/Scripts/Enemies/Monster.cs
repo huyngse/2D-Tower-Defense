@@ -193,7 +193,7 @@ public class Monster : MonoBehaviour
 
     public virtual void TakeDamage(int damage, Element damageSource)
     {
-        if (!IsActive)
+        if (!IsActive || isReachedPortal)
             return;
         if (damageSource == elementType)
         {

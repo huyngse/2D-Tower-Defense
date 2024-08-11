@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerRange: {fileID: 6967268936951768745}
-  attackCD: 1
-  damage: 1
+  attackCD: 1.5
+  damage: 4
   bulletSpeed: 3
   price: 10
   debuffDuration: 3
