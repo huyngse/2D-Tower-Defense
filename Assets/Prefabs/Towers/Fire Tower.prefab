@@ -127,6 +127,7 @@ MonoBehaviour:
   price: 8
   debuffDuration: 5
   proc: 70
+  tickDamage: 1
 --- !u!1001 &8987406789398328307
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -48,8 +48,9 @@ public class FireDrop : MonoBehaviour
         }
     }
 
-    public void SetUp(Monster target, float duration)
+    public void SetUp(Monster target, float duration, int tickDamage)
     {
+        damage = tickDamage;
         lifeTime = duration;
         spriteRenderer.sortingOrder = target.GridPosition.Y;
         transform.position = target.transform.position;

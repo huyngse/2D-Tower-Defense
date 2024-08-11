@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class FireDebuff : Debuff
 {
-    public FireDebuff(Monster target, float duration)
-        : base(target, duration) { }
+    private int tickDamage;
+
+    public FireDebuff(Monster target, float duration, int tickDamage)
+        : base(target, duration)
+    {
+        this.tickDamage = tickDamage;
+    }
 
     public override void Update()
     {
         base.Update();
         GameObject fireDrop = GameManager.Instance.Pool.GetObject("Fire Drop");
-        fireDrop.GetComponent<FireDrop>().SetUp(target, duration);
+        fireDrop.GetComponent<FireDrop>().SetUp(target, duration, tickDamage);
         target.RemoveDebuff(this);
     }
 }

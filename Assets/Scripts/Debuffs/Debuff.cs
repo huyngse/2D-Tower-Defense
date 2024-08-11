@@ -8,7 +8,7 @@ public abstract class Debuff
     protected float duration;
     protected float durationTimer;
 
-    public Debuff(Monster target, float duration = 3)
+    public Debuff(Monster target, float duration)
     {
         this.target = target;
         this.duration = duration;
