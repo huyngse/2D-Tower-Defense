@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8295591211628060843}
   - component: {fileID: 1210461862157244348}
   - component: {fileID: 5917882843306287526}
-  - component: {fileID: 2143274202638048864}
+  - component: {fileID: 7785217137580740011}
   m_Layer: 0
   m_Name: Storm Tower
   m_TagString: Untagged
@@ -108,7 +108,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2143274202638048864
+--- !u!114 &7785217137580740011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,10 +121,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerRange: {fileID: 6369315659139934243}
-  attackCD: 1.5
-  damage: 7
-  bulletSpeed: 4
-  price: 12
+  attackCD: 2
+  damage: 5
+  bulletSpeed: 3
+  price: 6
+  debuffDuration: 0.5
+  proc: 0.5
 --- !u!1001 &8618850325415276895
 PrefabInstance:
   m_ObjectHideFlags: 0

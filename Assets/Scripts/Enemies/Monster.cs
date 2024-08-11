@@ -229,6 +229,11 @@ public class Monster : MonoBehaviour
         debuffs.Remove(debuff);
     }
 
+    public void SetAnimationSpeed(float n)
+    {
+        animator.speed = n;
+    }
+
     private void HandleDebuffs()
     {
         bool isPoisoned = false;
