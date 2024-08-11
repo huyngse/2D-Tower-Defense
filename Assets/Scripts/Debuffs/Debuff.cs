@@ -6,6 +6,7 @@ public abstract class Debuff
 {
     protected Monster target;
     protected float duration;
+    private float durationTimer;
 
     public Debuff(Monster target, float duration = 3)
     {
@@ -13,5 +14,12 @@ public abstract class Debuff
         this.duration = duration;
     }
 
-    public virtual void Update() { }
+    public virtual void Update()
+    {
+        durationTimer += Time.deltaTime;
+        if (durationTimer > duration)
+        {
+            target.RemoveDebuff(this);
+        }
+    }
 }
