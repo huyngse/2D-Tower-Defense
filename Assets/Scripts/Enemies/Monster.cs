@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
@@ -9,10 +10,17 @@ public class Monster : MonoBehaviour
     private float speed = 1;
 
     [SerializeField]
-    private Stat health;
+    protected Stat health;
+
+    [SerializeField]
+    private Element elementType;
+
+    [SerializeField]
+    private int invulnerability = 2;
     private Stack<Node> path;
+    private List<Debuff> debuffs = new();
     private Vector3 destination;
-    private Animator animator;
+    protected Animator animator;
     private SpriteRenderer spriteRenderer;
 
     public Point GridPosition { get; private set; }
@@ -21,6 +29,29 @@ public class Monster : MonoBehaviour
     {
         get { return health.CurrentValue > 0; }
     }
+
+    public Element ElementType
+    {
+        get => elementType;
+    }
+    public float Speed
+    {
+        get => speed;
+        set => speed = value;
+    }
+    public float BaseSpeed
+    {
+        get => baseSpeed;
+        protected set => baseSpeed = value;
+    }
+    public List<Debuff> Debuffs
+    {
+        get => debuffs;
+        private set => debuffs = value;
+    }
+
+    private float baseSpeed;
+
     private bool isReachedPortal = false;
 
     void Awake()
@@ -34,10 +65,12 @@ public class Monster : MonoBehaviour
     void Start()
     {
         destination = transform.position;
+        BaseSpeed = speed;
     }
 
     void Update()
     {
+        HandleDebuffs();
         Move();
     }
 
@@ -60,7 +93,7 @@ public class Monster : MonoBehaviour
                 GridPosition = path.Pop().GridPosition;
                 destination = path.Peek().WorldPosition;
                 animator.SetBool("isMoving", true);
-                spriteRenderer.sortingOrder = GridPosition.Y;
+                spriteRenderer.sortingOrder = GridPosition.Y + 1;
                 Animate();
             }
             else
@@ -110,7 +143,7 @@ public class Monster : MonoBehaviour
             }
             GridPosition = path.Peek().GridPosition;
             destination = path.Peek().WorldPosition;
-            spriteRenderer.sortingOrder = GridPosition.Y;
+            spriteRenderer.sortingOrder = GridPosition.Y + 1;
             Animate();
         }
     }
@@ -145,20 +178,28 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private void Release()
+    protected virtual void Release()
     {
         path = null;
         isReachedPortal = false;
         IsActive = false;
+        speed = baseSpeed;
         destination = transform.position;
+        animator.speed = 1;
+        debuffs.Clear();
         GameManager.Instance.Pool.ReleaseObject(gameObject);
         GameManager.Instance.RemoveMonster(this);
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage, Element damageSource)
     {
-        if (!IsActive)
+        if (!IsActive || isReachedPortal)
             return;
+        if (damageSource == elementType)
+        {
+            damage = (int)Mathf.Floor(damage / invulnerability);
+            invulnerability++;
+        }
         health.CurrentValue -= damage;
         animator.SetTrigger("Hit");
         if (health.CurrentValue == 0)
@@ -175,74 +216,74 @@ public class Monster : MonoBehaviour
         Release();
     }
 
-    private void Complain()
+    public void AddDebuff(Debuff debuff)
     {
-        string dialog = "";
-        int randomIndex = Random.Range(0, 10);
-        switch (randomIndex)
+        for (int i = 0; i < debuffs.Count; i++)
         {
-            case 0:
+            Debuff temp = debuffs[0];
+            if (temp.GetType() == debuff.GetType())
             {
-                dialog =
-                    "Ugh, I can't find a way to get there. There's just no clear path and I'm getting so turned around.";
-                break;
-            }
-            case 1:
-            {
-                dialog =
-                    "This is ridiculous, how am I supposed to reach that location when all the routes are blocked off? Seriously, who designed this place?";
-                break;
-            }
-            case 2:
-            {
-                dialog =
-                    "I've been walking in circles for ages trying to find the right way, but it's like this whole area is just a maze with no exits. So frustrating!";
-                break;
-            }
-            case 3:
-            {
-                dialog =
-                    "Hmm, let me see... Nope, that path is a dead end too. Why does it have to be so difficult to get anywhere around here?";
-                break;
-            }
-            case 4:
-            {
-                dialog =
-                    "I swear, the more I try to figure out how to get there, the more confused I become. There's just no clear direction to follow!";
-                break;
-            }
-            case 5:
-            {
-                dialog =
-                    "Ugh, I give up. I've exhausted every possibility and I still can't find a workable route. This is so annoying.";
-                break;
-            }
-            case 6:
-            {
-                dialog =
-                    "I must be missing something obvious, because I can't for the life of me find a way to reach that destination. Where did all the paths go?";
-                break;
-            }
-            case 7:
-            {
-                dialog =
-                    "Unbelievable. I've checked every corner and there's just no clear path forward. Why does this place have to be so complicated?";
-                break;
-            }
-            case 8:
-            {
-                dialog =
-                    "This is ridiculous, I feel like I'm running in circles. How do people navigate this labyrinth of dead ends and blockages?";
-                break;
-            }
-            case 9:
-            {
-                dialog =
-                    "Hmm, let me think this through again... Nope, still nothing. I'm starting to think there isn't even a way to get there from here.";
+                debuffs.Remove(temp);
                 break;
             }
         }
-        dialog = gameObject.name + ": " + dialog;
-        Debug.Log(dialog);
+        debuffs.Add(debuff);
+    }
+
+    public void RemoveDebuff(Debuff debuff)
+    {
+        debuffs.Remove(debuff);
+    }
+
+    public void SetAnimationSpeed(float n)
+    {
+        animator.speed = n;
+    }
+
+    public void SetColor(Color32 color)
+    {
+        spriteRenderer.color = color;
+    }
+
+    private void HandleDebuffs()
+    {
+        bool isPoisoned = false;
+        bool isSlowed = false;
+        foreach (Debuff debuff in debuffs.ToList())
+        {
+            if (debuff.GetType() == typeof(PoisonDebuff))
+            {
+                isPoisoned = true;
+            }
+            else if (debuff.GetType() == typeof(IceDebuff))
+            {
+                isSlowed = true;
+            }
+            debuff.Update();
+        }
+        if (isPoisoned)
+        {
+            if (isPoisoned && isSlowed)
+            {
+                spriteRenderer.color = new Color32(180, 51, 255, 255);
+            }
+            else
+            {
+                spriteRenderer.color = new Color32(84, 255, 104, 255);
+            }
+        }
+        else if (isSlowed)
+        {
+            spriteRenderer.color = new Color32(84, 244, 255, 255);
+        }
+        else
+        {
+            spriteRenderer.color = Color.white;
+        }
+    }
+
+    private void Complain()
+    {
+        Debug.Log("No path founded");
     }
 }

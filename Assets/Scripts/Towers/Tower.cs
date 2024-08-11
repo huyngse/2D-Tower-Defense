@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public enum Element
+{
+    STORM,
+    FIRE,
+    ICE,
+    POISON,
+    NONE
+}
+
+public abstract class Tower : MonoBehaviour
 {
     [Header("References")]
     [SerializeField]
     private TowerRange towerRange;
-
-    [SerializeField]
-    private string bulletType;
 
     [Header("Attributes")]
     [SerializeField]
@@ -21,11 +27,77 @@ public class Tower : MonoBehaviour
 
     [SerializeField]
     private float bulletSpeed = 3;
+
+    [SerializeField]
+    private int price = 5;
+
+    [SerializeField]
+    private float debuffDuration = 3;
+
+    [SerializeField]
+    private float proc = 50;
     private Monster target;
     private bool canAttack = true;
     private float attackTimer = 0;
     private readonly List<Monster> monsters = new();
     private Animator animator;
+    public Element ElementType { get; protected set; }
+    public int Price
+    {
+        get => price;
+        set => price = value;
+    }
+    public int SellPrice
+    {
+        get => (int)Mathf.Floor(price / 2f);
+    }
+    public string BulletType
+    {
+        get
+        {
+            switch (ElementType)
+            {
+                case Element.STORM:
+                {
+                    return "Storm Bullet";
+                }
+                case Element.FIRE:
+                {
+                    return "Fire Bullet";
+                }
+                case Element.ICE:
+                {
+                    return "Ice Bullet";
+                }
+                case Element.POISON:
+                {
+                    return "Poison Bullet";
+                }
+            }
+            return "";
+        }
+    }
+
+    public float BulletSpeed
+    {
+        get => bulletSpeed;
+    }
+    public int Damage
+    {
+        get => damage;
+    }
+    public Monster Target
+    {
+        get => target;
+    }
+    public float DebuffDuration
+    {
+        get => debuffDuration;
+    }
+    public float Proc
+    {
+        get => proc;
+    }
 
     void Awake()
     {
@@ -36,7 +108,8 @@ public class Tower : MonoBehaviour
     {
         if (target != null)
         {
-            if (!target.IsActive || !target.IsAlive) {
+            if (!target.IsActive || !target.IsAlive)
+            {
                 monsters.Remove(target);
                 return;
             }
@@ -89,10 +162,10 @@ public class Tower : MonoBehaviour
         }
         canAttack = false;
         animator.SetTrigger("Attack");
-        Bullet bullet = GameManager.Instance.Pool.GetObject(bulletType).GetComponent<Bullet>();
+        Bullet bullet = GameManager.Instance.Pool.GetObject(BulletType).GetComponent<Bullet>();
         bullet.transform.position = transform.position;
-        bullet.SetSpeed(bulletSpeed);
-        bullet.SetTarget(target);
-        bullet.SetDamage(damage);
+        bullet.SetTower(this);
     }
+
+    public abstract Debuff GetDebuff(Monster target);
 }

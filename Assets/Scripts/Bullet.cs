@@ -1,16 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Monster target;
-    private float speed = 1;
     private float lifespan = 5;
     private float timer = 0;
-    private int damage = 1;
     private Animator animator;
+    private Tower tower;
+    private Monster target;
 
     void Awake()
     {
@@ -27,6 +27,12 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    public void SetTower(Tower tower)
+    {
+        this.tower = tower;
+        target = tower.Target;
+    }
+
     private void MoveToTarget()
     {
         if (target != null && target.IsActive)
@@ -34,7 +40,7 @@ public class Bullet : MonoBehaviour
             transform.position = Vector3.MoveTowards(
                 transform.position,
                 target.transform.position,
-                speed * Time.deltaTime
+                tower.BulletSpeed * Time.deltaTime
             );
             RotateTowardTarget();
         }
@@ -44,25 +50,9 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void SetSpeed(float speed)
-    {
-        this.speed = speed;
-    }
-
-    public void SetTarget(Monster target)
-    {
-        this.target = target;
-    }
-
-    public void SetDamage(int damage)
-    {
-        this.damage = damage;
-    }
-
     public void Release()
     {
         timer = 0;
-        target = null;
         GameManager.Instance.Pool.ReleaseObject(gameObject);
         transform.localScale = Vector3.one;
     }
@@ -88,11 +78,22 @@ public class Bullet : MonoBehaviour
         {
             if (target != null && target.gameObject == other.gameObject)
             {
-                target.TakeDamage(damage);
+                target.TakeDamage(tower.Damage, tower.ElementType);
             }
             transform.localScale = Vector3.one * 2;
             animator.SetTrigger("Hit");
-            // Release();
+            ApplyDebuff();
+        }
+    }
+
+    private void ApplyDebuff()
+    {
+        if (target.ElementType == tower.ElementType) {
+            return;
+        }
+        float randomValue = UnityEngine.Random.Range(0, 100);
+        if (randomValue < tower.Proc) {
+            target.AddDebuff(tower.GetDebuff(target));
         }
     }
 }

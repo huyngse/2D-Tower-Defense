@@ -24,6 +24,12 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject gameOverMenu;
 
+    [SerializeField]
+    private GameObject upgradePannel;
+
+    [SerializeField]
+    private TMP_Text sellText;
+
     [Header("Attributes")]
     [SerializeField]
     private int currency = 100;
@@ -101,12 +107,15 @@ public class GameManager : Singleton<GameManager>
         Currency -= ClickedButton.Price;
         ClickedButton = null;
         Hover.Instance.Deativate();
+        DeselectTower();
     }
 
     public void SelectTower(Tower tower)
     {
         selectedTower = tower;
         selectedTower.Select();
+        upgradePannel.SetActive(true);
+        sellText.text = selectedTower.SellPrice + "$";
     }
 
     public void DeselectTower()
@@ -115,6 +124,7 @@ public class GameManager : Singleton<GameManager>
         {
             selectedTower.Select();
             selectedTower = null;
+            upgradePannel.SetActive(false);
         }
     }
 
@@ -137,7 +147,8 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator SpawnWave()
     {
-        if (wave % 3 == 0) {
+        if (wave % 2 == 0)
+        {
             enemyHealth += 5;
         }
         LevelManager.Instance.GeneratePath();
@@ -208,5 +219,17 @@ public class GameManager : Singleton<GameManager>
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void SellTower()
+    {
+        Currency += selectedTower.SellPrice;
+        TileScript tile = selectedTower.GetComponentInParent<TileScript>();
+        tile.IsEmpty = true;
+        GameObject particle = Pool.GetObject("Death Particle");
+        particle.transform.position = tile.WorldPosition;
+        Destroy(selectedTower.gameObject);
+        selectedTower = null;
+        upgradePannel.SetActive(false);
     }
 }
