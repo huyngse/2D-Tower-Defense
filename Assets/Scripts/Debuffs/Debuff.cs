@@ -19,8 +19,13 @@ public abstract class Debuff
         durationTimer += Time.deltaTime;
         if (durationTimer > duration)
         {
-            target.RemoveDebuff(this);
-            target.SetColor(Color.white);
+            Remove();
         }
+    }
+
+    public virtual void Remove()
+    {
+        target.RemoveDebuff(this);
+        target.SetColor(Color.white);
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7732884899925736343}
   - component: {fileID: 2389608492257521599}
   m_Layer: 0
-  m_Name: Poinson Tower
+  m_Name: Poison Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

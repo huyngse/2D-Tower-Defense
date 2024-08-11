@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class IceDebuff : Debuff
 {
-    public IceDebuff(Monster target, float duration)
-        : base(target, duration) { }
+    private float slowingFactor;
+    public IceDebuff(Monster target, float duration, float slowingFactor)
+        : base(target, duration) { 
+            this.slowingFactor = slowingFactor;
+        }
 
     public override void Update()
     {
@@ -12,7 +15,7 @@ public class IceDebuff : Debuff
         {
             if (target.Debuffs.Exists(x => x.GetType() == typeof(StormDebuff)))
                 return;
-            target.Speed = target.BaseSpeed / 2;
+            target.Speed = target.BaseSpeed / slowingFactor;
             target.SetAnimationSpeed(0.5f);
         }
         else

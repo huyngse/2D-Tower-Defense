@@ -8,6 +8,7 @@ public class Pig : Monster
 
     public override void TakeDamage(int damage, Element damageSource)
     {
+        base.TakeDamage(damage, damageSource);
         if (health.CurrentValue <= health.MaxValue / 2f) {
             isAngry = true;
         }
@@ -15,7 +16,6 @@ public class Pig : Monster
             Speed = BaseSpeed * 2;
         }
         animator.SetBool("IsAngry", isAngry);
-        base.TakeDamage(damage, damageSource);
     }
     protected override void Release() {
         base.Release();
