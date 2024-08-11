@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 748129442239945373}
   - component: {fileID: 378159194318568865}
-  - component: {fileID: 8696333373841891690}
   - component: {fileID: 794607681330084403}
   - component: {fileID: 4168221301681382685}
   - component: {fileID: 8710492585565149044}
+  - component: {fileID: -970645265413570939}
   m_Layer: 0
   m_Name: Pig
   m_TagString: Enemy
@@ -89,22 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8696333373841891690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2393334337337860254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3f6d9356c5267e47916bd79f4fcde32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  health:
-    bar: {fileID: 4931605694526079077}
-  elementType: 1
 --- !u!95 &794607681330084403
 Animator:
   serializedVersion: 5
@@ -198,6 +182,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-970645265413570939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2393334337337860254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7208300c574d947a36bdb5bdc4f617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  health:
+    bar: {fileID: 4931605694526079077}
+  elementType: 1
+  invulnerability: 2
 --- !u!1001 &8396845576369518645
 PrefabInstance:
   m_ObjectHideFlags: 0

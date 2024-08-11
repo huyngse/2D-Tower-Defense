@@ -10,7 +10,7 @@ public class Monster : MonoBehaviour
     private float speed = 1;
 
     [SerializeField]
-    private Stat health;
+    protected Stat health;
 
     [SerializeField]
     private Element elementType;
@@ -20,7 +20,7 @@ public class Monster : MonoBehaviour
     private Stack<Node> path;
     private List<Debuff> debuffs = new();
     private Vector3 destination;
-    private Animator animator;
+    protected Animator animator;
     private SpriteRenderer spriteRenderer;
 
     public Point GridPosition { get; private set; }
@@ -31,6 +31,8 @@ public class Monster : MonoBehaviour
     }
 
     public Element ElementType { get => elementType; }
+    public float Speed { get => speed; protected set => speed = value; }
+    protected float baseSpeed;
 
     private bool isReachedPortal = false;
 
@@ -45,6 +47,7 @@ public class Monster : MonoBehaviour
     void Start()
     {
         destination = transform.position;
+        baseSpeed = speed;
     }
 
     void Update()
@@ -157,18 +160,19 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private void Release()
+    protected virtual void Release()
     {
         path = null;
         isReachedPortal = false;
         IsActive = false;
+        speed = baseSpeed;
         destination = transform.position;
         debuffs.Clear();
         GameManager.Instance.Pool.ReleaseObject(gameObject);
         GameManager.Instance.RemoveMonster(this);
     }
 
-    public void TakeDamage(int damage, Element damageSource)
+    public virtual void TakeDamage(int damage, Element damageSource)
     {
         if (!IsActive)
             return;
