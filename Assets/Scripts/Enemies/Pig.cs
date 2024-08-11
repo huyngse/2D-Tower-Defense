@@ -12,7 +12,7 @@ public class Pig : Monster
             isAngry = true;
         }
         if (isAngry) {
-            Speed = baseSpeed * 2;
+            Speed = BaseSpeed * 2;
         }
         animator.SetBool("IsAngry", isAngry);
         base.TakeDamage(damage, damageSource);

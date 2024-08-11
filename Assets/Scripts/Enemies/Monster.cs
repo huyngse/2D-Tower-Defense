@@ -30,9 +30,22 @@ public class Monster : MonoBehaviour
         get { return health.CurrentValue > 0; }
     }
 
-    public Element ElementType { get => elementType; }
-    public float Speed { get => speed; protected set => speed = value; }
-    protected float baseSpeed;
+    public Element ElementType
+    {
+        get => elementType;
+    }
+    public float Speed
+    {
+        get => speed;
+        set => speed = value;
+    }
+    public float BaseSpeed
+    {
+        get => baseSpeed;
+        protected set => baseSpeed = value;
+    }
+
+    private float baseSpeed;
 
     private bool isReachedPortal = false;
 
@@ -47,7 +60,7 @@ public class Monster : MonoBehaviour
     void Start()
     {
         destination = transform.position;
-        baseSpeed = speed;
+        BaseSpeed = speed;
     }
 
     void Update()
@@ -75,7 +88,7 @@ public class Monster : MonoBehaviour
                 GridPosition = path.Pop().GridPosition;
                 destination = path.Peek().WorldPosition;
                 animator.SetBool("isMoving", true);
-                spriteRenderer.sortingOrder = GridPosition.Y;
+                spriteRenderer.sortingOrder = GridPosition.Y + 1;
                 Animate();
             }
             else
@@ -125,7 +138,7 @@ public class Monster : MonoBehaviour
             }
             GridPosition = path.Peek().GridPosition;
             destination = path.Peek().WorldPosition;
-            spriteRenderer.sortingOrder = GridPosition.Y;
+            spriteRenderer.sortingOrder = GridPosition.Y + 1;
             Animate();
         }
     }
@@ -219,16 +232,36 @@ public class Monster : MonoBehaviour
     private void HandleDebuffs()
     {
         bool isPoisoned = false;
+        bool isSlowed = false;
         foreach (Debuff debuff in debuffs.ToList())
         {
-            if (debuff.GetType() == typeof(PoisonDebuff)) { 
+            if (debuff.GetType() == typeof(PoisonDebuff))
+            {
                 isPoisoned = true;
+            }
+            else if (debuff.GetType() == typeof(IceDebuff))
+            {
+                isSlowed = true;
             }
             debuff.Update();
         }
-        if (isPoisoned) {
-            spriteRenderer.color = Color.green;
-        } else {
+        if (isPoisoned)
+        {
+            if (isPoisoned && isSlowed)
+            {
+                spriteRenderer.color = new Color32(180, 51, 255, 255);
+            }
+            else
+            {
+                spriteRenderer.color = new Color32(84, 255, 104, 255);
+            }
+        }
+        else if (isSlowed)
+        {
+            spriteRenderer.color = new Color32(84, 244, 255, 255);
+        }
+        else
+        {
             spriteRenderer.color = Color.white;
         }
     }

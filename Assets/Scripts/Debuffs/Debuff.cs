@@ -6,7 +6,7 @@ public abstract class Debuff
 {
     protected Monster target;
     protected float duration;
-    private float durationTimer;
+    protected float durationTimer;
 
     public Debuff(Monster target, float duration = 3)
     {

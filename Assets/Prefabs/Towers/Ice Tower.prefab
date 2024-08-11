@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2865338872731010086}
   - component: {fileID: 7443835370775113596}
   - component: {fileID: 8559985273313687523}
-  - component: {fileID: 4001203681678890847}
+  - component: {fileID: 3334034788247127820}
   m_Layer: 0
   m_Name: Ice Tower
   m_TagString: Untagged
@@ -108,7 +108,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4001203681678890847
+--- !u!114 &3334034788247127820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,10 +121,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerRange: {fileID: 6967268936951768745}
-  attackCD: 1.5
-  damage: 2
+  attackCD: 1
+  damage: 3
   bulletSpeed: 3
-  price: 5
+  price: 10
+  debuffDuration: 3
+  proc: 0.5
 --- !u!1001 &5712994537146875861
 PrefabInstance:
   m_ObjectHideFlags: 0
