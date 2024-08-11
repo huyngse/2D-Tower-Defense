@@ -122,11 +122,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerRange: {fileID: 5999281477298694799}
   attackCD: 0.5
-  damage: 1
+  damage: 2
   bulletSpeed: 3
   price: 8
   debuffDuration: 5
-  proc: 0.8
+  proc: 70
 --- !u!1001 &8987406789398328307
 PrefabInstance:
   m_ObjectHideFlags: 0

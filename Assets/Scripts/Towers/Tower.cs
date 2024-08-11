@@ -35,7 +35,7 @@ public abstract class Tower : MonoBehaviour
     private float debuffDuration = 3;
 
     [SerializeField]
-    private float proc = 0.8f;
+    private float proc = 50;
     private Monster target;
     private bool canAttack = true;
     private float attackTimer = 0;

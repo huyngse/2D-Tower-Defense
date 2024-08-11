@@ -147,7 +147,7 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator SpawnWave()
     {
-        if (wave % 3 == 0)
+        if (wave % 2 == 0)
         {
             enemyHealth += 5;
         }

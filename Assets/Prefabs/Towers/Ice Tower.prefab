@@ -126,7 +126,7 @@ MonoBehaviour:
   bulletSpeed: 3
   price: 10
   debuffDuration: 3
-  proc: 0.5
+  proc: 20
 --- !u!1001 &5712994537146875861
 PrefabInstance:
   m_ObjectHideFlags: 0

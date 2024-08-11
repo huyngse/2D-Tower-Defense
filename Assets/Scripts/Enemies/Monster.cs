@@ -44,6 +44,11 @@ public class Monster : MonoBehaviour
         get => baseSpeed;
         protected set => baseSpeed = value;
     }
+    public List<Debuff> Debuffs
+    {
+        get => debuffs;
+        private set => debuffs = value;
+    }
 
     private float baseSpeed;
 
@@ -180,6 +185,7 @@ public class Monster : MonoBehaviour
         IsActive = false;
         speed = baseSpeed;
         destination = transform.position;
+        animator.speed = 1;
         debuffs.Clear();
         GameManager.Instance.Pool.ReleaseObject(gameObject);
         GameManager.Instance.RemoveMonster(this);
@@ -232,6 +238,11 @@ public class Monster : MonoBehaviour
     public void SetAnimationSpeed(float n)
     {
         animator.speed = n;
+    }
+
+    public void SetColor(Color32 color)
+    {
+        spriteRenderer.color = color;
     }
 
     private void HandleDebuffs()

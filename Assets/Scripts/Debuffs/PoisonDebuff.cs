@@ -12,12 +12,12 @@ public class PoisonDebuff : Debuff
 
     public override void Update()
     {
+        base.Update();
         timer += Time.deltaTime;
         if (timer > cd)
         {
             timer = 0;
             target.TakeDamage(1, Element.POISON);
         }
-        base.Update();
     }
 }

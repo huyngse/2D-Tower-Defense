@@ -10,6 +10,8 @@ public class IceDebuff : Debuff
         base.Update();
         if (durationTimer < duration)
         {
+            if (target.Debuffs.Exists(x => x.GetType() == typeof(StormDebuff)))
+                return;
             target.Speed = target.BaseSpeed / 2;
             target.SetAnimationSpeed(0.5f);
         }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7732884899925736343}
   - component: {fileID: 2389608492257521599}
   m_Layer: 0
-  m_Name: Acid Tower
+  m_Name: Poinson Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +125,8 @@ MonoBehaviour:
   damage: 2
   bulletSpeed: 3
   price: 5
+  debuffDuration: 3
+  proc: 50
 --- !u!1001 &3237433084347102984
 PrefabInstance:
   m_ObjectHideFlags: 0

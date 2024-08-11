@@ -20,6 +20,7 @@ public abstract class Debuff
         if (durationTimer > duration)
         {
             target.RemoveDebuff(this);
+            target.SetColor(Color.white);
         }
     }
 }

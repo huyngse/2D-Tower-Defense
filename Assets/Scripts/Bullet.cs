@@ -91,7 +91,7 @@ public class Bullet : MonoBehaviour
         if (target.ElementType == tower.ElementType) {
             return;
         }
-        float randomValue = UnityEngine.Random.Range(0, 100) / 100f;
+        float randomValue = UnityEngine.Random.Range(0, 100);
         if (randomValue < tower.Proc) {
             target.AddDebuff(tower.GetDebuff(target));
         }
