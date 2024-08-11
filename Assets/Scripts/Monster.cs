@@ -29,6 +29,9 @@ public class Monster : MonoBehaviour
     {
         get { return health.CurrentValue > 0; }
     }
+
+    public Element ElementType { get => elementType; }
+
     private bool isReachedPortal = false;
 
     void Awake()

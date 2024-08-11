@@ -83,12 +83,14 @@ public class Bullet : MonoBehaviour
             transform.localScale = Vector3.one * 2;
             animator.SetTrigger("Hit");
             ApplyDebuff();
-            // Release();
         }
     }
 
     private void ApplyDebuff()
     {
+        if (target.ElementType == tower.ElementType) {
+            return;
+        }
         float randomValue = UnityEngine.Random.Range(0, 100) / 100f;
         if (randomValue < tower.Proc) {
             target.AddDebuff(tower.GetDebuff(target));
