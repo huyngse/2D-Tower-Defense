@@ -11,6 +11,6 @@ public class FireTower : Tower
 
     public override Debuff GetDebuff(Monster target)
     {
-        return new FireDebuff(target);
+        return new FireDebuff(target, DebuffDuration);
     }
 }

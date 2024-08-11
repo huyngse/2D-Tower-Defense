@@ -30,6 +30,12 @@ public abstract class Tower : MonoBehaviour
 
     [SerializeField]
     private int price = 5;
+
+    [SerializeField]
+    private float debuffDuration = 3;
+
+    [SerializeField]
+    private float proc = 0.8f;
     private Monster target;
     private bool canAttack = true;
     private float attackTimer = 0;
@@ -83,6 +89,14 @@ public abstract class Tower : MonoBehaviour
     public Monster Target
     {
         get => target;
+    }
+    public float DebuffDuration
+    {
+        get => debuffDuration;
+    }
+    public float Proc
+    {
+        get => proc;
     }
 
     void Awake()

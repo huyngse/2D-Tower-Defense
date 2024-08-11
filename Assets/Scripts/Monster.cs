@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Monster : MonoBehaviour
@@ -203,9 +204,25 @@ public class Monster : MonoBehaviour
         debuffs.Add(debuff);
     }
 
-    private void HandleDebuffs() {
-        foreach (Debuff debuff in debuffs) {
+    public void RemoveDebuff(Debuff debuff)
+    {
+        debuffs.Remove(debuff);
+    }
+
+    private void HandleDebuffs()
+    {
+        bool isPoisoned = false;
+        foreach (Debuff debuff in debuffs.ToList())
+        {
+            if (debuff.GetType() == typeof(PoisonDebuff)) { 
+                isPoisoned = true;
+            }
             debuff.Update();
+        }
+        if (isPoisoned) {
+            spriteRenderer.color = Color.green;
+        } else {
+            spriteRenderer.color = Color.white;
         }
     }
 

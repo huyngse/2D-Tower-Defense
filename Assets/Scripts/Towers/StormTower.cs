@@ -11,6 +11,6 @@ public class StormTower : Tower
 
     public override Debuff GetDebuff(Monster target)
     {
-        return new StormDebuff(target);
+        return new StormDebuff(target, DebuffDuration);
     }
 }

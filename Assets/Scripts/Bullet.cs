@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -86,7 +87,11 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void ApplyDebuff() {
-        target.AddDebuff(tower.GetDebuff(target));
-     }
+    private void ApplyDebuff()
+    {
+        float randomValue = UnityEngine.Random.Range(0, 100) / 100f;
+        if (randomValue < tower.Proc) {
+            target.AddDebuff(tower.GetDebuff(target));
+        }
+    }
 }

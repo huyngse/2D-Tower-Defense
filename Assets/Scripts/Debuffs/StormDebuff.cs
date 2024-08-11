@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class StormDebuff : Debuff
 {
-    public StormDebuff(Monster target) : base(target)
-    {
-    }
+    public StormDebuff(Monster target, float duration)
+        : base(target, duration) { }
 }

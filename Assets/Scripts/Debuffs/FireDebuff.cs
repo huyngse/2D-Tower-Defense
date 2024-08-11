@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FireDebuff : Debuff
 {
-    public FireDebuff(Monster target) : base(target)
-    {
-    }
+    public FireDebuff(Monster target, float duration)
+        : base(target, duration) { }
 }

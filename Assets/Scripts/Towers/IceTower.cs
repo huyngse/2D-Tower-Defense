@@ -11,6 +11,6 @@ public class IceTower : Tower
 
     public override Debuff GetDebuff(Monster target)
     {
-        return new IceDebuff(target);
+        return new IceDebuff(target, DebuffDuration);
     }
 }

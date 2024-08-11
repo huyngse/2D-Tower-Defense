@@ -11,6 +11,6 @@ public class PoisonTower : Tower
 
     public override Debuff GetDebuff(Monster target)
     {
-        return new PoisonDebuff(target);
+        return new PoisonDebuff(target, DebuffDuration);
     }
 }
