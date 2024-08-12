@@ -15,6 +15,14 @@ public class FireTower : Tower
     void Start()
     {
         ElementType = Element.FIRE;
+        Upgrades = new TowerUpgrade[]
+        {
+            new(18, 1, 5, -0.2f, 1, 0),
+            new(22, 1, 5, -0.2f, 1, 0),
+            new(26, 1, 5, -0.2f, 1, 1),
+            new(30, 1, 5, -0.2f, 1, 0),
+            new(35, 0, 5, -0.2f, 1, 1),
+        };
     }
 
     public override Debuff GetDebuff(Monster target)

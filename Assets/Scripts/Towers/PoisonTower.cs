@@ -16,6 +16,14 @@ public class PoisonTower : Tower
     void Start()
     {
         ElementType = Element.POISON;
+        Upgrades = new TowerUpgrade[]
+        {
+            new(12, 1, 5, -0.1f, 0, 0),
+            new(18, 0, 5, -0.1f, 0, 1),
+            new(20, 1, 5, -0.1f, 0, 1),
+            new(23, 1, 5, -0.1f, 1, 1),
+            new(27, 1, 0, -0.1f, 1, 1),
+        };
     }
 
     public override Debuff GetDebuff(Monster target)

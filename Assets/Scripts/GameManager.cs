@@ -50,7 +50,7 @@ public class GameManager : Singleton<GameManager>
     private bool isGameOver = false;
     private List<Monster> activeMonsters = new();
     private Tower selectedTower;
-    private int enemyHealth = 12;
+    private int enemyHealth = 6;
     public bool IsWaveActive
     {
         get { return activeMonsters.Count > 0; }
@@ -129,7 +129,7 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleCancel()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
         {
             ClickedButton = null;
             Hover.Instance.Deativate();
@@ -210,9 +210,9 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator SpawnWave()
     {
-        if (wave % 2 == 0)
+        if (wave % 4 == 0)
         {
-            enemyHealth += 5 + 5 * (wave / 10);
+            enemyHealth += 3 + 5 * (wave / 10);
         }
         LevelManager.Instance.GeneratePath();
         for (int i = 0; i < wave; i++)

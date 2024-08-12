@@ -36,21 +36,13 @@ public abstract class Tower : MonoBehaviour
 
     [SerializeField]
     private float proc = 50;
+    public TowerUpgrade[] Upgrades { get; protected set; }
     private Monster target;
     private bool canAttack = true;
     private float attackTimer = 0;
     private readonly List<Monster> monsters = new();
     private Animator animator;
     public Element ElementType { get; protected set; }
-    public int Price
-    {
-        get => price;
-        set => price = value;
-    }
-    public int SellPrice
-    {
-        get => (int)Mathf.Floor(price / 2f);
-    }
     public string BulletType
     {
         get
@@ -76,6 +68,15 @@ public abstract class Tower : MonoBehaviour
             }
             return "";
         }
+    }
+    public int Price
+    {
+        get => price;
+        set => price = value;
+    }
+    public int SellPrice
+    {
+        get => (int)Mathf.Floor(price / 2f);
     }
 
     public float BulletSpeed
