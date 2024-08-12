@@ -8,6 +8,9 @@ public class TileScript : MonoBehaviour
     [Header("Attributes")]
     [SerializeField]
     private bool isWalkable = true;
+
+    [SerializeField]
+    private bool isBuildable = true;
     public Point GridPosition { get; private set; }
     private float tileSize;
     public bool IsWalkable
@@ -72,7 +75,7 @@ public class TileScript : MonoBehaviour
         else
         {
             //BUYING TOWER
-            if (IsEmpty)
+            if (IsEmpty && isBuildable)
             {
                 ColorTile(availableColor);
                 if (Input.GetMouseButtonDown(0))
