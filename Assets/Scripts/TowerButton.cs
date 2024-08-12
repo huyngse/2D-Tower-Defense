@@ -42,15 +42,20 @@ public class TowerButton : MonoBehaviour
     {
         price = tower.Price;
         priceText.text = price + "$";
+        GameManager.Instance.CurrencyChanged += CheckCurrency;
     }
 
-    void Update()
+    private void CheckCurrency()
     {
         if (GameManager.Instance.Currency < price)
         {
             button.interactable = false;
-        } else {
+            priceText.color = Color.red;
+        }
+        else
+        {
             button.interactable = true;
+            priceText.color = Color.black;
         }
     }
 }
