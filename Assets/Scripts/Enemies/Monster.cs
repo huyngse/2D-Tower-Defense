@@ -210,7 +210,7 @@ public class Monster : MonoBehaviour
 
     public void Death()
     {
-        GameManager.Instance.Currency += 2;
+        GameManager.Instance.Currency += 5;
         GameObject particle = GameManager.Instance.Pool.GetObject("Death Particle");
         particle.transform.position = transform.position;
         Release();

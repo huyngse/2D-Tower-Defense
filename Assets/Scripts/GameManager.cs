@@ -20,6 +20,9 @@ public class GameManager : Singleton<GameManager>
     private TMP_Text lifeText;
 
     [SerializeField]
+    private TMP_Text tooltipText;
+
+    [SerializeField]
     private Button nextWaveButton;
 
     [SerializeField]
@@ -27,6 +30,9 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField]
     private GameObject upgradePannel;
+
+    [SerializeField]
+    private GameObject statsPannel;
 
     [SerializeField]
     private TMP_Text sellText;
@@ -130,7 +136,8 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void OnCurrencyChanged() {
+    public void OnCurrencyChanged()
+    {
         CurrencyChanged?.Invoke();
     }
 
@@ -191,11 +198,21 @@ public class GameManager : Singleton<GameManager>
         upgradePannel.SetActive(false);
     }
 
+    public void SetTooltipText(string txt)
+    {
+        tooltipText.text = txt;
+    }
+
+    public void ShowStats()
+    {
+        statsPannel.SetActive(!statsPannel.activeSelf);
+    }
+
     private IEnumerator SpawnWave()
     {
         if (wave % 2 == 0)
         {
-            enemyHealth += 5;
+            enemyHealth += 5 + 5 * (wave / 10);
         }
         LevelManager.Instance.GeneratePath();
         for (int i = 0; i < wave; i++)

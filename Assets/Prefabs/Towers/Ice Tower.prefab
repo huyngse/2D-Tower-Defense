@@ -124,9 +124,9 @@ MonoBehaviour:
   attackCD: 1.5
   damage: 4
   bulletSpeed: 3
-  price: 10
+  price: 50
   debuffDuration: 3
-  proc: 100
+  proc: 30
   slowingFactor: 1.5
 --- !u!1001 &5712994537146875861
 PrefabInstance:

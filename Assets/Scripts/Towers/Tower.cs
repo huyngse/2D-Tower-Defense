@@ -98,6 +98,10 @@ public abstract class Tower : MonoBehaviour
     {
         get => proc;
     }
+    public float AttackCD
+    {
+        get => attackCD;
+    }
 
     void Awake()
     {
