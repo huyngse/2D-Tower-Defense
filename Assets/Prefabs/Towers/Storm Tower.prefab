@@ -127,6 +127,7 @@ MonoBehaviour:
   price: 20
   debuffDuration: 0.5
   proc: 3
+  range: 1.5
 --- !u!1001 &8618850325415276895
 PrefabInstance:
   m_ObjectHideFlags: 0

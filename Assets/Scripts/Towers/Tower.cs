@@ -36,12 +36,16 @@ public abstract class Tower : MonoBehaviour
 
     [SerializeField]
     private float proc = 50;
+
+    [SerializeField]
+    private float range = 1;
     public TowerUpgrade[] Upgrades { get; protected set; }
 
     private Monster target;
     private bool canAttack = true;
     private float attackTimer = 0;
     private int level = 1;
+    private GameObject rangeCircle;
     private readonly List<Monster> monsters = new();
     private Animator animator;
     public Element ElementType { get; protected set; }
@@ -126,9 +130,17 @@ public abstract class Tower : MonoBehaviour
         }
     }
 
+    public float Range
+    {
+        get => range;
+        private set => range = value;
+    }
+
     void Awake()
     {
         animator = GetComponent<Animator>();
+        rangeCircle = transform.GetChild(0).gameObject;
+        rangeCircle.transform.localScale = 5.6f * range * Vector3.one;
     }
 
     void Update()

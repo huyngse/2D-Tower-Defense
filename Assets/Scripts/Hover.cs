@@ -33,6 +33,10 @@ public class Hover : Singleton<Hover>
         spriteRenderer.enabled = true;
         spriteRenderer.sprite = sprite;
         rangeRenderer.SetActive(true);
+        rangeRenderer.transform.localScale =
+            5.6f
+            * GameManager.Instance.ClickedButton.TowerPrefab.GetComponent<Tower>().Range
+            * Vector3.one;
     }
 
     public void Deativate()

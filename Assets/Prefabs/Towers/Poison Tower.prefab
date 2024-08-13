@@ -127,6 +127,7 @@ MonoBehaviour:
   price: 15
   debuffDuration: 2
   proc: 30
+  range: 1
   tickDamage: 1
 --- !u!1001 &3237433084347102984
 PrefabInstance:
