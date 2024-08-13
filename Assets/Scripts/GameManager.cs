@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
+public delegate void CurrencyChangeHandler();
 
 public class GameManager : Singleton<GameManager>
 {
@@ -19,6 +20,9 @@ public class GameManager : Singleton<GameManager>
     private TMP_Text lifeText;
 
     [SerializeField]
+    private TMP_Text tooltipText;
+
+    [SerializeField]
     private Button nextWaveButton;
 
     [SerializeField]
@@ -28,7 +32,13 @@ public class GameManager : Singleton<GameManager>
     private GameObject upgradePannel;
 
     [SerializeField]
+    private GameObject statsPannel;
+
+    [SerializeField]
     private TMP_Text sellText;
+
+    [SerializeField]
+    private BuyButton upgradeButton;
 
     [Header("Attributes")]
     [SerializeField]
@@ -43,13 +53,13 @@ public class GameManager : Singleton<GameManager>
     private bool isGameOver = false;
     private List<Monster> activeMonsters = new();
     private Tower selectedTower;
-    private int enemyHealth = 12;
     public bool IsWaveActive
     {
         get { return activeMonsters.Count > 0; }
     }
     public TowerButton ClickedButton { get; private set; }
     public ObjectPool Pool { get; private set; }
+    public event CurrencyChangeHandler CurrencyChanged;
     public int Currency
     {
         get => currency;
@@ -57,6 +67,7 @@ public class GameManager : Singleton<GameManager>
         {
             currency = value;
             currencyText.text = value.ToString() + "<color=orange>$</color>";
+            OnCurrencyChanged();
         }
     }
 
@@ -75,6 +86,11 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public int Wave
+    {
+        get => wave;
+    }
+
     void Awake()
     {
         Pool = GetComponent<ObjectPool>();
@@ -91,31 +107,12 @@ public class GameManager : Singleton<GameManager>
         HandleCancel();
     }
 
-    public void PickTower(TowerButton towerButton)
-    {
-        if (IsWaveActive)
-            return;
-        if (Currency >= towerButton.Price)
-        {
-            ClickedButton = towerButton;
-            Hover.Instance.Activate(ClickedButton.Sprite);
-        }
-    }
-
     public void BuyTower()
     {
         Currency -= ClickedButton.Price;
         ClickedButton = null;
         Hover.Instance.Deativate();
         DeselectTower();
-    }
-
-    public void SelectTower(Tower tower)
-    {
-        selectedTower = tower;
-        selectedTower.Select();
-        upgradePannel.SetActive(true);
-        sellText.text = selectedTower.SellPrice + "$";
     }
 
     public void DeselectTower()
@@ -128,31 +125,107 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public void GameOver()
+    {
+        if (!isGameOver)
+        {
+            isGameOver = true;
+            gameOverMenu.SetActive(true);
+        }
+    }
+
     private void HandleCancel()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
         {
             ClickedButton = null;
             Hover.Instance.Deativate();
         }
     }
 
-    public void StartWave()
+    public void OnCurrencyChanged()
     {
-        wave++;
-        waveText.text = $"Wave: <color=green>{wave}</color>";
-        StartCoroutine(SpawnWave());
-        nextWaveButton.gameObject.SetActive(false);
+        CurrencyChanged?.Invoke();
+    }
+
+    public void PickTower(TowerButton towerButton)
+    {
+        // if (IsWaveActive)
+        //     return;
+        if (Currency >= towerButton.Price)
+        {
+            ClickedButton = towerButton;
+            Hover.Instance.Activate(ClickedButton.Sprite);
+        }
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    public void RemoveMonster(Monster monster)
+    {
+        activeMonsters.Remove(monster);
+        if (isGameOver && activeMonsters.Count == 0)
+        {
+            LevelManager.Instance.GreenPortal.ClosePortal();
+            LevelManager.Instance.PurplePortal.ClosePortal();
+        }
+        if (!IsWaveActive && !isGameOver)
+        {
+            nextWaveButton.gameObject.SetActive(true);
+        }
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        AStar.ClearNode();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void SelectTower(Tower tower)
+    {
+        selectedTower = tower;
+        selectedTower.Select();
+        upgradePannel.SetActive(true);
+        sellText.text = selectedTower.SellPrice + "$";
+        UpdateUpgradeTooltip();
+    }
+
+    public void SellTower()
+    {
+        Currency += selectedTower.SellPrice;
+        TileScript tile = selectedTower.GetComponentInParent<TileScript>();
+        tile.IsEmpty = true;
+        GameObject particle = Pool.GetObject("Death Particle");
+        particle.transform.position = tile.WorldPosition;
+        Destroy(selectedTower.gameObject);
+        selectedTower = null;
+        upgradePannel.SetActive(false);
+    }
+
+    public void SetTooltipText(string txt)
+    {
+        tooltipText.text = txt;
+    }
+
+    public void ShowStats()
+    {
+        statsPannel.SetActive(!statsPannel.activeSelf);
+    }
+
+    public void ShowSelectedTowerStats()
+    {
+        statsPannel.SetActive(!statsPannel.activeSelf);
+        UpdateUpgradeTooltip();
     }
 
     private IEnumerator SpawnWave()
     {
-        if (wave % 2 == 0)
-        {
-            enemyHealth += 5;
-        }
         LevelManager.Instance.GeneratePath();
-        for (int i = 0; i < wave; i++)
+        for (int i = 0; i < Mathf.Clamp(wave, 0, 15); i++)
         {
             int monsterIndex = Random.Range(0, 4);
             string type = string.Empty;
@@ -180,56 +253,49 @@ public class GameManager : Singleton<GameManager>
                 }
             }
             Monster monster = Pool.GetObject(type).GetComponent<Monster>();
-            monster.Spawn(enemyHealth);
+            monster.Spawn();
             activeMonsters.Add(monster);
             yield return new WaitForSeconds(spawnCD);
         }
     }
 
-    public void RemoveMonster(Monster monster)
+    public void StartWave()
     {
-        activeMonsters.Remove(monster);
-        if (isGameOver && activeMonsters.Count == 0)
+        wave++;
+        waveText.text = $"Wave: <color=green>{wave}</color>";
+        StartCoroutine(SpawnWave());
+        nextWaveButton.gameObject.SetActive(false);
+    }
+
+    public void UpdateUpgradeTooltip()
+    {
+        if (selectedTower == null)
+            return;
+        SetTooltipText(selectedTower.GetStats());
+        if (selectedTower.NextUpgrade != null)
         {
-            LevelManager.Instance.GreenPortal.ClosePortal();
-            LevelManager.Instance.PurplePortal.ClosePortal();
+            upgradeButton.Text = selectedTower.NextUpgrade.Price + "$";
         }
-        if (!IsWaveActive && !isGameOver)
+        else
         {
-            nextWaveButton.gameObject.SetActive(true);
+            upgradeButton.Text = "MAX";
         }
     }
 
-    public void GameOver()
+    public void UpgradeTower()
     {
-        if (!isGameOver)
+        if (
+            selectedTower == null
+            || selectedTower.NextUpgrade == null
+            || currency < selectedTower.NextUpgrade.Price
+        )
+            return;
+        selectedTower.Upgrade();
+        if (selectedTower.NextUpgrade != null)
         {
-            isGameOver = true;
-            gameOverMenu.SetActive(true);
+            upgradeButton.Price = selectedTower.NextUpgrade.Price;
         }
-    }
-
-    public void Restart()
-    {
-        Time.timeScale = 1;
-        AStar.ClearNode();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
-    }
-
-    public void SellTower()
-    {
-        Currency += selectedTower.SellPrice;
-        TileScript tile = selectedTower.GetComponentInParent<TileScript>();
-        tile.IsEmpty = true;
-        GameObject particle = Pool.GetObject("Death Particle");
-        particle.transform.position = tile.WorldPosition;
-        Destroy(selectedTower.gameObject);
-        selectedTower = null;
-        upgradePannel.SetActive(false);
+        sellText.text = selectedTower.SellPrice + "$";
+        UpdateUpgradeTooltip();
     }
 }

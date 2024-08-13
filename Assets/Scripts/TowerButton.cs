@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +17,9 @@ public class TowerButton : MonoBehaviour
 
     [SerializeField]
     private TMP_Text priceText;
+
+    [SerializeField]
+    private Image towerImage;
     private int price;
     private Tower tower;
     private Button button;
@@ -42,15 +47,87 @@ public class TowerButton : MonoBehaviour
     {
         price = tower.Price;
         priceText.text = price + "$";
+        towerImage.sprite = sprite;
+        GameManager.Instance.CurrencyChanged += CheckCurrency;
+        CheckCurrency();
     }
 
-    void Update()
+    private void CheckCurrency()
     {
         if (GameManager.Instance.Currency < price)
         {
             button.interactable = false;
-        } else {
-            button.interactable = true;
+            priceText.color = Color.red;
         }
+        else
+        {
+            button.interactable = true;
+            priceText.color = Color.black;
+        }
+    }
+
+    public void ShowInfo(string towerType)
+    {
+        string tooltip = "";
+        switch (towerType)
+        {
+            case "Ice Tower":
+            {
+                IceTower tower = towerPrefab.GetComponent<IceTower>();
+                tooltip += $"<size=24><color=#283882><b>{towerType}</b></color></size>\n";
+                tooltip += "<size=16>";
+                tooltip += $"Damage: {tower.Damage}\n";
+                tooltip += $"Attack CD: {tower.AttackCD}s\n";
+                tooltip += $"Proc: {tower.Proc}%\n";
+                tooltip += $"Slow duration: {tower.DebuffDuration}s\n";
+                tooltip += $"Slowness: {tower.SlowingFactor * 100}%\n";
+                tooltip += "<i>Has a chance to <color=#283882>slow down</color> enemy</i>.\n";
+                tooltip += "</size>";
+                break;
+            }
+            case "Fire Tower":
+            {
+                FireTower tower = towerPrefab.GetComponent<FireTower>();
+                tooltip += $"<size=24><color=#822828><b>{towerType}</b></color></size>\n";
+                tooltip += "<size=16>";
+                tooltip += $"Damage: {tower.Damage}\n";
+                tooltip += $"Attack CD: {tower.AttackCD}s\n";
+                tooltip += $"Proc: {tower.Proc}%\n";
+                tooltip += $"Fire duration: {tower.DebuffDuration}s\n";
+                tooltip += $"Fire damage: {tower.TickDamage}\n";
+                tooltip += "<i>Can leave <color=#822828>small fire</color> behind enemy</i>.\n";
+                tooltip += "</size>";
+                break;
+            }
+            case "Poison Tower":
+            {
+                PoisonTower tower = towerPrefab.GetComponent<PoisonTower>();
+                tooltip += $"<size=24><color=#288248><b>{towerType}</b></color></size>\n";
+                tooltip += "<size=16>";
+                tooltip += $"Damage: {tower.Damage}\n";
+                tooltip += $"Attack CD: {tower.AttackCD}s\n";
+                tooltip += $"Proc: {tower.Proc}%\n";
+                tooltip += $"Poison duration: {tower.DebuffDuration}s\n";
+                tooltip += $"Poison damage: {tower.TickDamage}\n";
+                tooltip += "<i>Can to <color=#288248>poison</color> enemy</i>.\n";
+                tooltip += "</size>";
+                break;
+            }
+            case "Storm Tower":
+            {
+                StormTower tower = towerPrefab.GetComponent<StormTower>();
+                tooltip += $"<size=24><color=#a66d3c><b>{towerType}</b></color></size>\n";
+                tooltip += "<size=16>";
+                tooltip += $"Damage: {tower.Damage}\n";
+                tooltip += $"Attack CD: {tower.AttackCD}s\n";
+                tooltip += $"Proc: {tower.Proc}%\n";
+                tooltip += $"Stun duration: {tower.DebuffDuration}s\n";
+                tooltip += "<i>May <color=#a66d3c>stun</color> enemy for short duration</i>.\n";
+                tooltip += "</size>";
+                break;
+            }
+        }
+        GameManager.Instance.SetTooltipText(tooltip);
+        GameManager.Instance.ShowStats();
     }
 }
