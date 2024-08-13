@@ -29,6 +29,9 @@ public class GameManager : Singleton<GameManager>
     private GameObject gameOverMenu;
 
     [SerializeField]
+    private GameObject pauseMenu;
+
+    [SerializeField]
     private GameObject upgradePannel;
 
     [SerializeField]
@@ -104,7 +107,7 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        HandleCancel();
+        HandleInputs();
     }
 
     public void BuyTower()
@@ -134,9 +137,19 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    private void HandleCancel()
+    private void HandleInputs()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (ClickedButton != null)
+            {
+                ClickedButton = null;
+                Hover.Instance.Deativate();
+            } else {
+                ShowPauseMenu();
+            }
+        }
+        if (Input.GetMouseButtonDown(1))
         {
             ClickedButton = null;
             Hover.Instance.Deativate();
@@ -209,6 +222,18 @@ public class GameManager : Singleton<GameManager>
     public void SetTooltipText(string txt)
     {
         tooltipText.text = txt;
+    }
+
+    public void ShowPauseMenu()
+    {
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
+        bool isPaused = pauseMenu.activeSelf;
+        if (isPaused) {
+            Time.timeScale = 0;
+            DeselectTower();
+        } else {
+            Time.timeScale = 1;
+        }
     }
 
     public void ShowStats()
