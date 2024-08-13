@@ -7,6 +7,9 @@ public class Monster : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField]
+    private int baseHP = 5;
+
+    [SerializeField]
     private float speed = 1;
 
     [SerializeField]
@@ -103,10 +106,11 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public void Spawn(int health)
+    public void Spawn()
     {
-        this.health.MaxValue = health;
-        this.health.CurrentValue = health;
+        health.MaxValue =
+            baseHP + GameManager.Instance.Wave * Mathf.Pow(GameManager.Instance.Wave, 0.6f);
+        health.CurrentValue = health.MaxValue;
         transform.position = LevelManager.Instance.GreenPortal.transform.position;
         // transform.Translate(Vector3.down * 0.9f);
         StartCoroutine(Scale(new Vector3(0.1f, 0.1f), new Vector3(1, 1)));

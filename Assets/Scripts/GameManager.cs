@@ -53,7 +53,6 @@ public class GameManager : Singleton<GameManager>
     private bool isGameOver = false;
     private List<Monster> activeMonsters = new();
     private Tower selectedTower;
-    private int enemyHealth = 6;
     public bool IsWaveActive
     {
         get { return activeMonsters.Count > 0; }
@@ -85,6 +84,11 @@ public class GameManager : Singleton<GameManager>
             }
             lifeText.text = $"{lifes}";
         }
+    }
+
+    public int Wave
+    {
+        get => wave;
     }
 
     void Awake()
@@ -220,12 +224,8 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator SpawnWave()
     {
-        if (wave % 4 == 0)
-        {
-            enemyHealth += 3 + 5 * (wave / 10);
-        }
         LevelManager.Instance.GeneratePath();
-        for (int i = 0; i < wave; i++)
+        for (int i = 0; i < Mathf.Clamp(wave, 0, 15); i++)
         {
             int monsterIndex = Random.Range(0, 4);
             string type = string.Empty;
@@ -253,7 +253,7 @@ public class GameManager : Singleton<GameManager>
                 }
             }
             Monster monster = Pool.GetObject(type).GetComponent<Monster>();
-            monster.Spawn(enemyHealth);
+            monster.Spawn();
             activeMonsters.Add(monster);
             yield return new WaitForSeconds(spawnCD);
         }
@@ -291,7 +291,10 @@ public class GameManager : Singleton<GameManager>
         )
             return;
         selectedTower.Upgrade();
-        upgradeButton.Price = selectedTower.NextUpgrade.Price;
+        if (selectedTower.NextUpgrade != null)
+        {
+            upgradeButton.Price = selectedTower.NextUpgrade.Price;
+        }
         sellText.text = selectedTower.SellPrice + "$";
         UpdateUpgradeTooltip();
     }
