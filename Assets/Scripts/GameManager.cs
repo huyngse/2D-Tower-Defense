@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager>
     private TMP_Text sellText;
 
     [SerializeField]
-    private TMP_Text upgradeText;
+    private BuyButton upgradeButton;
 
     [Header("Attributes")]
     [SerializeField]
@@ -187,6 +187,7 @@ public class GameManager : Singleton<GameManager>
         selectedTower.Select();
         upgradePannel.SetActive(true);
         sellText.text = selectedTower.SellPrice + "$";
+        UpdateUpgradeTooltip();
     }
 
     public void SellTower()
@@ -271,6 +272,27 @@ public class GameManager : Singleton<GameManager>
         if (selectedTower == null)
             return;
         SetTooltipText(selectedTower.GetStats());
-        upgradeText.text = selectedTower.NextUpgrade.Price + "$";
+        if (selectedTower.NextUpgrade != null)
+        {
+            upgradeButton.Text = selectedTower.NextUpgrade.Price + "$";
+        }
+        else
+        {
+            upgradeButton.Text = "MAX";
+        }
+    }
+
+    public void UpgradeTower()
+    {
+        if (
+            selectedTower == null
+            || selectedTower.NextUpgrade == null
+            || currency < selectedTower.NextUpgrade.Price
+        )
+            return;
+        selectedTower.Upgrade();
+        upgradeButton.Price = selectedTower.NextUpgrade.Price;
+        sellText.text = selectedTower.SellPrice + "$";
+        UpdateUpgradeTooltip();
     }
 }

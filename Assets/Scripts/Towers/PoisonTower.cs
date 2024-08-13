@@ -18,11 +18,11 @@ public class PoisonTower : Tower
         ElementType = Element.POISON;
         Upgrades = new TowerUpgrade[]
         {
-            new(12, 1, 5, -0.1f, 1, 0),
-            new(18, 0, 5, -0.1f, 0, 1),
-            new(20, 1, 5, -0.1f, 0, 1),
-            new(23, 1, 5, -0.1f, 1, 1),
-            new(27, 1, 0, -0.1f, 1, 1),
+            new(12, 1, 5, -0.1f, 1, 1),
+            new(18, 3, 5, -0.1f, 0, 3),
+            new(20, 5, 5, -0.1f, 0, 7),
+            new(23, 9, 5, -0.1f, 1, 10),
+            new(27, 13, 0, -0.1f, 1, 12),
         };
     }
 
@@ -49,5 +49,14 @@ public class PoisonTower : Tower
         stats += "<i>Can to <color=#288248>poison</color> enemy</i>.\n";
         stats += "</size>";
         return stats;
+    }
+
+    public override void Upgrade()
+    {
+        if (Level == Upgrades.Length)
+            return;
+        DebuffDuration += NextUpgrade.DebuffDuration;
+        TickDamage += NextUpgrade.TickDamage;
+        base.Upgrade();
     }
 }

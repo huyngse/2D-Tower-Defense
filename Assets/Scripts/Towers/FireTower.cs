@@ -17,11 +17,11 @@ public class FireTower : Tower
         ElementType = Element.FIRE;
         Upgrades = new TowerUpgrade[]
         {
-            new(15, 1, 5, 0.2f, 1, 0),
-            new(22, 1, 5, 0.2f, 1, 0),
-            new(26, 1, 5, 0.2f, 1, 1),
-            new(30, 1, 5, 0.2f, 1, 0),
-            new(35, 0, 5, 0.2f, 1, 1),
+            new(15, 1, 10, -0.2f, 1, 1),
+            new(22, 2, 10, -0.2f, 1, 2),
+            new(26, 4, 10, -0.2f, 1, 4),
+            new(30, 8, 10, -0.2f, 1, 6),
+            new(35, 12, 10, -0.2f, 1, 8),
         };
     }
 
@@ -49,5 +49,14 @@ public class FireTower : Tower
         stats += "</size>";
 
         return stats;
+    }
+
+    public override void Upgrade()
+    {
+        if (Level == Upgrades.Length)
+            return;
+        DebuffDuration += NextUpgrade.DebuffDuration;
+        TickDamage += NextUpgrade.TickDamage;
+        base.Upgrade();
     }
 }

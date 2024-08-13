@@ -11,6 +11,7 @@ public class IceTower : Tower
     public float SlowingFactor
     {
         get => slowingFactor;
+        private set => slowingFactor = value;
     }
 
     void Start()
@@ -19,10 +20,10 @@ public class IceTower : Tower
         Upgrades = new TowerUpgrade[]
         {
             new(20, 1, 5, -0.2f, 1, 0.05f),
-            new(23, 0, 0, -0.2f, 0, 0.05f),
-            new(28, 1, 5, -0.2f, 1, 0.05f),
-            new(31, 1, 0, -0.2f, 1, 0.05f),
-            new(36, 1, 5, -0.2f, 1, 0.05f),
+            new(23, 3, 0, -0.2f, 0, 0.1f),
+            new(28, 6, 5, -0.2f, 1, 0.1f),
+            new(31, 10, 0, -0.2f, 1, 0.1f),
+            new(36, 14, 5, -0.2f, 1, 0.15f),
         };
     }
 
@@ -49,5 +50,14 @@ public class IceTower : Tower
         stats += "<i>Has a chance to <color=#283882>slow down</color> enemy</i>.\n";
         stats += "</size>";
         return stats;
+    }
+
+    public override void Upgrade()
+    {
+        if (Level == Upgrades.Length)
+            return;
+        DebuffDuration += NextUpgrade.DebuffDuration;
+        SlowingFactor += NextUpgrade.SlowingFactor;
+        base.Upgrade();
     }
 }

@@ -9,11 +9,11 @@ public class StormTower : Tower
         ElementType = Element.STORM;
         Upgrades = new TowerUpgrade[]
         {
-            new(18, 1, 5, -0.2f),
-            new(23, 1, 5, -0.2f),
-            new(28, 1, 5, -0.2f),
-            new(31, 1, 5, -0.2f),
-            new(36, 1, 5, -0.2f),
+            new(18, 2, 5, -0.2f),
+            new(23, 5, 5, -0.2f),
+            new(28, 9, 5, -0.2f),
+            new(31, 13, 5, -0.2f),
+            new(36, 20, 5, -0.2f),
         };
     }
 

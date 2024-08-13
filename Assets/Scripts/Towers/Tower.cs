@@ -88,6 +88,7 @@ public abstract class Tower : MonoBehaviour
     public int Damage
     {
         get => damage;
+        protected set => damage = value;
     }
     public Monster Target
     {
@@ -96,14 +97,17 @@ public abstract class Tower : MonoBehaviour
     public float DebuffDuration
     {
         get => debuffDuration;
+        protected set => debuffDuration = value;
     }
     public float Proc
     {
         get => proc;
+        protected set => proc = value;
     }
     public float AttackCD
     {
         get => attackCD;
+        protected set => attackCD = value;
     }
     public int Level
     {
@@ -114,7 +118,7 @@ public abstract class Tower : MonoBehaviour
     {
         get
         {
-            if (Upgrades.Length > level - 1)
+            if (Upgrades.Length > level)
             {
                 return Upgrades[level - 1];
             }
@@ -213,5 +217,17 @@ public abstract class Tower : MonoBehaviour
         }
         stats += "</size>";
         return stats;
+    }
+
+    public virtual void Upgrade()
+    {
+        if (Level == Upgrades.Length)
+            return;
+        GameManager.Instance.Currency -= NextUpgrade.Price;
+        Damage += NextUpgrade.Damage;
+        AttackCD += NextUpgrade.AttackCD;
+        Proc += NextUpgrade.Proc;
+        Price += NextUpgrade.Price;
+        Level++;
     }
 }
