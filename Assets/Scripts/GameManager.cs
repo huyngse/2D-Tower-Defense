@@ -37,6 +37,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private TMP_Text sellText;
 
+    [SerializeField]
+    private TMP_Text upgradeText;
+
     [Header("Attributes")]
     [SerializeField]
     private int currency = 100;
@@ -208,6 +211,12 @@ public class GameManager : Singleton<GameManager>
         statsPannel.SetActive(!statsPannel.activeSelf);
     }
 
+    public void ShowSelectedTowerStats()
+    {
+        statsPannel.SetActive(!statsPannel.activeSelf);
+        UpdateUpgradeTooltip();
+    }
+
     private IEnumerator SpawnWave()
     {
         if (wave % 4 == 0)
@@ -255,5 +264,13 @@ public class GameManager : Singleton<GameManager>
         waveText.text = $"Wave: <color=green>{wave}</color>";
         StartCoroutine(SpawnWave());
         nextWaveButton.gameObject.SetActive(false);
+    }
+
+    public void UpdateUpgradeTooltip()
+    {
+        if (selectedTower == null)
+            return;
+        SetTooltipText(selectedTower.GetStats());
+        upgradeText.text = selectedTower.NextUpgrade.Price + "$";
     }
 }

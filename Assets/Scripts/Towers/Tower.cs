@@ -37,9 +37,11 @@ public abstract class Tower : MonoBehaviour
     [SerializeField]
     private float proc = 50;
     public TowerUpgrade[] Upgrades { get; protected set; }
+
     private Monster target;
     private bool canAttack = true;
     private float attackTimer = 0;
+    private int level = 1;
     private readonly List<Monster> monsters = new();
     private Animator animator;
     public Element ElementType { get; protected set; }
@@ -103,6 +105,22 @@ public abstract class Tower : MonoBehaviour
     {
         get => attackCD;
     }
+    public int Level
+    {
+        get => level;
+        protected set => level = value;
+    }
+    public TowerUpgrade NextUpgrade
+    {
+        get
+        {
+            if (Upgrades.Length > level - 1)
+            {
+                return Upgrades[level - 1];
+            }
+            return null;
+        }
+    }
 
     void Awake()
     {
@@ -132,6 +150,7 @@ public abstract class Tower : MonoBehaviour
     public void Select()
     {
         towerRange.ToggleVisible();
+        GameManager.Instance.UpdateUpgradeTooltip();
     }
 
     public void EnemyEnter(Monster monster)
@@ -173,4 +192,26 @@ public abstract class Tower : MonoBehaviour
     }
 
     public abstract Debuff GetDebuff(Monster target);
+
+    public virtual string GetStats()
+    {
+        string stats = "";
+        stats += "<size=16>";
+        if (NextUpgrade != null)
+        {
+            stats += $"Level: {Level}\n";
+            stats += $"Damage: {Damage} (+{NextUpgrade.Damage})\n";
+            stats += $"Attack CD: {AttackCD}s ({NextUpgrade.AttackCD}s)\n";
+            stats += $"Proc: {Proc}% (+{NextUpgrade.Proc}%)\n";
+        }
+        else
+        {
+            stats += $"Level: {Level}\n";
+            stats += $"Damage: {Damage}\n";
+            stats += $"Attack CD: {AttackCD}s\n";
+            stats += $"Proc: {Proc}%\n";
+        }
+        stats += "</size>";
+        return stats;
+    }
 }

@@ -127,7 +127,7 @@ MonoBehaviour:
   price: 35
   debuffDuration: 2
   proc: 10
-  slowingFactor: 1.3
+  slowingFactor: 0.1
 --- !u!1001 &5712994537146875861
 PrefabInstance:
   m_ObjectHideFlags: 0

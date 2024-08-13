@@ -1224,7 +1224,7 @@ MonoBehaviour:
   upgradePannel: {fileID: 1287925544}
   statsPannel: {fileID: 124484786}
   sellText: {fileID: 257980502}
-  currency: 60
+  currency: 50
   spawnCD: 2
   lifes: 10
 --- !u!4 &470610056
