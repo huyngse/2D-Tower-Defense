@@ -256,8 +256,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 99
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d5af6748f0116144f84588dba675dc1f, type: 2}
-  m_sharedMaterial: {fileID: -8598424948610296389, guid: d5af6748f0116144f84588dba675dc1f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c9ce4de155ea6bb4e9eb7840021fa9be, type: 2}
+  m_sharedMaterial: {fileID: -8598424948610296389, guid: c9ce4de155ea6bb4e9eb7840021fa9be, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3722,8 +3722,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Wave: <color=green>0</color>'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d5af6748f0116144f84588dba675dc1f, type: 2}
-  m_sharedMaterial: {fileID: -8598424948610296389, guid: d5af6748f0116144f84588dba675dc1f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c9ce4de155ea6bb4e9eb7840021fa9be, type: 2}
+  m_sharedMaterial: {fileID: -8598424948610296389, guid: c9ce4de155ea6bb4e9eb7840021fa9be, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6335,8 +6335,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 99999<color="orange">$</color>
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d5af6748f0116144f84588dba675dc1f, type: 2}
-  m_sharedMaterial: {fileID: -8598424948610296389, guid: d5af6748f0116144f84588dba675dc1f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c9ce4de155ea6bb4e9eb7840021fa9be, type: 2}
+  m_sharedMaterial: {fileID: -8598424948610296389, guid: c9ce4de155ea6bb4e9eb7840021fa9be, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
