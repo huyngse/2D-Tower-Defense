@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 59f9c5b1754e8a347807595b6dd56ccb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   price: 22
   debuffDuration: 3
   proc: 20
+  range: 1
   tickDamage: 1
 --- !u!1001 &8987406789398328307
 PrefabInstance:
