@@ -115,6 +115,7 @@ public class GameManager : Singleton<GameManager>
 
     public void BuyTower()
     {
+        SoundManager.Instance.PlayEffect("drop");
         Currency -= ClickedButton.Price;
         ClickedButton = null;
         Hover.Instance.Deativate();
@@ -135,6 +136,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (!isGameOver)
         {
+            SoundManager.Instance.PlayEffect("game-over");
             isGameOver = true;
             gameOverMenu.SetActive(true);
         }
@@ -179,6 +181,7 @@ public class GameManager : Singleton<GameManager>
 
     public void Quit()
     {
+        SoundManager.Instance.PlayEffect("click");
         Application.Quit();
     }
 
@@ -193,12 +196,14 @@ public class GameManager : Singleton<GameManager>
         if (!IsWaveActive && !isGameOver)
         {
             nextWaveButton.gameObject.SetActive(true);
+            SoundManager.Instance.PlayEffect("bell");
         }
     }
 
     public void Restart()
     {
         Time.timeScale = 1;
+        SoundManager.Instance.PlayEffect("click");
         AStar.ClearNode();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -214,6 +219,7 @@ public class GameManager : Singleton<GameManager>
 
     public void SellTower()
     {
+        SoundManager.Instance.PlayEffect("sell-2");
         Currency += selectedTower.SellPrice;
         TileScript tile = selectedTower.GetComponentInParent<TileScript>();
         tile.IsEmpty = true;
@@ -233,6 +239,7 @@ public class GameManager : Singleton<GameManager>
     {
         pauseMenu.SetActive(false);
         optionsMenu.SetActive(true);
+        SoundManager.Instance.PlayEffect("click");
     }
 
     public void ShowPauseMenu()
@@ -249,6 +256,7 @@ public class GameManager : Singleton<GameManager>
         {
             Time.timeScale = 1;
         }
+        SoundManager.Instance.PlayEffect("click");
     }
 
     public void ShowStats()
@@ -293,6 +301,7 @@ public class GameManager : Singleton<GameManager>
                 }
             }
             Monster monster = Pool.GetObject(type).GetComponent<Monster>();
+            SoundManager.Instance.PlayEffect("start-portal");
             monster.Spawn();
             activeMonsters.Add(monster);
             yield return new WaitForSeconds(spawnCD);
@@ -305,6 +314,7 @@ public class GameManager : Singleton<GameManager>
         waveText.text = $"Wave: <color=green>{wave}</color>";
         StartCoroutine(SpawnWave());
         nextWaveButton.gameObject.SetActive(false);
+        SoundManager.Instance.PlayEffect("bell-2");
     }
 
     public void UpdateUpgradeTooltip()
@@ -331,6 +341,7 @@ public class GameManager : Singleton<GameManager>
         )
             return;
         selectedTower.Upgrade();
+        SoundManager.Instance.PlayEffect("upgrade");
         if (selectedTower.NextUpgrade != null)
         {
             upgradeButton.Price = selectedTower.NextUpgrade.Price;
