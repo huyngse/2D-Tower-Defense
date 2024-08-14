@@ -16,7 +16,8 @@ public class MainMenu : MonoBehaviour
     private GameObject background;
     private float bgSpeed = 20;
 
-    void Start() { 
+    void Start()
+    {
         background.GetComponent<Rigidbody2D>().velocity = Vector3.one * bgSpeed;
     }
 
@@ -29,11 +30,14 @@ public class MainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ShowMenu();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            ShowMenu();
+            if (optionsMenu.activeSelf)
+            {
+                ShowMenu();
+            }
+            else
+            {
+                Quit();
+            }
         }
     }
 

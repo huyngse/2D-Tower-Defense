@@ -54,7 +54,8 @@ public class LevelManager : Singleton<LevelManager>
 
     void Start()
     {
-        worldStartPosition = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height));
+        // worldStartPosition = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height));
+        worldStartPosition = new(-8, 5);
         CreateLevel();
         SpawnPortals();
     }
