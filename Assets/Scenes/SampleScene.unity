@@ -2073,9 +2073,9 @@ MonoBehaviour:
   statsPannel: {fileID: 124484786}
   sellText: {fileID: 257980502}
   upgradeButton: {fileID: 390724734}
-  currency: 1000
+  currency: 200
   spawnCD: 2
-  lifes: 10
+  lifes: 5
 --- !u!4 &470610056
 Transform:
   m_ObjectHideFlags: 0
