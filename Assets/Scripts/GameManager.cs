@@ -182,7 +182,8 @@ public class GameManager : Singleton<GameManager>
     public void Quit()
     {
         SoundManager.Instance.PlayEffect("click");
-        Application.Quit();
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 
     public void RemoveMonster(Monster monster)
