@@ -43,6 +43,7 @@ public class TileScript : MonoBehaviour
     {
         IsEmpty = true;
         tileSize = spriteRenderer.sprite.bounds.size.x;
+        spriteRenderer.enabled = false;
     }
 
     void Update() { }
@@ -69,30 +70,53 @@ public class TileScript : MonoBehaviour
                     GameManager.Instance.SelectTower(tower);
                 }
             }
-            ColorTile(Color.white);
+            // ColorTile(Color.white);
+            spriteRenderer.enabled = false;
             return;
         }
         else
         {
             //BUYING TOWER
-            if (IsEmpty && isBuildable)
+            spriteRenderer.enabled = true;
+            bool canBuild = true;
+            if (!isBuildable || !IsEmpty)
             {
-                ColorTile(availableColor);
+                canBuild = false;
+            }
+            else
+            {
+                if (isBuildable && isWalkable)
+                {
+                    if (GameManager.Instance.IsWaveActive)
+                    {
+                        ColorTile(Color.yellow);
+                        canBuild = false;
+                    }
+                    else
+                    {
+                        ColorTile(Color.cyan);
+                        canBuild = true;
+                    }
+                }
+                else
+                {
+                    canBuild = true;
+                }
+            }
+            if (canBuild)
+            {
                 if (Input.GetMouseButtonDown(0))
                 {
                     PlaceTower();
                 }
-            }
-            else
-            {
-                ColorTile(unavailableColor);
             }
         }
     }
 
     private void OnMouseExit()
     {
-        ColorTile(Color.white);
+        spriteRenderer.enabled = false;
+        // ColorTile(Color.white);
     }
 
     private void PlaceTower()

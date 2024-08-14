@@ -179,6 +179,7 @@ public class Monster : MonoBehaviour
             isReachedPortal = true;
             StartCoroutine(Scale(new Vector3(1f, 1f), new Vector3(0.1f, 0.1f)));
             GameManager.Instance.Lifes--;
+            SoundManager.Instance.PlayEffect("end-portal");
         }
     }
 
@@ -199,6 +200,7 @@ public class Monster : MonoBehaviour
     {
         if (!IsActive || isReachedPortal)
             return;
+
         if (damageSource == elementType)
         {
             damage = (int)Mathf.Floor(damage / invulnerability);
@@ -208,7 +210,13 @@ public class Monster : MonoBehaviour
         animator.SetTrigger("Hit");
         if (health.CurrentValue == 0)
         {
+            IsActive = false;
             animator.SetTrigger("Death");
+            SoundManager.Instance.PlayEffect($"explosion");
+        }
+        else
+        {
+            SoundManager.Instance.PlayEffect($"hit-{Random.Range(1, 5)}");
         }
     }
 

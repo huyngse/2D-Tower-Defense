@@ -200,6 +200,7 @@ public abstract class Tower : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
+        SoundManager.Instance.PlayEffect("shoot-2");
         canAttack = false;
         animator.SetTrigger("Attack");
         Bullet bullet = GameManager.Instance.Pool.GetObject(BulletType).GetComponent<Bullet>();

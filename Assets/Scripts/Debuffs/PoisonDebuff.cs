@@ -20,6 +20,7 @@ public class PoisonDebuff : Debuff
         timeSinceTick += Time.deltaTime;
         if (timeSinceTick > cd)
         {
+            SoundManager.Instance.PlayEffect("poison-hit");
             timeSinceTick = 0;
             target.TakeDamage(tickDamage, Element.POISON);
         }

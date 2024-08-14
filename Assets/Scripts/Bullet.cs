@@ -88,11 +88,38 @@ public class Bullet : MonoBehaviour
 
     private void ApplyDebuff()
     {
-        if (target.ElementType == tower.ElementType) {
+        if (target.ElementType == tower.ElementType)
+        {
             return;
         }
         float randomValue = UnityEngine.Random.Range(0, 100);
-        if (randomValue < tower.Proc) {
+        if (randomValue < tower.Proc)
+        {
+            string sound = "";
+            switch (tower.ElementType)
+            {
+                case Element.STORM:
+                {
+                    sound = "stun";
+                    break;
+                }
+                case Element.FIRE:
+                {
+                    sound = "burning";
+                    break;
+                }
+                case Element.ICE:
+                {
+                    sound = "freeze";
+                    break;
+                }
+                case Element.POISON:
+                {
+                    sound = "poison";
+                    break;
+                }
+            }
+            SoundManager.Instance.PlayEffect(sound);
             target.AddDebuff(tower.GetDebuff(target));
         }
     }

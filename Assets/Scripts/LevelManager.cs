@@ -48,14 +48,14 @@ public class LevelManager : Singleton<LevelManager>
     void Awake()
     {
         Tiles = new Dictionary<Point, TileScript>();
-        greenPortalPosition = new Point(1, 2);
-        // purplePortalPosition = new Point(4, 2);
-        purplePortalPosition = new Point(15, 8);
+        greenPortalPosition = new Point(3, 1);
+        purplePortalPosition = new Point(23, 1);
     }
 
     void Start()
     {
-        worldStartPosition = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height));
+        // worldStartPosition = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height));
+        worldStartPosition = new(-8, 5);
         CreateLevel();
         SpawnPortals();
     }
