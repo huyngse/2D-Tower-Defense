@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
 {
+    [Header("Attributes")]
+    [SerializeField]
+    private int level = 1;
+    [SerializeField]
+    private Vector2 startPosition;
+    [SerializeField]
+    private Vector2 endPosition;
     [Header("References")]
     [SerializeField]
     private GameObject[] tilePrefabs;
@@ -48,8 +55,8 @@ public class LevelManager : Singleton<LevelManager>
     void Awake()
     {
         Tiles = new Dictionary<Point, TileScript>();
-        greenPortalPosition = new Point(3, 1);
-        purplePortalPosition = new Point(23, 1);
+        greenPortalPosition = new Point((int)startPosition.x, (int)startPosition.y);
+        purplePortalPosition = new Point((int)endPosition.x, (int)endPosition.y); ;
     }
 
     void Start()
@@ -99,7 +106,7 @@ public class LevelManager : Singleton<LevelManager>
     private string[] GetLevelFromFile()
     {
         // "Resources" is name of the Folder
-        TextAsset bindData = Resources.Load("Level_1") as TextAsset;
+        TextAsset bindData = Resources.Load("Level_" + level) as TextAsset;
         string data = bindData.text.Replace(Environment.NewLine, string.Empty);
         return data.Split("-");
     }
@@ -112,6 +119,7 @@ public class LevelManager : Singleton<LevelManager>
             Quaternion.identity
         );
         greenPortal.transform.Translate(Vector3.right * 0.5f);
+        greenPortal.transform.Translate(Vector3.up * 0.2f);
         greenPortal.GetComponent<SpriteRenderer>().sortingOrder = greenPortalPosition.Y;
         GreenPortal = greenPortal.GetComponent<Portal>();
         GreenPortal.name = "GreenPortal";
@@ -122,6 +130,7 @@ public class LevelManager : Singleton<LevelManager>
             Quaternion.identity
         );
         purplePortal.transform.Translate(Vector3.right * 0.5f);
+        purplePortal.transform.Translate(Vector3.up * 0.2f);
         purplePortal.GetComponent<SpriteRenderer>().sortingOrder = purplePortalPosition.Y;
         PurplePortal = purplePortal.GetComponent<Portal>();
         PurplePortal.name = "PurplePortal";

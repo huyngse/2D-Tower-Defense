@@ -94,7 +94,7 @@ public class Monster : MonoBehaviour
             if (path.Count > 1)
             {
                 GridPosition = path.Pop().GridPosition;
-                destination = path.Peek().WorldPosition;
+                destination = path.Peek().WorldPosition + Vector2.up * 0.5f;
                 animator.SetBool("isMoving", true);
                 spriteRenderer.sortingOrder = GridPosition.Y + 1;
                 Animate();
@@ -111,8 +111,7 @@ public class Monster : MonoBehaviour
         health.MaxValue =
             baseHP + GameManager.Instance.Wave * Mathf.Pow(GameManager.Instance.Wave, 0.6f);
         health.CurrentValue = health.MaxValue;
-        transform.position = LevelManager.Instance.GreenPortal.transform.position;
-        // transform.Translate(Vector3.down * 0.9f);
+        transform.position = LevelManager.Instance.GreenPortal.transform.position + Vector3.down * 0.3f;
         StartCoroutine(Scale(new Vector3(0.1f, 0.1f), new Vector3(1, 1)));
         SetPath(LevelManager.Instance.Path);
     }
