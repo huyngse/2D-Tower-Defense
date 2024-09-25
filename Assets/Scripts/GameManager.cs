@@ -276,30 +276,36 @@ public class GameManager : Singleton<GameManager>
         LevelManager.Instance.GeneratePath();
         for (int i = 0; i < Mathf.Clamp(wave, 0, 15); i++)
         {
-            int monsterIndex = Random.Range(0, 4);
+            // int monsterIndex = Random.Range(0, 5);
+            int monsterIndex = 4;
             string type = string.Empty;
             switch (monsterIndex)
             {
                 case 0:
-                {
-                    type = "Pig";
-                    break;
-                }
+                    {
+                        type = "Pig";
+                        break;
+                    }
                 case 1:
-                {
-                    type = "Rock";
-                    break;
-                }
+                    {
+                        type = "Rock";
+                        break;
+                    }
                 case 2:
-                {
-                    type = "Slime";
-                    break;
-                }
+                    {
+                        type = "Slime";
+                        break;
+                    }
                 case 3:
-                {
-                    type = "Trunk";
-                    break;
-                }
+                    {
+                        type = "Trunk";
+                        break;
+                    }
+                case 4:
+                    {
+                        type = "Bat";
+                        break;
+                    }
             }
             Monster monster = Pool.GetObject(type).GetComponent<Monster>();
             SoundManager.Instance.PlayEffect("start-portal");
