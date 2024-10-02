@@ -123,7 +123,7 @@ MonoBehaviour:
   towerRange: {fileID: 222286412767456884}
   attackCD: 1.6
   damage: 2
-  bulletSpeed: 3
+  bulletSpeed: 3.5
   price: 15
   debuffDuration: 2
   proc: 30
