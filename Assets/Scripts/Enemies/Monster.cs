@@ -10,7 +10,7 @@ public class Monster : MonoBehaviour
     private int baseHP = 5;
 
     [SerializeField]
-    private float speed = 1;
+    protected float speed = 1;
 
     [SerializeField]
     protected Stat health;
@@ -20,13 +20,13 @@ public class Monster : MonoBehaviour
 
     [SerializeField]
     private int invulnerability = 2;
-    private Stack<Node> path;
+    protected Stack<Node> path;
     private List<Debuff> debuffs = new();
-    private Vector3 destination;
+    protected Vector3 destination;
     protected Animator animator;
-    private SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
 
-    public Point GridPosition { get; private set; }
+    public Point GridPosition { get; protected set; }
     public bool IsActive { get; private set; }
     public bool IsAlive
     {
@@ -77,7 +77,7 @@ public class Monster : MonoBehaviour
         Move();
     }
 
-    private void Move()
+    protected virtual void Move()
     {
         if (path == null || !IsActive)
         {
@@ -151,7 +151,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private void Animate()
+    protected void Animate()
     {
         if (destination.x > transform.position.x)
         {

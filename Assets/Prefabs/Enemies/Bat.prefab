@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4492132354878893911}
   - component: {fileID: 7825045247639410226}
   - component: {fileID: 2603181084565924451}
-  - component: {fileID: 6488974638641931064}
   - component: {fileID: 7068649909177962486}
   - component: {fileID: 3448228098991582031}
+  - component: {fileID: -97612751969892132}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Enemy
@@ -110,24 +110,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6488974638641931064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657152061709333837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3f6d9356c5267e47916bd79f4fcde32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseHP: 5
-  speed: 2
-  health:
-    bar: {fileID: 4989144241772507845}
-  elementType: 0
-  invulnerability: 2
 --- !u!50 &7068649909177962486
 Rigidbody2D:
   serializedVersion: 4
@@ -200,6 +182,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4375, y: 0.5860819}
   m_EdgeRadius: 0
+--- !u!114 &-97612751969892132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657152061709333837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b819978c20007240884f62bed5034e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseHP: 5
+  speed: 3
+  health:
+    bar: {fileID: 4989144241772507845}
+  elementType: 0
+  invulnerability: 2
 --- !u!1001 &8487600369975478933
 PrefabInstance:
   m_ObjectHideFlags: 0
