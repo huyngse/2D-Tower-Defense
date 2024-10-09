@@ -49,6 +49,11 @@ public class SoundManager : Singleton<SoundManager>
     {
         sfxSource.PlayOneShot(audioClips[name]);
     }
+    public void PlayMusic(string name, int time)
+    {
+        musicSource.PlayOneShot(audioClips[name]);
+        musicSource.time = time;
+    }
 
     public void UpdateVolume()
     {
