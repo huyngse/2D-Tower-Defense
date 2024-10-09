@@ -50,7 +50,6 @@ public class Spawner : Singleton<Spawner>
     }
     public void DisplayEnemies()
     {
-        // Clear previous UI elements
         foreach (Transform child in enemyUIContainer.transform)
         {
             Destroy(child.gameObject);
@@ -65,7 +64,7 @@ public class Spawner : Singleton<Spawner>
     public void GenerateWave()
     {
         miniWave.Clear();
-        while (enemies.Count() < Mathf.Clamp(GameManager.Instance.Wave, 0, 15))
+        while (enemies.Count() < Mathf.Clamp(GameManager.Instance.Wave, 0, 15) * 10)
         {
             if (miniWave.Count == 0)
             {
@@ -81,5 +80,10 @@ public class Spawner : Singleton<Spawner>
             enemies.Push(miniWave.Pop());
         }
         DisplayEnemies();
+    }
+    public WaveEnemy GetEnemy() {
+        var enemy = enemies.Pop();
+        DisplayEnemies();
+        return enemy;
     }
 }

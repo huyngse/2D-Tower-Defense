@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Bat
   baseHP: 5
-  speed: 3
+  speed: 5
   health:
     bar: {fileID: 4989144241772507845}
   elementType: 0

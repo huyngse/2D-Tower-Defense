@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Slime
   baseHP: 5
-  speed: 1.2
+  speed: 2
   health:
     bar: {fileID: 6273025210720265579}
   elementType: 3

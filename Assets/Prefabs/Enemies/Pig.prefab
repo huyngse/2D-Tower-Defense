@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Pig
   baseHP: 5
-  speed: 1
+  speed: 2
   health:
     bar: {fileID: 4931605694526079077}
   elementType: 1

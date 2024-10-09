@@ -278,14 +278,15 @@ public class GameManager : Singleton<GameManager>
     {
         LevelManager.Instance.GeneratePath();
         int numberOfEnemy = Spawner.Instance.Enemies.Count;
+        float spawnCooldown = Mathf.Clamp(5f / numberOfEnemy, 0.2f, 1) * spawnCD;
         for (int i = 0; i < numberOfEnemy; i++)
         {
-            var monsterToSpawn = Spawner.Instance.Enemies.Pop();
+            var monsterToSpawn = Spawner.Instance.GetEnemy();
             Monster monster = Pool.GetObject(monsterToSpawn.Name).GetComponent<Monster>();
             SoundManager.Instance.PlayEffect("start-portal");
             monster.Spawn(monsterToSpawn.HealthMultiplier);
             activeMonsters.Add(monster);
-            yield return new WaitForSeconds(spawnCD);
+            yield return new WaitForSeconds(spawnCooldown);
         }
     }
 

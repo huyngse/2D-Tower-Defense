@@ -12,9 +12,9 @@ public class CameraMovement : MonoBehaviour
     public float zoomSpeed = 0.5f;
     public float minSize = 2f;
     public float maxSize = 10f;
-    [Header("References")]
-    [SerializeField]
-    public Camera camera;
+    // [Header("References")]
+    // [SerializeField]
+    // public Camera mainCamera;
     void Update()
     {
         GetInput();
@@ -46,12 +46,12 @@ public class CameraMovement : MonoBehaviour
         // {
         //     transform.Rotate(0, 0, -100 * Time.deltaTime);
         // }
-        // float scroll = Input.GetAxis("Mouse ScrollWheel");
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
 
         // if (scroll != 0)
         // {
-        //     camera.orthographicSize -= scroll * zoomSpeed;
-        //     camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minSize, maxSize);
+        //     mainCamera.orthographicSize -= scroll * zoomSpeed;
+        //     mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize, minSize, maxSize);
         // }
         transform.position = new Vector3(
             Mathf.Clamp(transform.position.x, 0, maxX),

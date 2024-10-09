@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Rock
   baseHP: 7
-  speed: 1
+  speed: 2
   health:
     bar: {fileID: 8431102683457751239}
   elementType: 0

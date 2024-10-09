@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Trunk
   baseHP: 5
-  speed: 1.5
+  speed: 2.2
   health:
     bar: {fileID: 1218626054750559276}
   elementType: 2
