@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7208300c574d947a36bdb5bdc4f617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterName: Pig
   baseHP: 5
   speed: 1
   health:

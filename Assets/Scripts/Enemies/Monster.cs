@@ -7,6 +7,8 @@ public class Monster : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField]
+    private string monsterName = "Monster";
+    [SerializeField]
     private int baseHP = 5;
 
     [SerializeField]
@@ -52,6 +54,7 @@ public class Monster : MonoBehaviour
         get => debuffs;
         private set => debuffs = value;
     }
+    public string MonsterName { get => monsterName; set => monsterName = value; }
 
     private float baseSpeed;
 
@@ -106,10 +109,11 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public void Spawn()
+    public void Spawn(float multiplier)
     {
-        health.MaxValue =
-            baseHP + GameManager.Instance.Wave * Mathf.Pow(GameManager.Instance.Wave, 0.6f);
+        // health.MaxValue =
+        //     baseHP + GameManager.Instance.Wave * Mathf.Pow(GameManager.Instance.Wave, 0.6f);
+        health.MaxValue = baseHP * multiplier;
         health.CurrentValue = health.MaxValue;
         transform.position = LevelManager.Instance.GreenPortal.transform.position + Vector3.down * 0.3f;
         StartCoroutine(Scale(new Vector3(0.1f, 0.1f), new Vector3(1, 1)));
