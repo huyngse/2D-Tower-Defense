@@ -306,6 +306,7 @@ public class GameManager : Singleton<GameManager>
         if (selectedTower.NextUpgrade != null)
         {
             upgradeButton.Text = selectedTower.NextUpgrade.Price + "$";
+            upgradeButton.Price = selectedTower.NextUpgrade.Price;
         }
         else
         {
