@@ -2511,7 +2511,6 @@ MonoBehaviour:
   zoomSpeed: 10
   minSize: 2
   maxSize: 10
-  camera: {fileID: 519420031}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5571,7 +5570,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ced929d7cfe49634f8e9d6423880ea37, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d2a088108b78547469218fe045fba44b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
