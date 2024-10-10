@@ -218,14 +218,14 @@ public abstract class Tower : MonoBehaviour
         {
             stats += $"Level: {Level}\n";
             stats += $"Damage: {Damage} (+{NextUpgrade.Damage})\n";
-            stats += $"Attack CD: {AttackCD}s ({NextUpgrade.AttackCD}s)\n";
+            stats += $"Attack CD: {AttackCD.ToString("F1")}s ({NextUpgrade.AttackCD}s)\n";
             stats += $"Proc: {Proc}% (+{NextUpgrade.Proc}%)\n";
         }
         else
         {
             stats += $"Level: {Level}\n";
             stats += $"Damage: {Damage}\n";
-            stats += $"Attack CD: {AttackCD}s\n";
+            stats += $"Attack CD: {AttackCD.ToString("F1")}s\n";
             stats += $"Proc: {Proc}%\n";
         }
         stats += "</size>";

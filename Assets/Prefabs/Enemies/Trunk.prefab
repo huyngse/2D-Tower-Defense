@@ -101,8 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f6d9356c5267e47916bd79f4fcde32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterName: Trunk
   baseHP: 5
-  speed: 1.5
+  speed: 2.2
   health:
     bar: {fileID: 1218626054750559276}
   elementType: 2

@@ -55,7 +55,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField]
     private int lifes = 5;
-    private int wave = 0;
+    private int wave = 1;
     private bool isGameOver = false;
     private List<Monster> activeMonsters = new();
     private Tower selectedTower;
@@ -106,6 +106,7 @@ public class GameManager : Singleton<GameManager>
     {
         Lifes += 0;
         Currency = currency;
+        Spawner.Instance.GenerateWave();
     }
 
     void Update()
@@ -198,6 +199,8 @@ public class GameManager : Singleton<GameManager>
         {
             nextWaveButton.gameObject.SetActive(true);
             SoundManager.Instance.PlayEffect("bell");
+            wave++;
+            Spawner.Instance.GenerateWave();
         }
     }
 
@@ -274,44 +277,21 @@ public class GameManager : Singleton<GameManager>
     private IEnumerator SpawnWave()
     {
         LevelManager.Instance.GeneratePath();
-        for (int i = 0; i < Mathf.Clamp(wave, 0, 15); i++)
+        int numberOfEnemy = Spawner.Instance.Enemies.Count;
+        float spawnCooldown = Mathf.Clamp(5f / numberOfEnemy, 0.2f, 1) * spawnCD;
+        for (int i = 0; i < numberOfEnemy; i++)
         {
-            int monsterIndex = Random.Range(0, 4);
-            string type = string.Empty;
-            switch (monsterIndex)
-            {
-                case 0:
-                {
-                    type = "Pig";
-                    break;
-                }
-                case 1:
-                {
-                    type = "Rock";
-                    break;
-                }
-                case 2:
-                {
-                    type = "Slime";
-                    break;
-                }
-                case 3:
-                {
-                    type = "Trunk";
-                    break;
-                }
-            }
-            Monster monster = Pool.GetObject(type).GetComponent<Monster>();
+            var monsterToSpawn = Spawner.Instance.GetEnemy();
+            Monster monster = Pool.GetObject(monsterToSpawn.Name).GetComponent<Monster>();
             SoundManager.Instance.PlayEffect("start-portal");
-            monster.Spawn();
+            monster.Spawn(monsterToSpawn.HealthMultiplier);
             activeMonsters.Add(monster);
-            yield return new WaitForSeconds(spawnCD);
+            yield return new WaitForSeconds(spawnCooldown);
         }
     }
 
     public void StartWave()
     {
-        wave++;
         waveText.text = $"Wave: <color=green>{wave}</color>";
         StartCoroutine(SpawnWave());
         nextWaveButton.gameObject.SetActive(false);
@@ -326,6 +306,7 @@ public class GameManager : Singleton<GameManager>
         if (selectedTower.NextUpgrade != null)
         {
             upgradeButton.Text = selectedTower.NextUpgrade.Price + "$";
+            upgradeButton.Price = selectedTower.NextUpgrade.Price;
         }
         else
         {
@@ -349,5 +330,25 @@ public class GameManager : Singleton<GameManager>
         }
         sellText.text = selectedTower.SellPrice + "$";
         UpdateUpgradeTooltip();
+    }
+
+    public void ShowQuizMenu()
+    {
+        QuizManager.Instance.ShowQuiz();
+        Time.timeScale = 0;
+    }
+
+    public void SubmitAnswer(bool isCorrectAnswer)
+    {
+        if (isCorrectAnswer)
+        {
+            Currency += 20;
+        }
+        else
+        {
+            Currency -= 50;
+        }
+        Time.timeScale = 1;
+        QuizManager.Instance.HideQuiz();
     }
 }

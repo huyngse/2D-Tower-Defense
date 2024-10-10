@@ -1,0 +1,759 @@
+{
+    "questions": [
+      {
+        "question": "When we declare a variable, we need to provide a __________ and a variable name",
+        "options": [
+          "assignment statement",
+          "data type",
+          "value type",
+          "class name"
+        ],
+        "correctAnswer": "data type"
+      },
+      {
+        "question": "The most appropriate way to provide external consumer access to the state of an object is through",
+        "options": [
+          "fields",
+          "properties",
+          "identities",
+          "methods"
+        ],
+        "correctAnswer": "properties"
+      },
+      {
+        "question": "The most appropriate way to provide external consumer access to the behavior of an object is through",
+        "options": [
+          "methods",
+          "fields",
+          "properties",
+          "identities"
+        ],
+        "correctAnswer": "methods"
+      },
+      {
+        "question": "When we call a static function, we start with the _____________ name",
+        "options": [
+          "object",
+          "field",
+          "class",
+          "variable"
+        ],
+        "correctAnswer": "class"
+      },
+      {
+        "question": "Entities in a Unity scene are called",
+        "options": [
+          "Game Objects",
+          "scripts",
+          "Bob",
+          "sprites"
+        ],
+        "correctAnswer": "Game Objects"
+      },
+      {
+        "question": "We use the __________________________ class when processing input in Unity",
+        "options": [
+          "Input",
+          "Keyboard",
+          "InputManager",
+          "Mouse"
+        ],
+        "correctAnswer": "Input"
+      },
+      {
+        "question": "When we say we clamp a value, we mean we",
+        "options": [
+          "keep the value within a specific range of values",
+          "set the value to 0",
+          "set the value to an input axis"
+        ],
+        "correctAnswer": "keep the value within a specific range of values"
+      },
+      {
+        "question": "When we process mouse button input using the input manager, we can use GetMouseButtonDown to respond to player clicks",
+        "options": [
+          "true",
+          "false"
+        ],
+        "correctAnswer": "false"
+      },
+      {
+        "question": "To make sure our movement is independent of frame rate when we process keyboard or gamepad input, we should",
+        "options": [
+          "use Time.deltaTime in the Update method for the moving game object",
+          "put our movement code in the FixedUpdate method so we know we get called 50 times per second"
+        ],
+        "correctAnswer": "use Time.deltaTime in the Update method for the moving game object"
+      },
+      {
+        "question": "If we use the input manager, adding gamepad support to a game that already has keyboard support typically requires lots of code changes.",
+        "options": [
+          "true",
+          "false"
+        ],
+        "correctAnswer": "false"
+      },
+      {
+        "question": "What is a correct syntax to output 'Hello World' in C#?",
+        "options": [
+          "cout << 'Hello World';",
+          "Console.WriteLine('Hello World');",
+          "print ('Hello World');",
+          "System.out.println('Hello World');"
+        ],
+        "correctAnswer": "Console.WriteLine('Hello World');"
+      },
+      {
+        "question": "How do you insert COMMENTS in C# code?",
+        "options": [
+          "/* This is a comment",
+          "//This is a comment",
+          "/This is a comment",
+          "*This is a comment"
+        ],
+        "correctAnswer": "//This is a comment"
+      },
+      {
+        "question": "Which data type in C# is used to create a variable that should store text?",
+        "options": [
+          "String",
+          "Text",
+          "Nvarchar",
+          "Char"
+        ],
+        "correctAnswer": "String"
+      },
+      {
+        "question": "How do you create a variable with the numeric value 5?",
+        "options": [
+          "num x = 5",
+          "int x = 5;",
+          "x = 5;",
+          "Num x = 5;"
+        ],
+        "correctAnswer": "int x = 5;"
+      },
+      {
+        "question": "How do you create a variable with the floating number 2.8?",
+        "options": [
+          "int x = 2.8;",
+          "double x = 2.8D;",
+          "int x = 2.8D;",
+          "byte x = 2.8"
+        ],
+        "correctAnswer": "double x = 2.8D;"
+      },
+      {
+        "question": "Which property can be used to find the length of a string?",
+        "options": [
+          "Length",
+          "stringLength",
+          "getLength",
+          "getLength()"
+        ],
+        "correctAnswer": "Length"
+      },
+      {
+        "question": "Which operator is used to add together two values a and b?",
+        "options": [
+          "The ++ sign",
+          "The += sign",
+          "The =+ sign",
+          "The + sign"
+        ],
+        "correctAnswer": "The + sign"
+      },
+      {
+        "question": "Select the correct statement",
+        "options": [
+          "The value of a string variable can be surrounded by single quotes.",
+          "The value of a string variable can be surrounded by asterisks.",
+          "The value of a string variable can be surrounded by double quotes.",
+          "The value of a string variable can be surrounded by brackets."
+        ],
+        "correctAnswer": "The value of a string variable can be surrounded by double quotes."
+      },
+      {
+        "question": "Which operator can be used to compare two values?",
+        "options": [
+          "><",
+          "=",
+          "==",
+          "+="
+        ],
+        "correctAnswer": "=="
+      },
+      {
+        "question": "To declare an array in C#, define the variable type with:",
+        "options": [
+          "[]",
+          "<>",
+          "()",
+          "\"\""
+        ],
+        "correctAnswer": "[]"
+      },
+      {
+        "question": "Array indexes start with:",
+        "options": [
+          "-1",
+          "0",
+          "1",
+          "2"
+        ],
+        "correctAnswer": "0"
+      },
+      {
+        "question": "How do you create a method in C#?",
+        "options": [
+          "MyMethod.",
+          "MyMethod[]",
+          "MyMethod()",
+          "(MyMethod)"
+        ],
+        "correctAnswer": "MyMethod()"
+      },
+      {
+        "question": "How do you call a method in C#?",
+        "options": [
+          "MyMethod();",
+          "MyMethod[];",
+          "MyMethod;",
+          "(MyMethod);"
+        ],
+        "correctAnswer": "MyMethod();"
+      },
+      {
+        "question": "Which keyword is used to declare a class in C#?",
+        "options": [
+          "myClass",
+          "createClass",
+          "class",
+          "Class()"
+        ],
+        "correctAnswer": "class"
+      },
+      {
+        "question": "What is the correct way to create an object called myObj of MyClass?",
+        "options": [
+          "new myObj = MyClass();",
+          "MyClass myObj = new MyClass();",
+          "class myObj = new MyClass();",
+          "class MyClass = new myObj();"
+        ],
+        "correctAnswer": "MyClass myObj = new MyClass();"
+      },
+      {
+        "question": "Which of the following types are a handy programming construct that allows you to group name/value pairs?",
+        "options": [
+          "Enumerations",
+          "Structs",
+          "Delegates",
+          "Interfaces"
+        ],
+        "correctAnswer": "Enumerations"
+      },
+      {
+        "question": "Select a incorrect statement about static constructors:",
+        "options": [
+          " The static constructor executes before any instance-level constructors.",
+          "A static constructor does not take an access modifier and cannot take any parameters.",
+          "A static constructor executes exactly one time, regardless of how many objects of the type are created.",
+          "A given class (or structure) may define one or more static constructors."
+        ],
+        "correctAnswer": "A given class (or structure) may define one or more static constructors."
+      },
+      {
+        "question": "How many Bytes are stored by 'Long' Data type in C# .NET?",
+        "options": [
+          "8",
+          "6",
+          "4",
+          "2"
+        ],
+        "correctAnswer": "8"
+      },
+      {
+        "question": "Which of the following statements are the distinctions between output and reference parameters?\n1. Output parameters do not need to be initialized before they passed to the method.\n2. Reference parameters must be initialized before they are passed to the method.\n3. Output parameters are passed by value.",
+        "options": [
+          "1 and 2",
+          "1 and 3",
+          "2 and 3",
+          "1, 2 and 3"
+        ],
+        "correctAnswer": "1 and 2"
+      },
+      {
+        "question": "Which of the following statements is incorrect about virtual and abstract keywords?",
+        "options": [
+          "Abstract modifier cannot be used properties or indexers.",
+          "A non-abstract class derived from an abstract class must include actual implementations of all inherited abstract methods.",
+          "Virtual methods are not required to override in sub-classes.",
+          "Virtual and abstract both can be used for methods declared in classes."
+        ],
+        "correctAnswer": "Abstract modifier cannot be used properties or indexers."
+      },
+      {
+        "question": "Which of the following statements about casting is false?",
+        "options": [
+          "The conversions from long to int, short, byte are implicit conversions.",
+          "There are no implicit conversions from other types to the char type.",
+          "The conversions from int, uint, or long to float may cause a loss of precision, but not a loss of magnitude",
+          "There are no implicit conversions between floating-point types and the decimal type."
+        ],
+        "correctAnswer": "The conversions from long to int, short, byte are implicit conversions."
+      },
+      {
+        "question": "Select correct statements about Value Type:",
+        "options": [
+          "It is possible to derive a new type from a value type.",
+          "A value type can contain the null value.",
+          "All value types are derived implicitly from the System.ValueType.",
+          "Value types are allocated in managed heap."
+        ],
+        "correctAnswer": "All value types are derived implicitly from the System.ValueType."
+      },
+      {
+        "question": "Select correct statements about Reference Type:",
+        "options": [
+          "Variables of reference type die when they fall out of defining scope.",
+          "By default, variables of reference type are passed by reference.",
+          "All reference types are derived implicitly from the System.ValueType.",
+          "Reference types are allocated in stack."
+        ],
+        "correctAnswer": "By default, variables of reference type are passed by reference."
+      },
+      {
+        "question": "Which of the following access modifiers are used to specify the accessibility of a type? \n1. public, internal \n2. protected, internal\n3. private, public\n4. public, protected",
+        "options": [
+          "3",
+          "2",
+          "1",
+          "4"
+        ],
+        "correctAnswer": "1"
+      },
+      {
+        "question": "Which property of Exception class specifies textual information that indicates the reason for the error and provides possible resolutions?",
+        "options": [
+          "Source",
+          "InnerException",
+          "Message",
+          "StackTrace"
+        ],
+        "correctAnswer": "Message"
+      },
+      {
+        "question": "Which of the following can be defined as generic?",
+        "options": [
+          "Methods, Classes, Interfaces",
+          "Delegates",
+          "Structures",
+          "All of the others"
+        ],
+        "correctAnswer": "All of the others"
+      },
+      {
+        "question": "An interface cannot contain signatures of the following members:",
+        "options": [
+          "Properties",
+          "Indexers",
+          "Events",
+          "None of the others"
+        ],
+        "correctAnswer": "None of the others"
+      },
+      {
+        "question": "Which of the following statements are false?",
+        "options": [
+          "Interfaces define a contract between types.",
+          "You can inherit multiple class in C#",
+          "Inheritance derives a type from a base type.",
+          "Inheritance defines a contract between types."
+        ],
+        "correctAnswer": "Inheritance defines a contract between types."
+      },
+      {
+        "question": "Which is a CPU-Independent instructions set into which .NET Framework programs are compiled. It contains instructions for loading, storing, initializing and calling methods on objects?",
+        "options": [
+          "Byte code",
+          "MSIL (Microsoft Intermediate Language)",
+          "Machine code",
+          ".NET code"
+        ],
+        "correctAnswer": "MSIL (Microsoft Intermediate Language)"
+      },
+      {
+        "question": "What is the default modifier for class of package in C#?",
+        "options": [
+          "internal",
+          "public",
+          "private",
+          "protected"
+        ],
+        "correctAnswer": "internal"
+      },
+      {
+        "question": "What is the default modifier for the class member?",
+        "options": [
+          "internal",
+          "public",
+          "private",
+          "protected"
+        ],
+        "correctAnswer": "private"
+      },
+      {
+        "question": "Select correct statement about virtual methods:",
+        "options": [
+          "Virtual method can be declared as private.",
+          "A virtual method must contain the method A virtual method must contain the method",
+          "Virtual method can be declared as static.",
+          "All of the others."
+        ],
+        "correctAnswer": "A virtual method must contain the method A virtual method must contain the method"
+      },
+      {
+        "question": "Which of the following types is reference type?",
+        "options": [
+          "System.Int32",
+          "System.DateTime",
+          "System.String",
+          "System.Char"
+        ],
+        "correctAnswer": "System.String"
+      },
+      {
+        "question": "Where are reference types variables stored?",
+        "options": [
+          "Code segment",
+          "Stack segment",
+          "Data segment",
+          "Heap segment"
+        ],
+        "correctAnswer": "Heap segment"
+      },
+      {
+        "question": "Which of the following is not Value type variable?",
+        "options": [
+          "System.Int16",
+          "System.Decimal",
+          "System.Drawing.Point",
+          "System.Object"
+        ],
+        "correctAnswer": "System.Object"
+      },
+      {
+        "question": "What is the String in C# meant for?",
+        "options": [
+          "Variable",
+          "Character Array",
+          "Object",
+          "Class"
+        ],
+        "correctAnswer": "Object"
+      },
+      {
+        "question": "What does the term 'immutable' means in term of string objects?",
+        "options": [
+          "We can modify characters included in the string",
+          "We cannot modify characters contained in the string",
+          "We cannot perform various operation of comparison, inserting, appending.",
+          "We can perform various operation of comparison, inserting, appending."
+        ],
+        "correctAnswer": "We cannot modify characters contained in the string"
+      },
+      {
+        "question": "Select the way to perform comparison operation on strings supported operations.",
+        "options": [
+          "Compare()",
+          "Equals()",
+          "Assignment '==' operator",
+          "All of the mentioned"
+        ],
+        "correctAnswer": "All of the mentioned"
+      },
+      {
+        "question": "Which is is the base class from which every Unity script derives?",
+        "options": [
+          "Object",
+          "Motion",
+          "Physics",
+          "MonoBehaviour"
+        ],
+        "correctAnswer": "MonoBehaviour"
+      },
+      {
+        "question": "Which method in GameObject in Unity, calls a method on every MonoBehaviour in this game object or any of its children?",
+        "options": [
+          "MessageBroadcast",
+          "BroadcastChild",
+          "BroadcastMessage",
+          "ChildBroadcast"
+        ],
+        "correctAnswer": "BroadcastMessage"
+      },
+      {
+        "question": "Select the method in GameObject in Unity which adds a component class to the game object",
+        "options": [
+          "NewComponent",
+          "ComponentAdd",
+          "ComponentNew",
+          "AddComponent"
+        ],
+        "correctAnswer": "AddComponent"
+      },
+      {
+        "question": "Which method of Input class returns the value of the virtual axis identified by axisName?",
+        "options": [
+          "GetTouch",
+          "GetAxis",
+          "GetAcceleration",
+          "GetKey"
+        ],
+        "correctAnswer": "GetAxis"
+      },
+      {
+        "question": "Which is not a method of Input class in Unity?",
+        "options": [
+          "GetButton",
+          "GetKey",
+          "GetJoystickNames",
+          "GetScreen"
+        ],
+        "correctAnswer": "GetScreen"
+      },
+      {
+        "question": "Which method of Input class Returns true while the user holds down the key identified by name?",
+        "options": [
+          "GetKeyRelease",
+          "GetKeyDown",
+          "GetKey",
+          "GetKeyUp"
+        ],
+        "correctAnswer": "GetKey"
+      },
+      {
+        "question": "Which method of Input class returns true during the frame the user starts pressing down the key identified by name.?",
+        "options": [
+          "GetKeyRelease",
+          "GetKeyDown",
+          "GetKey",
+          "GetKeyUp"
+        ],
+        "correctAnswer": "GetKeyDown"
+      },
+      {
+        "question": "Which method of Input class Returns true during the frame the user releases the key identified by name?",
+        "options": [
+          "GetKeyRelease",
+          "GetKeyDown",
+          "GetKey",
+          "GetKeyUp"
+        ],
+        "correctAnswer": "GetKeyUp"
+      },
+      {
+        "question": "Which is 2D graphic object used for characters, props, projectiles and other elements of 2D gameplay?",
+        "options": [
+          "Character",
+          "Sprite",
+          "Bitmap",
+          "Image"
+        ],
+        "correctAnswer": "Sprite"
+      },
+      {
+        "question": "Which is not a property of Sprite class?",
+        "options": [
+          "border",
+          "texture",
+          "triangles",
+          "size"
+        ],
+        "correctAnswer": "size"
+      },
+      {
+        "question": "Which class is used for Sprite render?",
+        "options": [
+          "RenderSprite",
+          "SpriteRenderer",
+          "RenderManager",
+          "SpriteManager"
+        ],
+        "correctAnswer": "SpriteRenderer"
+      },
+      {
+        "question": "Which class is used for Control of an object's position through physics simulation?",
+        "options": [
+          "Character",
+          "VirtualCharacter",
+          "Rigidbody",
+          "PhysicalCharacter"
+        ],
+        "correctAnswer": "Rigidbody"
+      },
+      {
+        "question": "Which is not a property of Rigidbody class?",
+        "options": [
+          "mass",
+          "position",
+          "rotation",
+          "size"
+        ],
+        "correctAnswer": "size"
+      },
+      {
+        "question": "Which method of Rigidbody is used for adds a force?",
+        "options": [
+          "ForceAdd",
+          "AddForce",
+          "AddExplosionForce",
+          "AddExplosion"
+        ],
+        "correctAnswer": "AddForce"
+      },
+      {
+        "question": "Which method of Rigidbody is used for check whether a rigidbody is sleeping?",
+        "options": [
+          "GetSleep",
+          "GetSleeping",
+          "IsSleeping",
+          "IsSleep"
+        ],
+        "correctAnswer": "IsSleeping"
+      },
+      {
+        "question": "Which class control all aspects of Unity's lights?",
+        "options": [
+          "Light",
+          "LightManager",
+          "LightControl",
+          "LightController"
+        ],
+        "correctAnswer": "Light"
+      },
+      {
+        "question": "When you create a new scene, it will contain?",
+        "options": [
+          "Empty game object",
+          "Main Camera game object",
+          "Light and Main Camera game object",
+          "It depends"
+        ],
+        "correctAnswer": "It depends"
+      },
+      {
+        "question": "You would like to address all enemy objects in your game?",
+        "options": [
+          "Use collection of enemy",
+          "Use layers",
+          "Use tags",
+          "Inherit Enemy class"
+        ],
+        "correctAnswer": "Use tags"
+      },
+      {
+        "question": "Select the correct statement",
+        "options": [
+          "Scripts are components",
+          "Script affect the look, behavior, or interaction of game objects.",
+          "Scripts are essentially custom components that you create for the unique requirements of your game.",
+          "All of the others"
+        ],
+        "correctAnswer": "All of the others"
+      },
+      {
+        "question": "What is the name of the component that every 3D game object must have?",
+        "options": [
+          "PlaneTransform",
+          "RectTransform",
+          "Transform"
+        ],
+        "correctAnswer": "Transform"
+      },
+      {
+        "question": "Which aspect of game objects components govern?",
+        "options": [
+          "the look",
+          "the behavior",
+          "the interaction",
+          "All of the others"
+        ],
+        "correctAnswer": "All of the others"
+      },
+      {
+        "question": "An asset type that allows you to store game objects and create multiple instances later is called?",
+        "options": [
+          "Prefab",
+          "Package",
+          "Asset Store",
+          "Serialized"
+        ],
+        "correctAnswer": "Prefab"
+      },
+      {
+        "question": "Which is not a type of light in Unity?",
+        "options": [
+          "Directional light",
+          "Point light",
+          "Area light",
+          "Mix light"
+        ],
+        "correctAnswer": "Mix light"
+      },
+      {
+        "question": "When you move the game object on the scene what will happen with the child game object?",
+        "options": [
+          "will move with parent",
+          "will not move with the parent",
+          "Static child objects does not move, dynamic child objects move",
+          "Dynamic child objects does not move, static child objects move"
+        ],
+        "correctAnswer": "will move with parent"
+      },
+      {
+        "question": "How you can pause the game?",
+        "options": [
+          "Time.time = 0;",
+          "Time.deltaTime = 0;",
+          "Time.timeScale = 0;",
+          "Time.fixedDeltaTime = 0 ;"
+        ],
+        "correctAnswer": "Time.timeScale = 0;"
+      },
+      {
+        "question": "To make your camera point at an object as it moves what method you need to use:",
+        "options": [
+          "Follow()",
+          "LookAt()",
+          "No method exists",
+          "You need to make camera child of object"
+        ],
+        "correctAnswer": "LookAt()"
+      },
+      {
+        "question": "Which method executes first in MonoBehaviour?",
+        "options": [
+          "Start()",
+          "Update()",
+          "Awake()",
+          "onEnable()"
+        ],
+        "correctAnswer": "Awake()"
+      },
+      {
+        "question": "Which method executes when script is enabled in MonoBehaviour?",
+        "options": [
+          "Start()",
+          "Update()",
+          "Awake()",
+          "onEnable()"
+        ],
+        "correctAnswer": "Start()"
+      }
+
+      
+     
+    ]
+  }
