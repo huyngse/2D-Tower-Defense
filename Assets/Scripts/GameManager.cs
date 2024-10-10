@@ -331,4 +331,24 @@ public class GameManager : Singleton<GameManager>
         sellText.text = selectedTower.SellPrice + "$";
         UpdateUpgradeTooltip();
     }
+
+    public void ShowQuizMenu()
+    {
+        QuizManager.Instance.ShowQuiz();
+        Time.timeScale = 0;
+    }
+
+    public void SubmitAnswer(bool isCorrectAnswer)
+    {
+        if (isCorrectAnswer)
+        {
+            Currency += 20;
+        }
+        else
+        {
+            Currency -= 50;
+        }
+        Time.timeScale = 1;
+        QuizManager.Instance.HideQuiz();
+    }
 }

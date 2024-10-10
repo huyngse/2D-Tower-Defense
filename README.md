@@ -36,3 +36,6 @@ RoccoW
 [Ayavaron](https://freesound.org/people/Ayavaron/)  
 [Ryanz-Official](https://freesound.org/people/Ryanz-Official/)  
 [Vilkas_Sound](https://freesound.org/people/Vilkas_Sound/)  
+[qubodup](https://freesound.org/people/qubodup/)  
+[Bertrof](https://freesound.org/people/Bertrof/)  
+[stijn](https://freesound.org/people/stijn/)  
