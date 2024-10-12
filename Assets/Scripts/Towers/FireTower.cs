@@ -17,11 +17,11 @@ public class FireTower : Tower
         ElementType = Element.FIRE;
         Upgrades = new TowerUpgrade[]
         {
-            new(15, 1, 10, -0.2f, 1, 1),
-            new(22, 2, 10, -0.2f, 1, 2),
-            new(26, 4, 10, -0.2f, 1, 4),
-            new(30, 8, 10, -0.2f, 1, 6),
-            new(35, 12, 10, -0.2f, 1, 8),
+            new(45, 1, 10, -0.2f, 1, 1),
+            new(66, 2, 10, -0.2f, 1, 2),
+            new(78, 4, 10, -0.2f, 1, 4),
+            new(90, 8, 10, -0.2f, 1, 6),
+            new(105, 12, 10, -0.2f, 1, 8),
         };
     }
 

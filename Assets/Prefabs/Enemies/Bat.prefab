@@ -195,11 +195,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterName: Bat
-  baseHP: 5
+  baseHP: 4
   speed: 5
   health:
     bar: {fileID: 4989144241772507845}
-  elementType: 0
+  elementType: 4
   invulnerability: 2
 --- !u!1001 &8487600369975478933
 PrefabInstance:

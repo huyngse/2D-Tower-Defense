@@ -19,13 +19,9 @@ public class CameraMovement : MonoBehaviour
     // [Header("References")]
     // [SerializeField]
     // public Camera mainCamera;
-    void Awake()
+    void Start()
     {
-        transform.position = new Vector3(
-            StartPosition.x * LevelManager.Instance.TileSize,
-            StartPosition.y * LevelManager.Instance.TileSize * -1f,
-            0
-        );
+        
     }
 
     void Update()
@@ -78,5 +74,10 @@ public class CameraMovement : MonoBehaviour
         Vector3 worldPoint = Camera.main.ViewportToWorldPoint(new Vector3(1, 0));
         maxX = bottomLeftTile.x - worldPoint.x;
         minY = bottomLeftTile.y - worldPoint.y;
+        transform.position = new Vector3(
+            StartPosition.x * LevelManager.Instance.TileSize,
+            StartPosition.y * LevelManager.Instance.TileSize * -1f,
+            0
+        );
     }
 }

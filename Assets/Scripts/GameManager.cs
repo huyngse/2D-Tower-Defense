@@ -336,6 +336,7 @@ public class GameManager : Singleton<GameManager>
     {
         QuizManager.Instance.ShowQuiz();
         Time.timeScale = 0;
+        SoundManager.Instance.PlayEffect("click");
     }
 
     public void SubmitAnswer(bool isCorrectAnswer)

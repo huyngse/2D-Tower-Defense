@@ -19,11 +19,11 @@ public class IceTower : Tower
         ElementType = Element.ICE;
         Upgrades = new TowerUpgrade[]
         {
-            new(20, 1, 5, -0.2f, 1, 0.05f),
-            new(23, 3, 0, -0.2f, 0, 0.1f),
-            new(28, 6, 5, -0.2f, 1, 0.1f),
-            new(31, 10, 0, -0.2f, 1, 0.1f),
-            new(36, 14, 5, -0.2f, 1, 0.15f),
+            new(60, 1, 5, -0.2f, 1, 0.05f),
+            new(69, 3, 0, -0.2f, 0, 0.1f),
+            new(84, 6, 5, -0.2f, 1, 0.1f),
+            new(93, 10, 0, -0.2f, 1, 0.1f),
+            new(108, 14, 5, -0.2f, 1, 0.15f),
         };
     }
 
