@@ -7,14 +7,27 @@ public class CameraMovement : MonoBehaviour
     [Header("Attributes")]
     [SerializeField]
     private float cameraSpeed = 5f;
+
+    [SerializeField]
+    private Vector2 StartPosition = new Vector2(0, 0);
     private float maxX;
     private float minY;
     public float zoomSpeed = 0.5f;
     public float minSize = 2f;
     public float maxSize = 10f;
+
     // [Header("References")]
     // [SerializeField]
     // public Camera mainCamera;
+    void Awake()
+    {
+        transform.position = new Vector3(
+            StartPosition.x * LevelManager.Instance.TileSize,
+            StartPosition.y * LevelManager.Instance.TileSize * -1f,
+            0
+        );
+    }
+
     void Update()
     {
         GetInput();

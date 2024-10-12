@@ -9,6 +9,9 @@ Basic Pixel Health bar and Scroll bar, Effect and Bullet by [bdragon1727](https:
 Pixel Adventure 2 by [Pixelfrog Assets](https://pixelfrog-assets.itch.io/)  
 Pocket Inventory Series #5 : Player Status by [Humblepixel](https://humblepixel.itch.io/)  
 Grass+ by [Ninjikin](https://ninjikin.itch.io/) 
+Grass+ by [Ninjikin](https://ninjikin.itch.io/) 
+Azul by [Adam Saltsman](https://adamatomic.itch.io/) 
+
 ## Fonts
 04b_30 by [04](http://www.04.jp.org/)   
 Home Video by [GGBotNet](https://www.ggbot.net/)  
