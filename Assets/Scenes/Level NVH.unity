@@ -6221,7 +6221,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 100
   m_Sprite: {fileID: -1446970739, guid: 3f852ce9f05da6d42afcb55372b029b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6456,7 +6456,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 100
   m_Sprite: {fileID: -1446970739, guid: 3f852ce9f05da6d42afcb55372b029b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -18938,6 +18938,7 @@ GameObject:
   - component: {fileID: 2139476321}
   - component: {fileID: 2139476320}
   - component: {fileID: 2139476319}
+  - component: {fileID: 2139476322}
   m_Layer: 0
   m_Name: Hover
   m_TagString: Untagged
@@ -19026,6 +19027,20 @@ Transform:
   - {fileID: 9011669298542639342}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2139476322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139476318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f82fe9c20f84a4d98bc236aed7d696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 0}
+  debugTilePrefab: {fileID: 0}
 --- !u!1 &789346440692928067
 GameObject:
   m_ObjectHideFlags: 0
