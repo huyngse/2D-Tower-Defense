@@ -7,7 +7,7 @@ public class LevelManager : Singleton<LevelManager>
 {
     [Header("Attributes")]
     [SerializeField]
-    private int level = 1;
+    private string level = "1";
     [SerializeField]
     private Vector2 startPosition;
     [SerializeField]
