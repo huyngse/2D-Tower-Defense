@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
     [Header("References")]
     [SerializeField]
     private GameObject optionsMenu;
+    [SerializeField]
+    private GameObject selectLevelMenu;
 
     [SerializeField]
     private GameObject menu;
@@ -41,10 +43,10 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void Play()
+    public void Play(int scene)
     {
         SoundManager.Instance.PlayEffect("click");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(scene);
     }
 
     public void Quit()
@@ -52,7 +54,12 @@ public class MainMenu : MonoBehaviour
         SoundManager.Instance.PlayEffect("click");
         Application.Quit();
     }
-
+    public void ShowSelectLevelMenu()
+    {
+        menu.SetActive(false);
+        selectLevelMenu.SetActive(true);
+        SoundManager.Instance.PlayEffect("click");
+    }
     public void ShowOptionsMenu()
     {
         menu.SetActive(false);
@@ -63,6 +70,7 @@ public class MainMenu : MonoBehaviour
     public void ShowMenu()
     {
         optionsMenu.SetActive(false);
+        selectLevelMenu.SetActive(false);
         menu.SetActive(!menu.activeSelf);
         SoundManager.Instance.PlayEffect("click");
     }
