@@ -26,8 +26,10 @@ public class QuizManager : Singleton<QuizManager>
     [Header("References")]
     [SerializeField]
     private GameObject quizMenu;
+
     [SerializeField]
     private TMP_Text questionText;
+
     [SerializeField]
     private TMP_Text answerText;
     private QuizData quizData;
@@ -40,10 +42,7 @@ public class QuizManager : Singleton<QuizManager>
         LoadQuizData();
     }
 
-    void Update()
-    {
-
-    }
+    void Update() { }
 
     void LoadQuizData()
     {
@@ -58,6 +57,7 @@ public class QuizManager : Singleton<QuizManager>
             Debug.LogError("Quiz data file not found!");
         }
     }
+
     public void LoadQuestion()
     {
         currentQuestion = quizData.questions[UnityEngine.Random.Range(0, quizData.questions.Count)];
@@ -69,7 +69,10 @@ public class QuizManager : Singleton<QuizManager>
 
     public void ChooseAnswer()
     {
-        if (currentQuestion != null && currentAsnwers.ElementAt(selectedAnswer) == currentQuestion.correctAnswer)
+        if (
+            currentQuestion != null
+            && currentAsnwers.ElementAt(selectedAnswer) == currentQuestion.correctAnswer
+        )
         {
             GameManager.Instance.SubmitAnswer(true);
             SoundManager.Instance.PlayEffect("correct");
@@ -87,17 +90,20 @@ public class QuizManager : Singleton<QuizManager>
         answerText.text = currentAsnwers.ElementAt(selectedAnswer);
         SoundManager.Instance.PlayEffect("pencil");
     }
+
     public void PreviousAnswer()
     {
         selectedAnswer = Math.Abs((selectedAnswer - 1) % currentAsnwers.Count);
         answerText.text = currentAsnwers.ElementAt(selectedAnswer);
         SoundManager.Instance.PlayEffect("pencil");
     }
+
     public void ShowQuiz()
     {
         quizMenu.SetActive(true);
         LoadQuestion();
     }
+
     public void HideQuiz()
     {
         quizMenu.SetActive(false);

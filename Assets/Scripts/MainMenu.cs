@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     [Header("References")]
     [SerializeField]
     private GameObject optionsMenu;
+
     [SerializeField]
     private GameObject selectLevelMenu;
 
@@ -20,7 +21,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        background.GetComponent<Rigidbody2D>().velocity = Vector3.one * bgSpeed;
+        background.GetComponent<Rigidbody2D>().linearVelocity = Vector3.one * bgSpeed;
     }
 
     void Update()
@@ -41,6 +42,10 @@ public class MainMenu : MonoBehaviour
                 Quit();
             }
         }
+        if (Input.GetKeyDown(KeyCode.Delete))
+        {
+            OnResetKey();
+        }
     }
 
     public void Play(int scene)
@@ -54,12 +59,14 @@ public class MainMenu : MonoBehaviour
         SoundManager.Instance.PlayEffect("click");
         Application.Quit();
     }
+
     public void ShowSelectLevelMenu()
     {
         menu.SetActive(false);
         selectLevelMenu.SetActive(true);
         SoundManager.Instance.PlayEffect("click");
     }
+
     public void ShowOptionsMenu()
     {
         menu.SetActive(false);
@@ -73,5 +80,11 @@ public class MainMenu : MonoBehaviour
         selectLevelMenu.SetActive(false);
         menu.SetActive(!menu.activeSelf);
         SoundManager.Instance.PlayEffect("click");
+    }
+
+    public void OnResetKey()
+    {
+        LicenseManager.ResetLicense();
+        SceneManager.LoadScene("ActivationScene");
     }
 }
