@@ -657,7 +657,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2D Tower Defense
+  m_text: Fish Pal Towers
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0640a9df494188845a014748952f1d9c, type: 2}
   m_sharedMaterial: {fileID: 3202361612394429392, guid: 0640a9df494188845a014748952f1d9c, type: 2}
@@ -2181,7 +2181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to 2D Tower Defense
+  m_text: 'Welcome to Fish Pal Towers
 
 
 '
